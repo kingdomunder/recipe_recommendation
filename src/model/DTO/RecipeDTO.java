@@ -12,9 +12,14 @@ import model.entity.Ingredient;
 @Getter
 @Setter
 public class RecipeDTO {
-	private Ingredient recipeId;
+	private int recipeId;
+	private Ingredient ingredientId;
 	private String foodName;
 	private String direction;
 	private Chef recipeOwner;
 	private int like;
+	
+	
+	
+	
 }

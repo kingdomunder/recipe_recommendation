@@ -18,17 +18,25 @@ import lombok.Setter;
 @Setter
 
 @Entity
-@SequenceGenerator(name="recipe_seq", sequenceName="recipe_id_seq", initialValue=1, allocationSize=1)
+@SequenceGenerator(name="ingredient_id_seq", sequenceName="ingredient_seq", initialValue=1, allocationSize=1)
 public class Ingredient {
 	@Id
-	@Column(name="recipe_id")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "recipe_seq")
-	private int recipeId;
+	@Column(name="ingredient_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ingredient_id_seq")
+	private int ingredientId;
 	
 	private String ingredient1;
 	private String ingredient2;
 	private String ingredient3;
 	private String ingredient4;
 	private String ingredient5;
+	
+	
+	@Override
+	public String toString() {
+		return "Ingredient [ingredientId=" + ingredientId + ", ingredient1=" + ingredient1 + ", ingredient2="
+				+ ingredient2 + ", ingredient3=" + ingredient3 + ", ingredient4=" + ingredient4 + ", ingredient5="
+				+ ingredient5 + "]";
+	}
 	
 }
