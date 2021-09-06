@@ -18,7 +18,7 @@ import lombok.Setter;
 @Setter
 
 @Entity
-@SequenceGenerator(name="chef_seq", sequenceName="chef_id", initialValue=1, allocationSize=1)
+@SequenceGenerator(name="chef_seq", sequenceName="chef_id_seq", initialValue=1, allocationSize=1)
 public class Chef {
 	@Id
 	@Column(name="chef_id")

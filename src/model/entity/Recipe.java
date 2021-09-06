@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,12 +17,14 @@ import lombok.Setter;
 @Setter
 
 @Entity
-@SequenceGenerator(name="recipe_seq", sequenceName="recipe_id", initialValue=1, allocationSize=1)
 public class Recipe {
 	@Id
-	@JoinColumn(name="recipe_id")
+	@Column(name="recipe_id")
+	private int recipeId;
+	
+	@JoinColumn(name="ingredient_id")
 	@OneToOne
-	private Ingredient recipeId;
+	private Ingredient ingredientId;
 	
 	@Column(name="food_name")
 	private String foodName;
@@ -36,5 +37,4 @@ public class Recipe {
 	
 	@Column(name="recipe_like")
 	private int like;
-	
 }
