@@ -20,11 +20,11 @@ import lombok.Setter;
 @Setter
 
 @Entity
-@SequenceGenerator(name="recipe_seq", sequenceName="recipe_id_seq", initialValue=1, allocationSize=1)
+@SequenceGenerator(name="recipe_id_seq", sequenceName="recipe_seq", initialValue=1, allocationSize=1)
 public class Recipe {
 	@Id
 	@Column(name="recipe_id")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "recipe_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "recipe_id_seq")
 	private int recipeId;
 	
 	@JoinColumn(name="ingredient_id")
@@ -42,4 +42,12 @@ public class Recipe {
 	
 	@Column(name="recipe_like")
 	private int like;
+
+	@Override
+	public String toString() {
+		return "Recipe [recipeId=" + recipeId + ", ingredientId=" + ingredientId + ", foodName=" + foodName
+				+ ", direction=" + direction + ", recipeOwner=" + recipeOwner + ", like=" + like + "]";
+	}
+	
+	
 }

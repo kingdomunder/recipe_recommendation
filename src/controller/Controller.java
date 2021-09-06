@@ -1,5 +1,8 @@
 package controller;
 
+import java.util.List;
+
+import model.entity.Ingredient;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -17,10 +20,24 @@ public class Controller extends HttpServlet {
 	private static Service service = Service.getInstance();
 
 	public Controller(){}
-
+	
 	public static Controller getInstance(){
 		return instance;
 	}
+	
+	
+	//모든 조리법 검색
+	public List<Ingredient> getAllIngredients(){
+		List<Ingredient> list = null;
+		try {
+			list = service.getAllIngredients();
+		}catch (Exception e) {
+		}
+//		System.out.println(list.get(0).getIngredientId());
+		
+		return list;
+	}
+	
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
@@ -58,7 +75,5 @@ public class Controller extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 	}
-
-
 
 }
