@@ -18,12 +18,12 @@ import lombok.Setter;
 @Setter
 
 @Entity
-@SequenceGenerator(name="recipe_seq", sequenceName="recipe_id_seq", initialValue=1, allocationSize=1)
+@SequenceGenerator(name="ingredient_seq", sequenceName="ingredient_id_seq", initialValue=1, allocationSize=1)
 public class Ingredient {
 	@Id
-	@Column(name="recipe_id")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "recipe_seq")
-	private int recipeId;
+	@Column(name="ingredient_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ingredient_seq")
+	private int ingredientId;
 	
 	private String ingredient1;
 	private String ingredient2;

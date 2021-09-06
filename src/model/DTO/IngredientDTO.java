@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class IngredientDTO {
-	private int recipeId;	
+	private int ingredientId;	
 	private String ingredient1;
 	private String ingredient2;
 	private String ingredient3;
