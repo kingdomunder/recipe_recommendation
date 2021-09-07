@@ -53,7 +53,9 @@ public class Controller extends HttpServlet {
 			}else if(command.equals("likeRecipe")) {
 				likeRecipe(request, response);
 			}else if(command.equals("addRecipe")) {
-				addRecipe(request,response);
+				addRecipe(request, response);
+//			}else if(command.equals("deleteRecipe")) {
+//				deleteRecipe(request, response);
 			}
 		}catch(Exception s){
 			request.setAttribute("errorMsg", s.getMessage());
@@ -82,6 +84,7 @@ public class Controller extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 	}
+	
 	
 	// 레시피에 좋아요 누르기
 	private void likeRecipe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -136,5 +139,23 @@ public class Controller extends HttpServlet {
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 
+	
+	// 레시피 삭제
+//	private void deleteRecipe(HttpServletRequest request, HttpServletResponse response) {
+//		String url = "showError.jsp";
+//		int recipeId = Integer.parseInt(request.getParameter("recipeId"));
+//		try {
+//			boolean result = service.deleteRecipe(recipeId);
+//			if(result) {
+//				url = "recipedeleteSuccess.jsp";
+//			}else {
+//				request.setAttribute("errorMsg", "레시피  삭제에 실패했습니다.");
+//			}
+//		}catch(Exception e) {
+//			request.setAttribute("errorMsg", e.getMessage());
+//			e.printStackTrace();
+//		}
+//		request.getRequestDispatcher(url).forward(request, response);
+//	}
 
 }
