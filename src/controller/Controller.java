@@ -46,8 +46,10 @@ public class Controller extends HttpServlet {
 		try{
 			if(command.equals("recipeAll")){
 				getAllRecipe(request, response);
-			}else if(command.equals("makeRecipe")){
+			}else if(command.equals("")){
 				getRecipeRecommendation(request, response);
+			}else if(command.equals("likeRecipe")) {
+				likeRecipe(request, response);
 			}
 		}catch(Exception s){
 			request.setAttribute("errorMsg", s.getMessage());
@@ -57,7 +59,9 @@ public class Controller extends HttpServlet {
 	
 	}
 
-	// 紐⑤뱺 �젅�떆�뵾 蹂닿린
+	
+
+	// 모든 레시피 검색
 	private void getAllRecipe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
@@ -74,6 +78,25 @@ public class Controller extends HttpServlet {
 	private void getRecipeRecommendation(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	// 레시피에 좋아요 누르기
+	private void likeRecipe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url = "showError.jsp";
+		int recipeId = Integer.parseInt(request.getParameter("recipeId"));
+		try {
+			boolean result = service.likeRecipe(recipeId);
+			if(result) {
+				request.setAttribute("recipe", service.getOneRecipe(recipeId));
+				url = "recipeLikeSuccess.jsp";
+			}else {
+				request.setAttribute("errorMsg", "레시피 좋아요 누르기 실패했습니다.");
+			}
+		}catch(Exception e) {
+			request.setAttribute("errorMsg", e.getMessage());
+			e.printStackTrace();
+		}
+		request.getRequestDispatcher(url).forward(request, response);
 	}
 
 }

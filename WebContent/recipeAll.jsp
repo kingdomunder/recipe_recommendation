@@ -27,7 +27,7 @@
 				<td>${recipe.ingredientId.ingredient1}</td>
 				<td>${recipe.direction}</td>
 				<td>${recipe.recipeOwner}</td>
-				<td>${recipe.like}</td>
+				<td><a href="recipe?command=likeRecipe&recipeId=${recipe.recipeId}">${recipe.like}</td>
 			</tr>
 		</c:forEach>
 	</table>
