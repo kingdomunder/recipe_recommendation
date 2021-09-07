@@ -27,8 +27,8 @@ public class Recipe {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "recipe_id_seq")
 	private int recipeId;
 	
-	@JoinColumn(name="ingredient_id")
 	@OneToOne
+	@JoinColumn(name="ingredient_id")
 	private Ingredient ingredientId;
 	
 	@Column(name="food_name")
@@ -36,8 +36,8 @@ public class Recipe {
 	
 	private String direction;
 	
-	@JoinColumn(name="recipe_owner")
 	@OneToOne
+	@JoinColumn(name="recipe_owner")
 	private Chef recipeOwner;
 	
 	@Column(name="recipe_like")
