@@ -50,7 +50,7 @@ public class RecipeDAO {
 		RecipeDTO recipe = null;
 		
 		try {
-			Recipe r = (Recipe)em.createNamedQuery("Recipe.findByRecipeId").setParameter("recipeId", recipeId).getSingleResult();
+			Recipe r = em.find(Recipe.class, recipeId);
 			recipe = new RecipeDTO(r.getRecipeId(), r.getIngredientId(), r.getFoodName(), r.getDirection(), r.getRecipeOwner(), r.getLike());
 		}catch(Exception e) {
 			e.printStackTrace();
