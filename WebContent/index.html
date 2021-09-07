@@ -11,11 +11,6 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 .w3-third img:hover{opacity: 1}
 </style>
 <body class="w3-light-grey w3-content" style="max-width:1600px">
-<button onclick="location.href='recipe?command=recipeAll'">모든 레시피 보기</button><br>
-<button onclick="location.href='recipe?command=makeRecipe'">내 냉장고 속 재료로 만들 수 있는 것은?!</button><br>
-<button onclick="location.href='#'">회원가입</button><br>
-<button onclick="location.href='#'">로그인</button><br>
-<button onclick="location.href='addRecipe.html'">레시피 등록</button><br>
 
 
 <!-- Sidebar/menu -->
@@ -87,6 +82,17 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <!-- About section -->
   <div class="w3-container w3-dark-grey w3-center w3-text-light-grey w3-padding-32" id="about">
     <h4><b>About Me</b></h4>
+    
+    
+    <button onclick="location.href='recipe?command=recipeAll'">모든 레시피 보기</button><br>
+	<button onclick="location.href='recipe?command=makeRecipe'">내 냉장고 속 재료로 만들 수 있는 것은?!</button><br>
+	<button onclick="location.href='#'">회원가입</button><br>
+	<button onclick="location.href='#'">로그인</button><br>
+	<button onclick="location.href='addRecipe.html'">레시피 등록</button><br>
+	<button onclick="location.href='#'">레시피 삭제</button><br>
+	<button onclick="location.href='ingredient/select.jsp'">재료 선택하기</button><br>
+    
+    
     <img src="/w3images/avatar_hat.jpg" alt="Me" class="w3-image w3-padding-32" width="600" height="650">
     <div class="w3-content w3-justify" style="max-width:600px">
       <h4>My Name</h4>
@@ -238,7 +244,6 @@ function onClick(element) {
 }
 
 </script>
-
 
 </body>
 </html>

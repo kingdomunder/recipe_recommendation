@@ -2,7 +2,6 @@ package service;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import exception.NotExistException;
 import model.ChefDAO;
@@ -10,7 +9,6 @@ import model.IngredientDAO;
 import model.RecipeDAO;
 import model.DTO.IngredientDTO;
 import model.DTO.RecipeDTO;
-import model.entity.Ingredient;
 
 public class Service {
 	private static Service instance = new Service();
@@ -24,11 +22,6 @@ public class Service {
 
 	public static Service getInstance(){
 		return instance;
-	}
-	
-	//모든 조리법 검색
-	public List<Ingredient> getAllIngredients() throws SQLException{
-		return getIngredientDAO.getAllIngredients();
 	}
 	
 	// 레시피 아이디로 레시피 1개 조회
@@ -56,4 +49,17 @@ public class Service {
 	public int addIngredient(IngredientDTO ingredient) {
 		return getIngredientDAO.addIngredient(ingredient);
 	}
+	
+	//모든 조리법 검색 - 우송
+	public ArrayList<IngredientDTO> getAllIngredient() throws  NotExistException, SQLException {
+		return getIngredientDAO.getAllIngredient();
+	}
+	
+	//선택한 재료 레시피 추천 - 우송
+	public ArrayList<String> selectIngredient(String IngredientOne) throws NotExistException, SQLException {
+		ArrayList<String> recommend = new ArrayList<>();
+		recommend = getIngredientDAO.selectIngredient(IngredientOne);
+		return recommend;
+	}
+	
 }

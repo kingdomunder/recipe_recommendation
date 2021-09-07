@@ -34,6 +34,11 @@ public class RecipeDTO {
 //	}
 	
 	
+	@Override
+	public String toString() {
+		return "RecipeDTO [recipeId=" + recipeId + ", ingredientId=" + ingredientId + ", foodName=" + foodName
+				+ ", direction=" + direction + ", recipeOwner=" + recipeOwner + ", like=" + like + "]";
+	}
 	
 	
 }

@@ -24,20 +24,10 @@ import lombok.Setter;
 @Entity
 @SequenceGenerator(name="recipe_seq", sequenceName="recipe_id_seq", initialValue=1, allocationSize=1)
 public class Recipe {
-	
 	@Id
 	@Column(name="recipe_id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "recipe_seq")
 	private int recipeId;
-	
-	// 레시피 등록할때 필요한 생성자
-	public Recipe(Ingredient ingredientId, String foodName, String direction, Chef recipeOwner) {
-		super();
-		this.ingredientId = ingredientId;
-		this.foodName = foodName;
-		this.direction = direction;
-		this.recipeOwner = recipeOwner;
-	}
 
 	@OneToOne
 	@JoinColumn(name="ingredient_id")
@@ -55,6 +45,13 @@ public class Recipe {
 	@Column(name="recipe_like")
 	private int like;
 	
-	
+	// 레시피 등록할때 필요한 생성자
+	public Recipe(Ingredient ingredientId, String foodName, String direction, Chef recipeOwner) {
+		super();
+		this.ingredientId = ingredientId;
+		this.foodName = foodName;
+		this.direction = direction;
+		this.recipeOwner = recipeOwner;
+	}
 	
 }

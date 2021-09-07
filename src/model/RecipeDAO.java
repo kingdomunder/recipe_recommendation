@@ -3,7 +3,6 @@ package model;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
@@ -41,7 +40,6 @@ public class RecipeDAO {
 		}finally {
 			em.close();
 		}
-		System.out.println(result.get(0));
 		return result;
 	}
 
@@ -104,6 +102,5 @@ public class RecipeDAO {
 		}
 		return result;
 	}
-	
 	
 }
