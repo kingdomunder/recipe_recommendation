@@ -4,9 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import model.entity.Chef;
-import model.entity.Ingredient;
-import model.entity.Recipe;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -39,6 +36,4 @@ public class RecipeDTO {
 		return "RecipeDTO [recipeId=" + recipeId + ", ingredientId=" + ingredientId + ", foodName=" + foodName
 				+ ", direction=" + direction + ", recipeOwner=" + recipeOwner + ", like=" + like + "]";
 	}
-	
-	
 }

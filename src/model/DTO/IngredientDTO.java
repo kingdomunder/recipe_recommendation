@@ -41,11 +41,5 @@ public class IngredientDTO {
 				+ ingredient2 + ", ingredient3=" + ingredient3 + ", ingredient4=" + ingredient4 + ", ingredient5="
 				+ ingredient5 + "]";
 	}
-
-
-
-	
-	
-	
 	
 }

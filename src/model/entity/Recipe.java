@@ -38,8 +38,8 @@ public class Recipe {
 	
 	private String direction;
 	
-	@OneToOne
 	@JoinColumn(name="recipe_owner")
+	@OneToOne
 	private Chef recipeOwner;
 	
 	@Column(name="recipe_like")
@@ -52,6 +52,12 @@ public class Recipe {
 		this.foodName = foodName;
 		this.direction = direction;
 		this.recipeOwner = recipeOwner;
+	}
+	
+	@Override
+	public String toString() {
+		return "Recipe [recipeId=" + recipeId + ", ingredientId=" + ingredientId + ", foodName=" + foodName
+				+ ", direction=" + direction + ", recipeOwner=" + recipeOwner + ", like=" + like + "]";
 	}
 	
 }
