@@ -1,4 +1,3 @@
-
 # Created by https://www.toptal.com/developers/gitignore/api/java,eclipse,maven
 # Edit at https://www.toptal.com/developers/gitignore?templates=java,eclipse,maven
 
@@ -114,4 +113,5 @@ buildNumber.properties
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 
-# End of https://www.toptal.com/developers/gitignore/api/java,eclipse,maven
+# End of https://www.toptal.com/developers/gitignore/api/java,eclipse,maventest 
+.gitignore 

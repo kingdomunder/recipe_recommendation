@@ -18,4 +18,8 @@ public class RecipeDTO {
 	private String direction;
 	private Chef recipeOwner;
 	private int like;
+	
+	
+	
+	
 }

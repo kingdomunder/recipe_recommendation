@@ -29,6 +29,7 @@ public class RecipeDAO {
 		try {
 			list = (List<Recipe>)em.createQuery("select r from Recipe r").getResultList();
 			list.forEach(v -> result.add(new RecipeDTO(v.getRecipeId(), v.getIngredientId(), v.getFoodName(), v.getDirection(), v.getRecipeOwner(), v.getLike())));
+			System.out.println("hello");
 		}catch(NoResultException e) {
 			e.printStackTrace();
 			throw new NotExistException();
