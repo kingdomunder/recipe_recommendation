@@ -15,3 +15,4 @@ insert into recipe values(recipe_id_seq.nextval, 2, '간장계란밥', '1. 기름을 두�
 insert into recipe (recipe_id, ingredient_id, food_name, direction, recipe_like) values(recipe_id_seq.nextval, 3, '로제파스타', '1. 소금을 1t 넣은 물에 면을 삶는다.'||chr(10)||'2. 기름을 두른 팬에 마늘을 넣고 볶는다.'||chr(10)||'3. 마늘이 노릇해지면 토마토소스와 크림을 넣고 끓인다.'||chr(10)||'4. 면을 넣고 에멀징한다.','27');
 
 commit;
+
