@@ -24,7 +24,7 @@
 			<tr>
 				<td>${recipe.recipeId}</td>
 				<td>${recipe.foodName}</td>
-				<td>${recipe.ingredientId.ingredient1}</td>
+				<td>${recipe.ingredientId}</td>
 				<td>${recipe.direction}</td>
 				<td>${recipe.recipeOwner}</td>
 				<td><a href="recipe?command=likeRecipe&recipeId=${recipe.recipeId}">${recipe.like}</td>

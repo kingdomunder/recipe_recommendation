@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>새로운 레시피 등록</title>
+</head>
+<body>
+<form action="recipe" method="post">
+	<input type="hidden" name="command" value="addRecipe">
+	<table>
+		<tr>
+			<td>레시피 이름</td><td><input type="text" name="foodName"></td>
+		</tr>
+		<tr>
+	 		<td>재료1</td><td><input type="text" name="ingredient1"></td>
+		</tr>
+		<tr>	
+			<td>재료2</td><td><input type="text" name="ingredient2"></td>
+	 	</tr>
+		<tr>	
+			<td>재료3</td><td><input type="text" name="ingredient3"></td>
+	 	</tr>
+		<tr>	
+			<td>재료4</td><td><input type="text" name="ingredient4"></td>
+	 	</tr>
+		<tr>	
+			<td>재료5</td><td><input type="text" name="ingredient5"></td>
+	 	</tr>
+	 	<tr>
+	 		<td>만드는 법</td><td><input type="text" name="direction"></td>
+	 	</tr>
+	 	<tr>
+	 		<td><input type="submit" value="등록"></td>
+	 	</tr>
+	</table>
+</form>
+</body>
+</html>

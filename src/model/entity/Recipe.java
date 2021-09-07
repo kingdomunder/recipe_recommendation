@@ -10,6 +10,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,17 +19,28 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 
 @Entity
-@SequenceGenerator(name="recipe_id_seq", sequenceName="recipe_seq", initialValue=1, allocationSize=1)
+@SequenceGenerator(name="recipe_seq", sequenceName="recipe_id_seq", initialValue=1, allocationSize=1)
 public class Recipe {
+	
 	@Id
 	@Column(name="recipe_id")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "recipe_id_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "recipe_seq")
 	private int recipeId;
 	
-	@JoinColumn(name="ingredient_id")
+	// 레시피 등록할때 필요한 생성자
+	public Recipe(Ingredient ingredientId, String foodName, String direction, Chef recipeOwner) {
+		super();
+		this.ingredientId = ingredientId;
+		this.foodName = foodName;
+		this.direction = direction;
+		this.recipeOwner = recipeOwner;
+	}
+
 	@OneToOne
+	@JoinColumn(name="ingredient_id")
 	private Ingredient ingredientId;
 	
 	@Column(name="food_name")
@@ -36,18 +48,13 @@ public class Recipe {
 	
 	private String direction;
 	
-	@JoinColumn(name="recipe_owner")
 	@OneToOne
+	@JoinColumn(name="recipe_owner")
 	private Chef recipeOwner;
 	
 	@Column(name="recipe_like")
 	private int like;
-
-	@Override
-	public String toString() {
-		return "Recipe [recipeId=" + recipeId + ", ingredientId=" + ingredientId + ", foodName=" + foodName
-				+ ", direction=" + direction + ", recipeOwner=" + recipeOwner + ", like=" + like + "]";
-	}
+	
 	
 	
 }

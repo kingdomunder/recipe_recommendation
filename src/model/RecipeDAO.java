@@ -9,6 +9,8 @@ import javax.persistence.NoResultException;
 
 import exception.NotExistException;
 import model.DTO.RecipeDTO;
+import model.entity.Chef;
+import model.entity.Ingredient;
 import model.entity.Recipe;
 import model.util.DBUtil;
 
@@ -29,8 +31,7 @@ public class RecipeDAO {
 		ArrayList<RecipeDTO> result = new ArrayList<>();
 		try {
 			list = (List<Recipe>)em.createNativeQuery("select * from Recipe", Recipe.class).getResultList();
-			list.forEach(v -> result.add(new RecipeDTO(v.getRecipeId(), v.getIngredientId(), v.getFoodName(), v.getDirection(), v.getRecipeOwner(), v.getLike())));
-			System.out.println("hello");
+			list.forEach(v -> result.add(new RecipeDTO(v.getRecipeId(), v.getIngredientId().getIngredientId(), v.getFoodName(), v.getDirection(), v.getRecipeOwner().getChefId(), v.getLike())));
 		}catch(NoResultException e) {
 			e.printStackTrace();
 			throw new NotExistException();
@@ -40,6 +41,7 @@ public class RecipeDAO {
 		}finally {
 			em.close();
 		}
+		System.out.println(result.get(0));
 		return result;
 	}
 
@@ -51,7 +53,7 @@ public class RecipeDAO {
 		
 		try {
 			Recipe r = em.find(Recipe.class, recipeId);
-			recipe = new RecipeDTO(r.getRecipeId(), r.getIngredientId(), r.getFoodName(), r.getDirection(), r.getRecipeOwner(), r.getLike());
+			recipe = new RecipeDTO(r.getRecipeId(), r.getIngredientId().getIngredientId(), r.getFoodName(), r.getDirection(), r.getRecipeOwner().getChefId(), r.getLike());
 		}catch(Exception e) {
 			e.printStackTrace();
 			em.getTransaction().rollback();
@@ -77,6 +79,26 @@ public class RecipeDAO {
 		}catch(Exception e) {
 			e.printStackTrace();
 			em.getTransaction().rollback();
+		}finally {
+			em.close();
+		}
+		return result;
+	}
+
+	// 레시피 등록
+	public boolean addRecipe(RecipeDTO recipe) { 
+		EntityManager em = DBUtil.getEntityManager();
+		em.getTransaction().begin();
+		boolean result = false;
+		try {
+			Ingredient i = em.find(Ingredient.class, recipe.getIngredientId());
+			Chef c = em.find(Chef.class, recipe.getRecipeOwner());
+			Recipe r = new Recipe(i, recipe.getFoodName(), recipe.getDirection(), c);
+			em.persist(r);
+			em.getTransaction().commit();
+			result = true;
+		}catch(Exception e) {
+			e.printStackTrace();
 		}finally {
 			em.close();
 		}

@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,13 +17,14 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 
 @Entity
-@SequenceGenerator(name="ingredient_id_seq", sequenceName="ingredient_seq", initialValue=1, allocationSize=1)
+@SequenceGenerator(name="ingredient_seq", sequenceName="ingredient_id_seq", initialValue=1, allocationSize=1)
 public class Ingredient {
 	@Id
 	@Column(name="ingredient_id")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ingredient_id_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="ingredient_seq")
 	private int ingredientId;
 	
 	private String ingredient1;

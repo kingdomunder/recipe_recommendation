@@ -1,9 +1,7 @@
 package controller;
 
-import java.util.List;
-
-import model.entity.Ingredient;
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import exception.NotExistException;
+import model.DTO.IngredientDTO;
+import model.DTO.RecipeDTO;
+import model.entity.Chef;
+import model.entity.Ingredient;
 import service.Service;
 
 @WebServlet("/recipe")  
@@ -50,6 +52,8 @@ public class Controller extends HttpServlet {
 				getRecipeRecommendation(request, response);
 			}else if(command.equals("likeRecipe")) {
 				likeRecipe(request, response);
+			}else if(command.equals("addRecipe")) {
+				addRecipe(request,response);
 			}
 		}catch(Exception s){
 			request.setAttribute("errorMsg", s.getMessage());
@@ -60,7 +64,6 @@ public class Controller extends HttpServlet {
 	}
 
 	
-
 	// 모든 레시피 검색
 	private void getAllRecipe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "showError.jsp";
@@ -98,5 +101,40 @@ public class Controller extends HttpServlet {
 		}
 		request.getRequestDispatcher(url).forward(request, response);
 	}
+	
+	// 레시피 등록
+	private void addRecipe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url = "showError.jsp";
+		boolean result = false;
+		
+		String foodName = request.getParameter("foodName");
+		String ing1 = request.getParameter("ingredient1");
+		String ing2 = request.getParameter("ingredient2");
+		String ing3 = request.getParameter("ingredient3");
+		String ing4 = request.getParameter("ingredient4");
+		String ing5 = request.getParameter("ingredient5");
+		String direction = request.getParameter("direction");
+		int recipeOwner = 1; // 이부분은 사용자가 로그인했으면 자동으로 가져올수 있도록 수정해야함
+		
+		// 사용자가 입력한 값으로 새로운 ingredient 등록
+		IngredientDTO ingredient = new IngredientDTO(ing1, ing2, ing3, ing4, ing5); 
+		try {
+			int ingredientId = service.addIngredient(ingredient); // 새로 등록한 ingredient의 id 반환
+			RecipeDTO recipe = new RecipeDTO(ingredientId, foodName, direction, recipeOwner);
+			result = service.addRecipe(recipe);
+			
+			if(result) {
+				request.setAttribute("recipe", recipe);
+				url = "recipeAddSuccess.jsp";
+			}else {
+				request.setAttribute("errorMsg", "레시피 등록 실패");
+			}			
+		}catch(Exception e){
+			request.setAttribute("errorMsg", e.getMessage());
+			e.printStackTrace();
+		}
+		request.getRequestDispatcher(url).forward(request, response);
+	}
+
 
 }
