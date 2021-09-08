@@ -7,8 +7,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import model.DTO.IngredientDTO;
-import model.DTO.RecipeDTO;
+import model.dto.IngredientDTO;
+import model.dto.RecipeDTO;
 import model.entity.Ingredient;
 import model.entity.Recipe;
 import model.util.DBUtil;

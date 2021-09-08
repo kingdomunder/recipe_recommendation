@@ -16,9 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import exception.NotExistException;
-import model.DTO.ChefDTO;
-import model.DTO.IngredientDTO;
-import model.DTO.RecipeDTO;
+import model.dto.ChefDTO;
+import model.dto.IngredientDTO;
+import model.dto.RecipeDTO;
 import model.entity.Ingredient;
 import service.Service;
 
@@ -41,7 +41,10 @@ public class Controller extends HttpServlet {
 		try{
 			if(command.equals("recipeAll")){
 				getAllRecipe(request, response);
-			}else if(command.equals("likeRecipe")) {
+			}else if(command.equals("recipeOne")) {
+				getOneRecipe(request, response);
+			}
+			else if(command.equals("likeRecipe")) {
 				likeRecipe(request, response);
 			}else if(command.equals("addRecipe")) {
 				addRecipe(request, response);
@@ -63,6 +66,11 @@ public class Controller extends HttpServlet {
 		}
 	}
 
+	// 레시피 하나 출력
+	private void getOneRecipe(HttpServletRequest request, HttpServletResponse response) {
+		// 처리
+//		url = "recipeOne.jsp";
+	}
 
 	// 모든 레시피 출력
 	private void getAllRecipe(HttpServletRequest request, HttpServletResponse response)
@@ -70,7 +78,7 @@ public class Controller extends HttpServlet {
 		String url = "showError.jsp";
 		try {
 			request.setAttribute("recipeAll", service.getAllRecipe());
-			url = "index.jsp";
+			url = "recipeAll.jsp";
 		} catch (NotExistException e) {
 			request.setAttribute("errorMsg", e.getMessage());
 			e.printStackTrace();
