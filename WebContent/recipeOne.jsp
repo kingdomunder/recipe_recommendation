@@ -46,27 +46,47 @@ img{margin: 10px;}
 		<!-- 모든 레시피에서 클릭한 레시피 1개 출력 -->
 		<div class="form-container">
 			<form action="recipe" method="post">
+				<%--
 				<div class="recipe-image">이미지</div>
 				<div class="rec_exp">
 					<h2 class="prod_title">${requestScope.recipeOne.foodName}</h2>
 					<p class="s_title">셰프 : ${requestScope.recipeOne.recipeOwner}</p>
-					<div class="text_box">
-						조리법
-						<pre>
-						<c:out value="${requestScope.recipeOne.direction}" />
-						</pre>
-					</div>
 				</div>
-
-				<%-- <div>
+				
+				<hr>
+				
+				 <div>
 					<h2>${requestScope.recipeOne.foodName}</h2>
-					<br> 조리법
+					<br> <p>조리법</p>
 					<pre>
 					<c:out value="${requestScope.recipeOne.direction}" />
 					</pre>
 					셰프 : ${requestScope.recipeOne.recipeOwner}<br> 좋아요 :
 					${requestScope.recipeOne.like}개<br>
 				</div> --%>
+
+				<img src="images/001.png" alt="image" width="300" height="300">
+				<!-- 왼쪽 마진 적용해보기 : 잘 안됨 -->
+				<p style="margin-left: 10px;">
+					<h2>${requestScope.recipeOne.foodName}</h2>
+					<br> <p>조리법</p>
+					<pre>
+						<c:out value="${requestScope.recipeOne.direction}" />
+					</pre>
+					셰프 : ${requestScope.recipeOne.recipeOwner}<br> 좋아요 :
+					${requestScope.recipeOne.like}개<br>
+				</p>
+
+				<!-- float에 의해 요소가 아래에 깔리는 것을 확인해보기 -->
+				<!-- <p style="background-color: cadetblue; border: 2px solid red;">
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
+					repellendus molestias tempora voluptate beatae enim doloremque a,
+					veritatis repudiandae tenetur exercitationem est quam esse repellat
+					labore autem nesciunt corporis facilis.</p>
+
+				<p class="p2">여기는 위 이미지와 상관없는 새로운 블럭입니다.</p> -->
+
+				
 			</form>
 		</div>
 
