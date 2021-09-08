@@ -2,7 +2,7 @@ package model;
 
 import javax.persistence.EntityManager;
 
-import model.DTO.ChefDTO;
+import model.dto.ChefDTO;
 import model.entity.Chef;
 import model.util.DBUtil;
 

@@ -16,9 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import exception.NotExistException;
-import model.DTO.ChefDTO;
-import model.DTO.IngredientDTO;
-import model.DTO.RecipeDTO;
+import model.dto.ChefDTO;
+import model.dto.IngredientDTO;
+import model.dto.RecipeDTO;
 import model.entity.Ingredient;
 import service.Service;
 
@@ -83,62 +83,64 @@ public class Controller extends HttpServlet {
 		String url = "showError.jsp";
 		String selected = request.getParameter("ingredient");
 		String encoding = null;
+		
 		//클라이언트 로컬에 저장된 쿠키 불러오기
 		Cookie[] cookies = request.getCookies();
-		//쿠키가 없으면 null값. 톰캣은 서버접속할 때 JSESSIONID 쿠키를 자동으로 생성하는데, 버튼 마구누르면 가끔 JESSIONID가 늦게 만들어져서 null인채로 접속되는 경우가 있음.
+		
+		//불러온 쿠키를 디코딩해서 리스트로 저장
+		ArrayList<String> decodedCookies = new ArrayList<>();
+			for(Cookie cookie : cookies) {
+				String decode = URLDecoder.decode(cookie.getValue(), "UTF-8");
+				//톰캣 접속할 때 자동으로 생성되는 JSESSIONID는 디코딩해도 10자리 이상의 무작위 값으로 출력되므로 검증해서 제외
+				if(decode.length() < 10) {
+					decodedCookies.add(decode);
+				}
+			}
+		//선택한 재료들 : 에 출력할 쿠키들
+		request.setAttribute("Cookies", decodedCookies);
+		
+		//쿠키가 없으면 null값. 버튼 마구누르면 가끔 JESSIONID가 늦게 만들어져서 null인 채로 접속되는 경우가 있음.
 		if(cookies == null) {
-			request.setAttribute("selectError", "로딩중입니다. 잠시만 기다려주세요");
-			request.getRequestDispatcher("ingredient/selectError.jsp").forward(request, response);
+			request.setAttribute("selectError", "---로딩중입니다. 잠시만 기다려주세요---");
+			request.getRequestDispatcher("ingredient/select.jsp").forward(request, response);
 			return;
 		//불러온 쿠키가 6개면 메소드 종료, 에러 페이지로 이동 
 		}else if(cookies.length == 6) {
-			ArrayList<String> maxCookies = new ArrayList<>();
-			for(Cookie value : cookies) {
-				String decode = URLDecoder.decode(value.getValue(), "UTF-8");
-				if(decode.length() < 10) {
-					maxCookies.add(decode);
-				}
-			}
-			request.setAttribute("Cookies", maxCookies);
-			request.setAttribute("selectError", "최대 5개까지만 선택할 수 있습니다. 초기화해주세요");
-			request.getRequestDispatcher("ingredient/selectError.jsp").forward(request, response);
+			request.setAttribute("selectError", "---최대 5개까지만 선택할 수 있습니다. 초기화해주세요---");
+			request.getRequestDispatcher("ingredient/select.jsp").forward(request, response);
 			return;
-			//선택한 재료이름을 인코딩해서 새 쿠키로 생성
+		//선택한 재료가 기존 쿠키정보에 이미 들어있으면 메소드 종료, 에러 페이지로 이동
+		}else if(decodedCookies.contains(selected)) {
+			request.setAttribute("selectError", "---이미 선택한 재료입니다---");
+			request.getRequestDispatcher("ingredient/select.jsp").forward(request, response);
+			return;
+			//앞쪽의 조건들을 통과하면 메소드 진행. 
 		}else {
+			decodedCookies.add(selected);
+			//선택한 재료이름을 인코딩해서 새 쿠키로 생성
 			encoding = URLEncoder.encode(selected, "UTF-8");
 			Cookie cookie = new Cookie(encoding, encoding);
 			cookie.setMaxAge(60);
 			//생성한 쿠키를 response에 add	
 			response.addCookie(cookie);
 		}
-		//기존 쿠키의 재료정보(사용자가 이전에 선택한 재료들)를 리스트로 생성 - service의 파라미터로 넘길 것
-		ArrayList<String> ingredients = new ArrayList<>();
-		for(Cookie value : cookies) {
-			String decode = URLDecoder.decode(value.getValue(), "UTF-8");
-			if(decode.length() < 10) {
-				ingredients.add(decode);
-			}
-		}
-		//사용자가 현재 선택한 재료도 리스트에 추가
-		ingredients.add(selected);
-		//페이지에 출력할 쿠키정보를 set
-		request.setAttribute("Cookies", ingredients);
+		
 		//쿠키 출력테스트
-		System.out.println("저장된 쿠키길이 : "+ingredients.size());
-		for(String a : ingredients) {
+		System.out.println("저장된 쿠키길이 : "+decodedCookies.size());
+		for(String a : decodedCookies) {
 			System.out.println(a);
 		}
 		//추천 레시피를 담을 리스트 생성
 		ArrayList<String> recommend = new ArrayList<>();
 		try {
-			recommend.addAll(service.selectIngredient(ingredients));
+			recommend.addAll(service.selectIngredient(decodedCookies));
 			System.out.println("추천메뉴 출력"+recommend);
 			if(recommend != null && recommend.size() != 0) {
 				request.setAttribute("recommend", recommend);
-				url = "ingredient/recommend.jsp";
+				url = "ingredient/select.jsp";
 			}else {
 				request.setAttribute("selectError", "추천할 레시피가 없습니다");
-				request.getRequestDispatcher("ingredient/selectError.jsp").forward(request, response);
+				request.getRequestDispatcher("ingredient/select.jsp").forward(request, response);
 				return;
 			}
 		}catch(NotExistException e) {
@@ -228,7 +230,7 @@ public class Controller extends HttpServlet {
 	
 	//선택한 재료 초기화 - 쿠키 초기화 
 	private void clearIngredient(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "ingredient/selectError.jsp";
+		String url = "ingredient/select.jsp";
 		
 		Cookie[] cookies = request.getCookies();
 		if(cookies.length <= 1) {

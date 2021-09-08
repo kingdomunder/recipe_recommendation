@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
 import exception.NotExistException;
-import model.DTO.RecipeDTO;
+import model.dto.RecipeDTO;
 import model.entity.Chef;
 import model.entity.Ingredient;
 import model.entity.Recipe;
