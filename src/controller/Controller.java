@@ -126,7 +126,7 @@ public class Controller extends HttpServlet {
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 	
-	// 선택한 재료 레시피 추천 - 우송
+	// 선택한 재료 레시피 추천 - 우송 ------------------------------------------------------------------
 	private void selectIngredient(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String url = "showError.jsp";
