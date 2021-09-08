@@ -76,6 +76,8 @@ img{margin: 10px;}
 					셰프 : ${requestScope.recipeOne.recipeOwner}<br> 좋아요 :
 					${requestScope.recipeOne.like}개<br>
 				</p>
+				
+				<button onclick="location.href='/step12_miniproject/recipe?command=deleteRecipe&recipeId=${requestScope.recipeOne.recipeId}'">레시피 삭제하기</button>
 
 				<!-- float에 의해 요소가 아래에 깔리는 것을 확인해보기 -->
 				<!-- <p style="background-color: cadetblue; border: 2px solid red;">

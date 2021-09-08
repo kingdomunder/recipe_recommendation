@@ -264,19 +264,24 @@ public class Controller extends HttpServlet {
 
 	// 레시피 삭제
 	private void deleteRecipe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		int recipeId = Integer.parseInt(request.getParameter("recipeId"));
-		int recipeId = 4;
+		int recipeId = Integer.parseInt(request.getParameter("recipeId"));
+		System.out.println("컨트롤러 recipeId"+recipeId);
+		String url = null;
 		try {
 			boolean result = service.deleteRecipe(recipeId);
-			if(result) {
-				alert(request, response, "recipe?command=recipeAll", "레시피 삭제에 성공했습니다.");
+			System.out.println(result);
+			if(result==true) {
+				System.out.println(result);
+				alert(request, response, "recipe?command=myRecipe", "레시피 삭제에 성공했습니다.");
+				url = "recipeAll.jsp";
 			}else {
-				alert(request, response, "index.html", "레시피 삭제에 실패했습니다.");
+				alert(request, response, "recipe?command=myRecipe", "레시피 삭제에 실패했습니다.");
 			}
 		}catch(Exception e) {
-			alert(request, response, "index.html", "레시피 삭제에 실패했습니다.");
+			alert(request, response, "recipe?command=myRecipe", "레시피 삭제에 실패했습니다.");
 			e.printStackTrace();
 		}
+		request.getRequestDispatcher(url).forward(request, response);
 	}
 
 	
@@ -341,7 +346,6 @@ public class Controller extends HttpServlet {
 			// 로그인 성공하면 session에 사용자이름 및 id값저장
 			HttpSession session = request.getSession();
 			session.setAttribute("nickname", nickname);
-			
 			alert(request, response, "recipe?command=myRecipe", "로그인 성공");
 						
 		} else if(result == -1) {
