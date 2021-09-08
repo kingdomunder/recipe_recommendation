@@ -109,7 +109,6 @@ public class RecipeDAO {
 		}finally {
 			em.close();
 		}
-		System.out.println(result);
 		return result;
 	}
 	
@@ -162,6 +161,7 @@ public class RecipeDAO {
 		boolean result = false;
 		try {
 			Recipe r = em.find(Recipe.class, recipeId);
+			System.out.println("dao 레시피아이디"+r.getRecipeId());
 			em.remove(r);
 			em.getTransaction().commit();
 			result = true;
