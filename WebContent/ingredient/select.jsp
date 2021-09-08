@@ -1,13 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% String url = application.getContextPath() + "/"; %>
 
 <!DOCTYPE html>
 <html lang="en">
 <title>재료 선택하기</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<<<<<<< HEAD
 <link rel="stylesheet" href="/step12_miniproject/css/style.css">
+=======
+<link rel="stylesheet" href="${url}css/style.css">
+>>>>>>> 5cc3100263bd9295e3506692ca02f11e6852c701
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 
 <style>
@@ -107,8 +112,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   
 		선택한 재료 : ${Cookies}
 
-  
-  
+
   
   </div>
   

@@ -7,6 +7,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
+import org.junit.jupiter.api.Test;
+
 import exception.NotExistException;
 import model.dto.RecipeDTO;
 import model.entity.Chef;
@@ -43,6 +45,40 @@ public class RecipeDAO {
 		}
 		return result;
 	}
+	
+//	@Test
+	void test() throws NotExistException {
+		String a = "woosong";
+		System.out.println(getMyRecipe(a));
+	}
+	
+	// 내가 등록한 레시피 모두 조회
+	public Object getMyRecipe(String nickname) throws NotExistException {
+		EntityManager em = DBUtil.getEntityManager();
+		em.getTransaction().begin();
+		List<Recipe> list = null;
+		ArrayList<RecipeDTO> result = new ArrayList<>();
+		try {
+			Chef chef = (Chef)em.createNamedQuery("Chef.findChef").setParameter("chefName", nickname).getSingleResult();
+			
+			list = (List<Recipe>)em.createNamedQuery("Recipe.findByRecipeOwner").setParameter("recipeOwner", chef).getResultList();
+			
+			System.out.println("list : -------"+list);
+			System.out.println("size : -------"+list.size());
+			
+			list.forEach(v -> result.add(new RecipeDTO(v.getRecipeId(), v.getIngredientId().getIngredientId(), v.getFoodName(), v.getDirection(), v.getRecipeOwner().getChefId(), v.getLike())));
+		}catch(NoResultException e) {
+			e.printStackTrace();
+			throw new NotExistException();
+		}catch(Exception e) {
+			e.printStackTrace();
+			em.getTransaction().rollback();
+		}finally {
+			em.close();
+		}
+		return result;
+	}
+	
 
 	// 레시피 아이디로 레시피 1개 조회
 	public RecipeDTO getOneRecipe(int recipeId) {
@@ -141,5 +177,5 @@ public class RecipeDAO {
 		}
 		return result;
 	}
-	
+
 }

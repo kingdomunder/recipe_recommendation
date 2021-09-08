@@ -24,6 +24,7 @@ import lombok.Setter;
 
 @Entity
 @NamedQuery(query="select r from Recipe r where r.foodName=:foodName", name="Recipe.findByFoodName")
+@NamedQuery(query="select r from Recipe r where r.recipeOwner=:recipeOwner", name="Recipe.findByRecipeOwner")
 @SequenceGenerator(name="recipe_seq", sequenceName="recipe_id_seq", initialValue=1, allocationSize=1)
 public class Recipe {
 	@Id

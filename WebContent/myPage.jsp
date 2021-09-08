@@ -32,51 +32,32 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <!-- !PAGE CONTENT! -->
-	<div class="w3-main" style="margin-left: 300px">
+<div class="w3-main" style="margin-left:300px">
 
-		<!-- Push down content on small screens -->
-		<div class="w3-hide-large" style="margin-top: 83px"></div>
-
-		<!-- 각 페이지마다 내용 바꿀 부분 !! - 모든 레시피 출력 -->
-
-		<div class="w3-row">
-			<c:forEach items="${recipeAll}" var="recipe">
-				<div class="w3-third recipe-padding">
-					<div class="recipe-image">나중에 이미지넣기</div>
-					<div class="recipe-block">
-						<a href="recipe?command=recipeOne&foodName=${recipe.foodName}">
-						<div class="recipe-name">${recipe.foodName}</div></a>
-						<div class="recipe-like">좋아요 >${recipe.like}개</div>
-					</div>
-				</div>
-			</c:forEach>
+  <!-- Push down content on small screens --> 
+  <div class="w3-hide-large" style="margin-top:83px"></div>
+  
+  <!-- 각 페이지마다 내용 바꿀 부분 !! - 마이페이지 -->
+  <p>${nickname}님이 등록한 레시피</p>
+  <div class="w3-row">
+   	<c:forEach items="${myRecipe}" var="recipe">
+   		<div class="w3-third recipe-padding">
+   			<div class="recipe-image">
+   				나중에 이미지넣기
+   			</div>
+   			<div class="recipe-block">
+				<a href="recipe?command=recipeOne&foodName=${recipe.foodName}"><div class="recipe-name">${recipe.foodName}</div></a>
+				<div class="recipe-like">좋아요 ${recipe.like}개</div>
+			</div>
 		</div>
+	</c:forEach>
+  </div>
+  
+  <p>레시피 등록하기</p>
+  
 
-
-		${requestScope.recipeOne}
-		<form action="recipe" method="post">
-			<div class="recipe-image">이미지</div>
-			<c:forEach items="${requestScope.recipeOne}" var="recipeOne">
-		   		<div class="w3-third recipe-padding">
-		   			<div class="recipe-image">
-		   				나중에 이미지넣기
-		   			</div>
-		   			<div class="recipe-block">
-						음식 이름 : <a href="recipe?command=recipeOne&foodName=${recipeOne.foodName}"><div class="recipe-name">${recipeOne.foodName}</div></a>
-						<div class="recipe-like">좋아요 ${recipeOne.like}개</div>
-					</div>
-				</div>
-			</c:forEach>
-		</form>
-		
-		<form action="recipe" method="post">
-			음식 이름 : ${requestScope.recipeOne.foodName}
-			조리법 : ${requestScope.recipeOne.direction}
-			셰프 : ${requestScope.recipeOne.recipeOwner}
-			좋아요 : ${requestScope.recipeOne.like}
-		</form>
-
-	<!-- Modal for full size images on click-->
+  
+  <!-- Modal for full size images on click-->
   <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
     <span class="w3-button w3-black w3-xlarge w3-display-topright">&times;</span>
     <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
@@ -85,13 +66,8 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     </div>
   </div>
 
-  <!-- About section -->
-  <div class="w3-container w3-dark-grey w3-center w3-text-light-grey w3-padding-32" id="about">
-    <h4><b>About Me</b></h4>
-  </div>
-
-  <!-- Footer -->
-  <footer class="w3-container w3-padding-32 w3-grey">  
+  <!-- Footer 푸터 -->
+  <footer class="w3-container w3-padding-32 w3-dark-grey">  
     <jsp:include page="layout/footer.jsp" />
   </footer>
   

@@ -47,6 +47,11 @@ public class Service {
 		return getRecipeDAO.getAllRecipe();
 	}
 	
+	// 내가 등록한 레시피만 조회
+	public Object getMyRecipe(String nickname) throws NotExistException {
+		return getRecipeDAO.getMyRecipe(nickname);
+	}
+	
 	// 레시피에 좋아요 누르기
 	public boolean likeRecipe(int recipeId) throws SQLException {
 		return getRecipeDAO.updateLike(recipeId);
@@ -89,4 +94,5 @@ public class Service {
 		return getChefDAO.logInChef(nickname, password);
 	}
 
+	
 }

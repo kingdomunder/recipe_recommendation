@@ -59,6 +59,8 @@ public class Controller extends HttpServlet {
 				logInChef(request, response);
 			}else if (command.equals("logout")) {
 				logOutChef(request, response);
+			}else if (command.equals("myRecipe")) {
+				getMyRecipe(request, response);
 			}
 		} catch (Exception s) {
 			request.setAttribute("errorMsg", s.getMessage());
@@ -68,6 +70,8 @@ public class Controller extends HttpServlet {
 	}
 
 	
+	
+
 	// 요청처리 성공시 alert 메시지 띄우는 함수
 	private void alert(HttpServletRequest request, HttpServletResponse response, String url, String message) throws IOException {
 		response.setContentType("text/html; charset=UTF-8"); 
@@ -107,7 +111,22 @@ public class Controller extends HttpServlet {
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 
-	// 선택한 재료 레시피 추천 - 우송 -----------------------------------------
+	// 내가 등록한 레시피만 출력
+	private void getMyRecipe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url = "showError.jsp";
+		String nickname = (String)request.getSession().getAttribute("nickname");
+		try {
+			request.setAttribute("myRecipe", service.getMyRecipe(nickname));
+			System.out.println(service.getMyRecipe(nickname));
+			url = "myPage.jsp";
+		} catch (NotExistException e) {
+			request.setAttribute("errorMsg", e.getMessage());
+			e.printStackTrace();
+		}
+		request.getRequestDispatcher(url).forward(request, response);
+	}
+	
+	// 선택한 재료 레시피 추천 - 우송
 	private void selectIngredient(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String url = "showError.jsp";
@@ -180,7 +199,7 @@ public class Controller extends HttpServlet {
 			request.setAttribute("errorMsg", e.getMessage());
 			e.printStackTrace();
 		}
-		request.getRequestDispatcher(url).forward(request, response);
+		response.sendRedirect(url);
 	}
 	// ---------------------------------------------------------------
 	
@@ -316,7 +335,7 @@ public class Controller extends HttpServlet {
 		if(result == 0) {
 			alert(request, response, "login.jsp", "로그인 실패! 비밀번호를 확인하세요.");
 		} else if(result == 1) {
-			// 로그인 성공하면 session에 사용자이름 저장
+			// 로그인 성공하면 session에 사용자이름 및 id값저장
 			HttpSession session = request.getSession();
 			session.setAttribute("nickname", nickname);
 			
