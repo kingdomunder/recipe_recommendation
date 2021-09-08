@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="model.domain.Person, java.util.ArrayList, java.util.HashMap"%>
+<%-- <%@ page import="model.domain.Person, java.util.ArrayList, java.util.HashMap"%> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +30,7 @@
 	<br><hr><br>
 	
 	
-	<%
+	<%-- <%
 	String v1 = "playdata";
 	request.setAttribute("v1", v1);
 	
@@ -72,7 +72,7 @@
 	request.setAttribute("v7", v7);
 	%>
 	
-	7. ${v7.k2} <br> <br> <br>
+	7. ${v7.k2} <br> <br> <br> --%>
 	
 	
 	
