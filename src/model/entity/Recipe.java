@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
@@ -22,6 +23,7 @@ import lombok.Setter;
 @Builder
 
 @Entity
+@NamedQuery(query="select r from Recipe r where r.foodName=:foodName", name="Recipe.findByFoodName")
 @SequenceGenerator(name="recipe_seq", sequenceName="recipe_id_seq", initialValue=1, allocationSize=1)
 public class Recipe {
 	@Id

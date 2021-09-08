@@ -1,18 +1,18 @@
--- chef insert[ì‚¬ìš©ì]
+-- chef insert[»ç¿ëÀÚ]
 insert into chef values(0, 'admin', '0000', '0000');
 insert into chef values(chef_id_seq.nextval, 'yoojinma', '1234', '1234');
 insert into chef values(chef_id_seq.nextval, 'woosong', '5678', '5678');
 insert into chef values(chef_id_seq.nextval, 'hyemin', '1111', '1111');
 
--- ingredient insert[ì¬ë£Œ]
-insert into ingredient values(ingredient_id_seq.nextval, 'ë°¥', 'ê¹€ì¹˜', 'ë¼ì§€ê³ ê¸°', 'ë§ˆëŠ˜', 'íŒŒ');
-insert into ingredient values(ingredient_id_seq.nextval, 'ë°¥', 'ê³„ë€', 'ê°„ì¥', 'ì°¸ê¸°ë¦„', 'ê¹¨');
-insert into ingredient values(ingredient_id_seq.nextval, 'íŒŒìŠ¤íƒ€ë©´', 'í† ë§ˆí† ì†ŒìŠ¤', 'í¬ë¦¼', 'ë§ˆëŠ˜', 'null');
+-- ingredient insert[Àç·á]
+insert into ingredient values(ingredient_id_seq.nextval, '¹ä', '±èÄ¡', 'µÅÁö°í±â', '¸¶´Ã', 'ÆÄ');
+insert into ingredient values(ingredient_id_seq.nextval, '¹ä', '°è¶õ', '°£Àå', 'Âü±â¸§', '±ú');
+insert into ingredient values(ingredient_id_seq.nextval, 'ÆÄ½ºÅ¸¸é', 'Åä¸¶Åä¼Ò½º', 'Å©¸²', '¸¶´Ã', 'null');
 
--- recipe insert[ë ˆì‹œí”¼]
-insert into recipe values(recipe_id_seq.nextval, 1, 'ê¹€ì¹˜ì°Œê°œ', '1. ê¹€ì¹˜ ë°˜í¬ê¸°ë¥¼ 2cm ê°„ê²©ìœ¼ë¡œ ì°ì–´ì„œ ê¸°ë¦„ì— ë³¶ëŠ”ë‹¤.(ì“´ ê¹€ì¹˜ëŠ” ì„¤íƒ•ì„ ì¶”ê°€í•œë‹¤.)'||chr(10)||'2. ê³ ê¸°ë‚˜ ì°¸ì¹˜ë¥¼ ë„£ê³  ê³„ì† ë³¶ëŠ”ë‹¤.'||chr(10)||'3. ì–´ëŠ ì •ë„ ìµìœ¼ë©´ ë¬¼ì„ ë¶“ê³  ë“ì¸ë‹¤.'||chr(10)||'4. ë‚˜ë¨¸ì§€ ë¶€ì¬ë£Œë¥¼ ë„£ëŠ”ë‹¤.', 3, '36');
-insert into recipe values(recipe_id_seq.nextval, 2, 'ê°„ì¥ê³„ë€ë°¥', '1. ê¸°ë¦„ì„ ë‘ë¥¸ íŒ¬ì— ê³„ë€ì„ 2ê°œ ê¹¬ë‹¤.(ë…¸ë¥¸ì í„°ëœ¨ë¦¬ì§€ ì•Šê²Œ ì£¼ì˜!!)'||chr(10)||'2. ë”°ëœ»í•œ ë°¥ì— ê³„ë€ì„ ì˜¬ë¦°ë‹¤.'||chr(10)||'3. ì°¸ê¸°ë¦„ê³¼ ê°„ì¥ê³¼ ê¹¨ë¥¼ ë¿Œë¦°ë‹¤.'||chr(10)||'', 2, '45');
--- recipe_owner ì—†ëŠ” ê¸°ë³¸ ë ˆì‹œí”¼ ìƒì„±í•´ë³´ê¸°
-insert into recipe values(recipe_id_seq.nextval, 3, 'ë¡œì œíŒŒìŠ¤íƒ€', '1. ì†Œê¸ˆì„ 1t ë„£ì€ ë¬¼ì— ë©´ì„ ì‚¶ëŠ”ë‹¤.'||chr(10)||'2. ê¸°ë¦„ì„ ë‘ë¥¸ íŒ¬ì— ë§ˆëŠ˜ì„ ë„£ê³  ë³¶ëŠ”ë‹¤.'||chr(10)||'3. ë§ˆëŠ˜ì´ ë…¸ë¦‡í•´ì§€ë©´ í† ë§ˆí† ì†ŒìŠ¤ì™€ í¬ë¦¼ì„ ë„£ê³  ë“ì¸ë‹¤.'||chr(10)||'4. ë©´ì„ ë„£ê³  ì—ë©€ì§•í•œë‹¤.','27');
+-- recipe insert[·¹½ÃÇÇ]
+insert into recipe values(recipe_id_seq.nextval, 1, '±èÄ¡Âî°³', '1. ±èÄ¡ ¹İÆ÷±â¸¦ 2cm °£°İÀ¸·Î ½ä¾î¼­ ±â¸§¿¡ ºº´Â´Ù.(¾´ ±èÄ¡´Â ¼³ÅÁÀ» Ãß°¡ÇÑ´Ù.)'||chr(10)||'2. °í±â³ª ÂüÄ¡¸¦ ³Ö°í °è¼Ó ºº´Â´Ù.'||chr(10)||'3. ¾î´À Á¤µµ ÀÍÀ¸¸é ¹°À» º×°í ²úÀÎ´Ù.'||chr(10)||'4. ³ª¸ÓÁö ºÎÀç·á¸¦ ³Ö´Â´Ù.', 3, '36');
+insert into recipe values(recipe_id_seq.nextval, 2, '°£Àå°è¶õ¹ä', '1. ±â¸§À» µÎ¸¥ ÆÒ¿¡ °è¶õÀ» 2°³ ±ü´Ù.(³ë¸¥ÀÚ ÅÍ¶ß¸®Áö ¾Ê°Ô ÁÖÀÇ!!)'||chr(10)||'2. µû¶æÇÑ ¹ä¿¡ °è¶õÀ» ¿Ã¸°´Ù.'||chr(10)||'3. Âü±â¸§°ú °£Àå°ú ±ú¸¦ »Ñ¸°´Ù.'||chr(10)||'', 2, '45');
+-- recipe_owner ¾ø´Â ±âº» ·¹½ÃÇÇ »ı¼ºÇØº¸±â
+insert into recipe values(recipe_id_seq.nextval, 3, '·ÎÁ¦ÆÄ½ºÅ¸', '1. ¼Ò±İÀ» 1t ³ÖÀº ¹°¿¡ ¸éÀ» »î´Â´Ù.'||chr(10)||'2. ±â¸§À» µÎ¸¥ ÆÒ¿¡ ¸¶´ÃÀ» ³Ö°í ºº´Â´Ù.'||chr(10)||'3. ¸¶´ÃÀÌ ³ë¸©ÇØÁö¸é Åä¸¶Åä¼Ò½º¿Í Å©¸²À» ³Ö°í ²úÀÎ´Ù.'||chr(10)||'4. ¸éÀ» ³Ö°í ¿¡¸ÖÂ¡ÇÑ´Ù.', 0, '27');
 
 commit;
