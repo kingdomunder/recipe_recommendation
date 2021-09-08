@@ -17,9 +17,15 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
 
-<!-- 네비게이션 -->
+<!-- 네비게이션 -->
 <nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center" style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
-	<jsp:include page="layout/nav.jsp" />
+	<a href="index.html"><h3 class="w3-padding-64 w3-center"><b>방구석<br>셰프</b></h3></a>
+	<a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hide-large">CLOSE</a>
+	<a href="recipe?command=recipeAll" onclick="w3_close()" class="w3-bar-item w3-button">모든 레시피 보기</a>
+	<a href="ingredient/select.jsp" onclick="w3_close()" class="w3-bar-item w3-button">재료 선택하기</a>
+	<a href="chefJoin.jsp" onclick="w3_close()" class="w3-bar-item w3-button">회원가입</a>
+	<a href="login.jsp" onclick="w3_close()" class="w3-bar-item w3-button">로그인</a>
+	<a href="recipe?command=deleteRecipe" onclick="w3_close()" class="w3-bar-item w3-button">레시피 삭제 테스트</a>
 </nav>
 
 <!-- Top menu on small screens -->
@@ -37,31 +43,41 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <!-- Push down content on small screens --> 
   <div class="w3-hide-large" style="margin-top:83px"></div>
   
-  <!-- 각 페이지마다 내용 바꿀 부분 !! - 모든 레시피 출력 -->
+  <!-- 각 페이지마다 내용 바꿀 부분 !! jsp파일에 index.html 내용 싹다 복붙하신다음에 이부분에 구현하시면 됩니다 -->
   <div class="form-container">
-	  <h2>로그인 페이지</h2>
-		<form action="recipe" method="post">
-		<input type="hidden" name="command" value="login">
-			<table>
-				<tr>
-					<td>닉네임</td>
-					<td><input type="text" name="nickname" placeholder="닉네임을 입력하세요:)"></td>
-				</tr>
-				<tr>
-					<td>비밀번호</td>
-					<td><input type="password" name="password" placeholder="비밀번호를 입력하세요:)"></td>
-				</tr>
-				<tr>
-					<td>
-						<button type="submit">로그인하기:)</button> &nbsp;&nbsp;
-						<button type="button" onclick="location.href='chefJoin.jsp'">회원가입하기:)</button>
-					</td>
-				</tr>
-			</table>
-		</form>
-	</div>
+	<h2>로그인 페이지</h2>
+	<form action="recipe" method="post">
+	<input type="hidden" name="command" value="login">
+		<table>
+			<tr>
+				<td>닉네임</td>
+				<td><input type="text" name="nickname" placeholder="닉네임을 입력하세요:)"></td>
+			</tr>
+			<tr>
+				<td>비밀번호</td>
+				<td><input type="password" name="password" placeholder="비밀번호를 입력하세요:)"></td>
+			</tr>
+			<tr>
+				<td>
+					<button type="submit">로그인하기:)</button> &nbsp;&nbsp;
+					<button type="button" onclick="location.href='chefJoin.jsp'">회원가입하기:)</button>
+				</td>
+			</tr>
+		</table>
+	</form>
   </div>
 
+  <!-- Pagination -->
+  <div class="w3-center w3-padding-32">
+    <div class="w3-bar">
+      <a href="#" class="w3-bar-item w3-button w3-hover-black">&laquo;</a>
+      <a href="#" class="w3-bar-item w3-black w3-button">1</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-black">&raquo;</a>
+    </div>
+  </div>
   
   <!-- Modal for full size images on click-->
   <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
@@ -72,14 +88,29 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     </div>
   </div>
 
-  <!-- About section -->
-  <div class="w3-container w3-dark-grey w3-center w3-text-light-grey w3-padding-32" id="about">
-    <h4><b>About Me</b></h4>
-  </div>
+  <!-- Footer 푸터 -->
+  <footer class="w3-container w3-padding-32 w3-dark-grey">  
+    <div class="w3-row-padding">
+      <div class="w3-third">
+        <h3>ABOUT US</h3>
+        <p>Yoojin Ma</p>      
+        <p>Woosong Lim</p>      
+        <p>Hyemin Jang</p>      
+      </div>
+    
+      <div class="w3-third">
+        <h3>GITHUB</h3>
+        <p>소스코드가 궁금하시다면 깃허브에 방문해주세용</p>    
+        <i class="fa fa-github"></i>
+        
+      </div>
 
-  <!-- Footer -->
-  <footer class="w3-container w3-padding-32 w3-grey">  
-    <jsp:include page="layout/footer.jsp" />
+      <div class="w3-third">
+        <h3>NOTION</h3>
+        <p>발표는 노션으로 하겠습니당</p>    
+        <i class="fa fa-commenting" aria-hidden="true"></i>
+      </div>
+    </div>
   </footer>
   
   <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></div>

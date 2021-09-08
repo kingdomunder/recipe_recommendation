@@ -65,13 +65,8 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     </div>
   </div>
 
-  <!-- About section -->
-  <div class="w3-container w3-dark-grey w3-center w3-text-light-grey w3-padding-32" id="about">
-    <h4><b>About Me</b></h4>
-  </div>
-
-  <!-- Footer -->
-  <footer class="w3-container w3-padding-32 w3-grey">  
+  <!-- Footer 푸터 -->
+  <footer class="w3-container w3-padding-32 w3-dark-grey">  
     <jsp:include page="layout/footer.jsp" />
   </footer>
   

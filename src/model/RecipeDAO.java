@@ -123,5 +123,23 @@ public class RecipeDAO {
 		}
 		return result;
 	}
+
+	// 레시피 삭제
+	public boolean deleteRecipe(int recipeId) {
+		EntityManager em = DBUtil.getEntityManager();
+		em.getTransaction().begin();
+		boolean result = false;
+		try {
+			Recipe r = em.find(Recipe.class, recipeId);
+			em.remove(r);
+			em.getTransaction().commit();
+			result = true;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			em.close();
+		}
+		return result;
+	}
 	
 }
