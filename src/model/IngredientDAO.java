@@ -38,16 +38,16 @@ public class IngredientDAO {
 		return ingredient;
 	}
 
-	//선택한 재료 레시피 추천 - 우송
+	//선택한 재료 레시피 추천 - 우송  (파라미터로 받은 재료 selected가 0개 ~ 5개일때)
 	public ArrayList<String> selectIngredient(ArrayList<String> selected) {
-		System.out.println("----선택한 재료들----"+selected);
 		EntityManager em = DBUtil.getEntityManager();
+		
 		//입력받은 재료로 ingredient 검색
 		List<Ingredient> ingEntity = null;
 		ArrayList<IngredientDTO> ingDTOList = new ArrayList<>();
 		ArrayList<List> ingList = new ArrayList<>();
-
 		ArrayList<Object> list = new ArrayList();
+		
 		//검색한 ingredient의 id들을 저장하는 리스트
 		ArrayList<Integer> selectList = new ArrayList<>();
 

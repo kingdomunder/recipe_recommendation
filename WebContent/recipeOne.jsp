@@ -46,7 +46,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 					<div class="recipe-block">
 						<a href="recipe?command=recipeOne&foodName=${recipe.foodName}">
 						<div class="recipe-name">${recipe.foodName}</div></a>
-						<div class="recipe-like">좋아요 ${recipe.like}개</div>
+						<div class="recipe-like">좋아요 >${recipe.like}개</div>
 					</div>
 				</div>
 			</c:forEach>

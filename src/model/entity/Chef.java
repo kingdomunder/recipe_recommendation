@@ -21,6 +21,7 @@ import lombok.Setter;
 @Builder
 
 @Entity
+@NamedQuery(query="select c from Chef c where c.chefName=:chefName", name="Chef.findChef")
 @NamedQuery(query="select c.password from Chef c where c.chefName=:chefName", name="Chef.findByChefName")
 @SequenceGenerator(name="chef_seq", sequenceName="chef_id_seq", initialValue=1, allocationSize=1)
 public class Chef {
