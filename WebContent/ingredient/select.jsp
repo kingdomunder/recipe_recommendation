@@ -8,11 +8,7 @@
 <title>재료 선택하기</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<<<<<<< HEAD
 <link rel="stylesheet" href="/step12_miniproject/css/style.css">
-=======
-<link rel="stylesheet" href="${url}css/style.css">
->>>>>>> 5cc3100263bd9295e3506692ca02f11e6852c701
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 
 <style>

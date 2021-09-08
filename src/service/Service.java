@@ -2,7 +2,6 @@ package service;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import exception.NotExistException;
 import model.ChefDAO;
@@ -11,7 +10,6 @@ import model.RecipeDAO;
 import model.dto.ChefDTO;
 import model.dto.IngredientDTO;
 import model.dto.RecipeDTO;
-import model.entity.Ingredient;
 
 public class Service {
 	private static Service instance = new Service();
@@ -93,6 +91,6 @@ public class Service {
 	public int logInChef(String nickname, String password) {
 		return getChefDAO.logInChef(nickname, password);
 	}
-
+	
 	
 }
