@@ -199,7 +199,7 @@ public class Controller extends HttpServlet {
 			request.setAttribute("errorMsg", e.getMessage());
 			e.printStackTrace();
 		}
-		response.sendRedirect(url);
+		request.getRequestDispatcher("ingredient/select.jsp").forward(request, response);
 	}
 	// ---------------------------------------------------------------
 	
