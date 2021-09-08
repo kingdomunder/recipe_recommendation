@@ -17,6 +17,11 @@ body {
 }
 
 /* 새로만든부분 */
+.recipe-header{
+	padding: 20px 20px 20px 20px;
+	color: orange;
+	font-size: x-large;
+}
 .recipe-padding{
 	padding: 20px 20px 20px 20px
 }
@@ -26,7 +31,7 @@ body {
 	text-align: center;
 }
 .recipe-name{
-	font-size: x-large;
+	font-size: large;
 	font-weight:bold
 }
 .recipe-image{
