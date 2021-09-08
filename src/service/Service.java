@@ -58,6 +58,11 @@ public class Service {
 		return getIngredientDAO.addIngredient(ingredient);
 	}
 	
+	// 레시피 삭제
+	public boolean deleteRecipe(int recipeId) {
+		return getRecipeDAO.deleteRecipe(recipeId);
+	}
+	
 	//모든 조리법 검색 - 우송
 	public ArrayList<IngredientDTO> getAllIngredient() throws  NotExistException, SQLException {
 		return getIngredientDAO.getAllIngredient();
@@ -78,4 +83,5 @@ public class Service {
 	public int logInChef(String nickname, String password) {
 		return getChefDAO.logInChef(nickname, password);
 	}
+	
 }

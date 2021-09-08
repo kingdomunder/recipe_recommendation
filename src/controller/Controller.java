@@ -1,12 +1,11 @@
 package controller;
 
 import java.io.IOException;
-
+import java.io.PrintWriter;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +13,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import exception.NotExistException;
 import model.dto.ChefDTO;
@@ -41,12 +41,15 @@ public class Controller extends HttpServlet {
 		try{
 			if(command.equals("recipeAll")){
 				getAllRecipe(request, response);
-			}else if(command.equals("likeRecipe")) {
+			}else if(command.equals("recipeOne")) {
+				getOneRecipe(request, response);
+			}
+			else if(command.equals("likeRecipe")) {
 				likeRecipe(request, response);
 			}else if(command.equals("addRecipe")) {
 				addRecipe(request, response);
-//			}else if(command.equals("deleteRecipe")) {
-//				deleteRecipe(request, response);
+			}else if(command.equals("deleteRecipe")) {
+				deleteRecipe(request, response);
 			}else if(command.equals("selectIngredient")) {
 				instance.selectIngredient(request, response);
 			}else if(command.equals("clearIngredient")) {
@@ -55,6 +58,8 @@ public class Controller extends HttpServlet {
 				addChef(request, response);
 			}else if (command.equals("login")) {
 				logInChef(request, response);
+			}else if (command.equals("logout")) {
+				logOutChef(request, response);
 			}
 		}catch(Exception s){
 			request.setAttribute("errorMsg", s.getMessage());
@@ -63,6 +68,21 @@ public class Controller extends HttpServlet {
 		}
 	}
 
+	
+	// 요청처리 성공시 alert 메시지 띄우는 함수
+	private void alert(HttpServletRequest request, HttpServletResponse response, String url, String message) throws IOException {
+		response.setContentType("text/html; charset=UTF-8"); 
+		PrintWriter writer = response.getWriter(); 
+		writer.println("<script>alert('"+message+"'); location.href='"+url+"';</script>");
+		writer.close();
+	}
+	
+	
+	// 레시피 하나 출력
+	private void getOneRecipe(HttpServletRequest request, HttpServletResponse response) {
+		// 처리
+//		url = "recipeOne.jsp";
+	}
 
 	// 모든 레시피 출력
 	private void getAllRecipe(HttpServletRequest request, HttpServletResponse response)
@@ -70,7 +90,7 @@ public class Controller extends HttpServlet {
 		String url = "showError.jsp";
 		try {
 			request.setAttribute("recipeAll", service.getAllRecipe());
-			url = "index.jsp";
+			url = "recipeAll.jsp";
 		} catch (NotExistException e) {
 			request.setAttribute("errorMsg", e.getMessage());
 			e.printStackTrace();
@@ -210,22 +230,21 @@ public class Controller extends HttpServlet {
 
 	
 	// 레시피 삭제
-//	private void deleteRecipe(HttpServletRequest request, HttpServletResponse response) {
-//		String url = "showError.jsp";
+	private void deleteRecipe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		int recipeId = Integer.parseInt(request.getParameter("recipeId"));
-//		try {
-//			boolean result = service.deleteRecipe(recipeId);
-//			if(result) {
-//				url = "recipedeleteSuccess.jsp";
-//			}else {
-//				request.setAttribute("errorMsg", "레시피  삭제에 실패했습니다.");
-//			}
-//		}catch(Exception e) {
-//			request.setAttribute("errorMsg", e.getMessage());
-//			e.printStackTrace();
-//		}
-//		request.getRequestDispatcher(url).forward(request, response);
-//	}
+		int recipeId = 4;
+		try {
+			boolean result = service.deleteRecipe(recipeId);
+			if(result) {
+				alert(request, response, "recipe?command=recipeAll", "레시피 삭제에 성공했습니다.");
+			}else {
+				alert(request, response, "index.html", "레시피 삭제에 실패했습니다.");
+			}
+		}catch(Exception e) {
+			alert(request, response, "index.html", "레시피 삭제에 실패했습니다.");
+			e.printStackTrace();
+		}
+	}
 
 	
 	//선택한 재료 초기화 - 쿠키 초기화 
@@ -250,8 +269,7 @@ public class Controller extends HttpServlet {
 	}
 		
 	// 회원가입
-	private void addChef(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	private void addChef(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "showError.jsp";
 		boolean result = false;
 
@@ -279,24 +297,32 @@ public class Controller extends HttpServlet {
 	}
 	
 	// 로그인
-	private void logInChef(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		String url = "showError.jsp";
-		
+	private void logInChef(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nickname = request.getParameter("nickname");
 		String password = request.getParameter("password");
 		int result = service.logInChef(nickname, password);
 		
 		if(result == 0) {
-			request.setAttribute("errorMsg", "비밀번호 불일치");
+			alert(request, response, "login.jsp", "로그인 실패! 비밀번호를 확인하세요.");
 		} else if(result == 1) {
-			url = "logInSuccess.jsp";
+			// 로그인 성공하면 session에 사용자이름 저장
+			HttpSession session = request.getSession();
+			session.setAttribute("nickname", nickname);
+			
+			alert(request, response, "recipe?command=recipeAll", "로그인 성공");
+						
 		} else if(result == -1) {
-			request.setAttribute("errorMsg", "존재하지 않는 닉네임입니다.");
+			alert(request, response, "login.jsp", "로그인 실패! 아이디를 확인하세요.");
 		} else {
 			request.setAttribute("errorMsg", "로그인 실패");
 		}
-		request.getRequestDispatcher(url).forward(request, response);
 	}
-
+	
+	
+	private void logOutChef(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		
+		alert(request, response, "recipe?command=recipeAll", "로그아웃 되었습니다.");
+	}
 }

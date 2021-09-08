@@ -62,7 +62,6 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 	</div>
   </div>
 
-  
   <!-- Modal for full size images on click-->
   <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
     <span class="w3-button w3-black w3-xlarge w3-display-topright">&times;</span>
