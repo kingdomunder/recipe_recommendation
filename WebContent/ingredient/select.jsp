@@ -7,14 +7,8 @@
 <title>재료 선택하기</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="/step12_miniproject/css/style.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<style>
-body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
-.w3-third img{margin-bottom: -6px; opacity: 0.8; cursor: pointer}
-.w3-third img:hover{opacity: 1}
-</style>
-<body class="w3-light-grey w3-content" style="max-width:1600px">
 
 <style>
 body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
@@ -48,7 +42,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   
   
   <!-- 각 페이지마다 내용 바꿀 부분 !! - 모든 레시피 출력 -->
-  <div class="form-container">
+  <div class="form-container ">
   
   
 		--- 추천 메뉴 --- <p>
@@ -62,33 +56,47 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   
 	  
         <h3>메인 재료</h3>
-            <form action="/step12_miniproject/recipe">
-				<input type="hidden" name="command" value="selectIngredient">
-					<button type="submit" name="ingredient" value="파스타면">파스타면</button>
-					<button type="submit" name="ingredient" value="밥">밥</button>
-			</form>
-      
-        <h3>부가 재료</h3>
-        <form action="/step12_miniproject/recipe">
-			<input type="hidden" name="command" value="selectIngredient">
+			<a href="/step12_miniproject/recipe?command=selectIngredient&ingredient=파스타면">
+			<img src="/step12_miniproject/ingredient/images/pastaNoodles.jpg" style="width:5%">
+			</a>
+			<a href="/step12_miniproject/recipe?command=selectIngredient&ingredient=밥">
+			<img src="/step12_miniproject/ingredient/images/rice.jpg" style="width:5%">
+			</a>        	
 			
-			<button type="submit" name="ingredient" value="계란">계란</button>
-			<button type="submit" name="ingredient" value="돼지고기">돼지고기</button>
-<p>
-			<button type="submit" name="ingredient" value="김치">김치</but	ton>
-			<button type="submit" name="ingredient" value="마늘">마늘</button>
-			<button type="submit" name="ingredient" value="파">파</button>
-			<button type="submit" name="ingredient" value="깨">깨</button>
-<p>
-			<button type="submit" name="ingredient" value="간장">간장</button>
-			<button type="submit" name="ingredient" value="참기름">참기름</button>
-			<button type="submit" name="ingredient" value="크림">크림</button>
-			<button type="submit" name="ingredient" value="토마토소스">토마토소스</button>
-		</form>
-	  
-	  
-	  
-	  
+        <h3>부가 재료</h3>
+			
+			<a href="/step12_miniproject/recipe?command=selectIngredient&ingredient=계란">
+			<img src="/step12_miniproject/ingredient/images/egg.jpg" style="width:5%">
+			</a>
+			<a href="/step12_miniproject/recipe?command=selectIngredient&ingredient=돼지고기">
+			<img src="/step12_miniproject/ingredient/images/pig.jpg" style="width:5%">
+			</a>
+	<p>
+			<a href="/step12_miniproject/recipe?command=selectIngredient&ingredient=김치">
+			<img src="/step12_miniproject/ingredient/images/kimchi.jpg" style="width:5%">
+			</a>
+			<a href="/step12_miniproject/recipe?command=selectIngredient&ingredient=마늘">
+			<img src="/step12_miniproject/ingredient/images/garlic.jpg" style="width:5%">
+			</a>
+			<a href="/step12_miniproject/recipe?command=selectIngredient&ingredient=파">
+			<img src="/step12_miniproject/ingredient/images/greenOnion.jpg" style="width:5%">
+			</a>
+			<a href="/step12_miniproject/recipe?command=selectIngredient&ingredient=깨">
+			<img src="/step12_miniproject/ingredient/images/sesame.jpg" style="width:5%">
+			</a>
+			<a href="/step12_miniproject/recipe?command=selectIngredient&ingredient=간장">
+			<img src="/step12_miniproject/ingredient/images/soy.jpg" style="width:5%">
+			</a>
+			<a href="/step12_miniproject/recipe?command=selectIngredient&ingredient=참기름">
+			<img src="/step12_miniproject/ingredient/images/sesameOil.jpg" style="width:5%">
+			</a>
+			<a href="/step12_miniproject/recipe?command=selectIngredient&ingredient=크림">
+			<img src="/step12_miniproject/ingredient/images/cream.jpg" style="width:5%">
+			</a>
+			<a href="/step12_miniproject/recipe?command=selectIngredient&ingredient=토마토소스">
+			<img src="/step12_miniproject/ingredient/images/tomatoSauce.jpg" style="width:5%">
+			</a>
+
   
 		<form action="/step12_miniproject/recipe">
 			<button type="submit" name="command" value="clearIngredient">초기화</button> 
