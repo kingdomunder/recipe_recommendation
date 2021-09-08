@@ -31,6 +31,11 @@ public class Service {
 	public RecipeDTO getOneRecipe(int recipeId) {
 		return getRecipeDAO.getOneRecipe(recipeId);
 	}
+	
+	// 음식 이름으로 레시피 1개 조회
+	public ArrayList<RecipeDTO> getRecipeOne(String foodname) throws SQLException {
+		return getRecipeDAO.getRecipeOne(foodname);
+	}
 
 	//모든 조리법 검색
 	public ArrayList<IngredientDTO> getAllIngredients() throws SQLException{
@@ -78,4 +83,5 @@ public class Service {
 	public int logInChef(String nickname, String password) {
 		return getChefDAO.logInChef(nickname, password);
 	}
+
 }

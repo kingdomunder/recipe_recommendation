@@ -20,57 +20,69 @@ import model.dto.ChefDTO;
 import model.dto.IngredientDTO;
 import model.dto.RecipeDTO;
 import model.entity.Ingredient;
+import model.entity.Recipe;
 import service.Service;
 
-@WebServlet("/recipe")  
+@WebServlet("/recipe")
 public class Controller extends HttpServlet {
 	private static Controller instance = new Controller();
 	private static Service service = Service.getInstance();
-	
-	public Controller(){}
-	
-	public static Controller getInstance(){
+
+	public Controller() {
+	}
+
+	public static Controller getInstance() {
 		return instance;
 	}
-	
-	
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String command = request.getParameter("command");
-		
-		try{
-			if(command.equals("recipeAll")){
+
+		try {
+			if (command.equals("recipeAll")) {
 				getAllRecipe(request, response);
-			}else if(command.equals("recipeOne")) {
-				getOneRecipe(request, response);
-			}
-			else if(command.equals("likeRecipe")) {
+			} else if (command.equals("recipeOne")) {
+				getRecipeOne(request, response);
+			} else if (command.equals("likeRecipe")) {
 				likeRecipe(request, response);
-			}else if(command.equals("addRecipe")) {
+			} else if (command.equals("addRecipe")) {
 				addRecipe(request, response);
 //			}else if(command.equals("deleteRecipe")) {
 //				deleteRecipe(request, response);
-			}else if(command.equals("selectIngredient")) {
+			} else if (command.equals("selectIngredient")) {
 				instance.selectIngredient(request, response);
-			}else if(command.equals("clearIngredient")) {
+			} else if (command.equals("clearIngredient")) {
 				instance.clearIngredient(request, response);
-			}else if (command.equals("addChef")) {
+			} else if (command.equals("addChef")) {
 				addChef(request, response);
-			}else if (command.equals("login")) {
+			} else if (command.equals("login")) {
 				logInChef(request, response);
 			}
-		}catch(Exception s){
+		} catch (Exception s) {
 			request.setAttribute("errorMsg", s.getMessage());
 			request.getRequestDispatcher("showError.jsp").forward(request, response);
 			s.printStackTrace();
 		}
 	}
 
-	// 레시피 하나 출력
-	private void getOneRecipe(HttpServletRequest request, HttpServletResponse response) {
-		// 처리
-//		url = "recipeOne.jsp";
+	// 레시피 하나 출력 - 유진
+	private void getRecipeOne(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, SQLException {
+		String url = "showError.jsp";
+		String foodName = request.getParameter("foodNamd");
+		List<Recipe> list = null;
+		try {
+			request.setAttribute("recipeOne", service.getRecipeOne(foodName));
+			url = "recipeOne.jsp";
+		} catch (Exception e) {
+			request.setAttribute("errorMsg", e.getMessage());
+			e.printStackTrace();
+		}
+		request.getRequestDispatcher(url).forward(request, response);
 	}
+	
 
 	// 모든 레시피 출력
 	private void getAllRecipe(HttpServletRequest request, HttpServletResponse response)
@@ -85,25 +97,27 @@ public class Controller extends HttpServlet {
 		}
 		request.getRequestDispatcher(url).forward(request, response);
 	}
-	
-	//선택한 재료 레시피 추천 - 우송
-	private void selectIngredient(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	// 선택한 재료 레시피 추천 - 우송
+	private void selectIngredient(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String url = "showError.jsp";
 		String selected = request.getParameter("ingredient");
 		String encoding = null;
-		//클라이언트 로컬에 저장된 쿠키 불러오기
+		// 클라이언트 로컬에 저장된 쿠키 불러오기
 		Cookie[] cookies = request.getCookies();
-		//쿠키가 없으면 null값. 톰캣은 서버접속할 때 JSESSIONID 쿠키를 자동으로 생성하는데, 버튼 마구누르면 가끔 JESSIONID가 늦게 만들어져서 null인채로 접속되는 경우가 있음.
-		if(cookies == null) {
+		// 쿠키가 없으면 null값. 톰캣은 서버접속할 때 JSESSIONID 쿠키를 자동으로 생성하는데, 버튼 마구누르면 가끔 JESSIONID가
+		// 늦게 만들어져서 null인채로 접속되는 경우가 있음.
+		if (cookies == null) {
 			request.setAttribute("selectError", "로딩중입니다. 잠시만 기다려주세요");
 			request.getRequestDispatcher("ingredient/selectError.jsp").forward(request, response);
 			return;
-		//불러온 쿠키가 6개면 메소드 종료, 에러 페이지로 이동 
-		}else if(cookies.length == 6) {
+			// 불러온 쿠키가 6개면 메소드 종료, 에러 페이지로 이동
+		} else if (cookies.length == 6) {
 			ArrayList<String> maxCookies = new ArrayList<>();
-			for(Cookie value : cookies) {
+			for (Cookie value : cookies) {
 				String decode = URLDecoder.decode(value.getValue(), "UTF-8");
-				if(decode.length() < 10) {
+				if (decode.length() < 10) {
 					maxCookies.add(decode);
 				}
 			}
@@ -111,80 +125,80 @@ public class Controller extends HttpServlet {
 			request.setAttribute("selectError", "최대 5개까지만 선택할 수 있습니다. 초기화해주세요");
 			request.getRequestDispatcher("ingredient/selectError.jsp").forward(request, response);
 			return;
-			//선택한 재료이름을 인코딩해서 새 쿠키로 생성
-		}else {
+			// 선택한 재료이름을 인코딩해서 새 쿠키로 생성
+		} else {
 			encoding = URLEncoder.encode(selected, "UTF-8");
 			Cookie cookie = new Cookie(encoding, encoding);
 			cookie.setMaxAge(60);
-			//생성한 쿠키를 response에 add	
+			// 생성한 쿠키를 response에 add
 			response.addCookie(cookie);
 		}
-		//기존 쿠키의 재료정보(사용자가 이전에 선택한 재료들)를 리스트로 생성 - service의 파라미터로 넘길 것
+		// 기존 쿠키의 재료정보(사용자가 이전에 선택한 재료들)를 리스트로 생성 - service의 파라미터로 넘길 것
 		ArrayList<String> ingredients = new ArrayList<>();
-		for(Cookie value : cookies) {
+		for (Cookie value : cookies) {
 			String decode = URLDecoder.decode(value.getValue(), "UTF-8");
-			if(decode.length() < 10) {
+			if (decode.length() < 10) {
 				ingredients.add(decode);
 			}
 		}
-		//사용자가 현재 선택한 재료도 리스트에 추가
+		// 사용자가 현재 선택한 재료도 리스트에 추가
 		ingredients.add(selected);
-		//페이지에 출력할 쿠키정보를 set
+		// 페이지에 출력할 쿠키정보를 set
 		request.setAttribute("Cookies", ingredients);
-		//쿠키 출력테스트
-		System.out.println("저장된 쿠키길이 : "+ingredients.size());
-		for(String a : ingredients) {
+		// 쿠키 출력테스트
+		System.out.println("저장된 쿠키길이 : " + ingredients.size());
+		for (String a : ingredients) {
 			System.out.println(a);
 		}
-		//추천 레시피를 담을 리스트 생성
+		// 추천 레시피를 담을 리스트 생성
 		ArrayList<String> recommend = new ArrayList<>();
 		try {
 			recommend.addAll(service.selectIngredient(ingredients));
-			System.out.println("추천메뉴 출력"+recommend);
-			if(recommend != null && recommend.size() != 0) {
+			System.out.println("추천메뉴 출력" + recommend);
+			if (recommend != null && recommend.size() != 0) {
 				request.setAttribute("recommend", recommend);
 				url = "ingredient/recommend.jsp";
-			}else {
+			} else {
 				request.setAttribute("selectError", "추천할 레시피가 없습니다");
 				request.getRequestDispatcher("ingredient/selectError.jsp").forward(request, response);
 				return;
 			}
-		}catch(NotExistException e) {
+		} catch (NotExistException e) {
 			request.setAttribute("errorMsg", e.getMessage());
 			e.printStackTrace();
-		}catch(SQLException e) {
-			request.setAttribute("errorMsg", e.getMessage());
-			e.printStackTrace();
-		}
-		request.getRequestDispatcher(url).forward(request, response);
-	}
-	
-	
-	// 레시피에 좋아요 누르기
-	private void likeRecipe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "showError.jsp";
-		int recipeId = Integer.parseInt(request.getParameter("recipeId"));
-		try {
-			boolean result = service.likeRecipe(recipeId);
-			if(result) {
-				request.setAttribute("recipe", service.getOneRecipe(recipeId));
-				url = "recipeLikeSuccess.jsp";
-			}else {
-				request.setAttribute("errorMsg", "레시피 좋아요 누르기 실패했습니다.");
-			}
-		}catch(Exception e) {
+		} catch (SQLException e) {
 			request.setAttribute("errorMsg", e.getMessage());
 			e.printStackTrace();
 		}
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 
-		
+	// 레시피에 좋아요 누르기
+	private void likeRecipe(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String url = "showError.jsp";
+		int recipeId = Integer.parseInt(request.getParameter("recipeId"));
+		try {
+			boolean result = service.likeRecipe(recipeId);
+			if (result) {
+				request.setAttribute("recipe", service.getOneRecipe(recipeId));
+				url = "recipeLikeSuccess.jsp";
+			} else {
+				request.setAttribute("errorMsg", "레시피 좋아요 누르기 실패했습니다.");
+			}
+		} catch (Exception e) {
+			request.setAttribute("errorMsg", e.getMessage());
+			e.printStackTrace();
+		}
+		request.getRequestDispatcher(url).forward(request, response);
+	}
+
 	// 레시피 등록
-	private void addRecipe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void addRecipe(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String url = "showError.jsp";
 		boolean result = false;
-		
+
 		String foodName = request.getParameter("foodName");
 		String ing1 = request.getParameter("ingredient1");
 		String ing2 = request.getParameter("ingredient2");
@@ -193,28 +207,27 @@ public class Controller extends HttpServlet {
 		String ing5 = request.getParameter("ingredient5");
 		String direction = request.getParameter("direction");
 		int recipeOwner = 1; // 이부분은 사용자가 로그인했으면 자동으로 가져올수 있도록 수정해야함
-		
+
 		// 사용자가 입력한 값으로 새로운 ingredient 등록
-		IngredientDTO ingredient = new IngredientDTO(ing1, ing2, ing3, ing4, ing5); 
+		IngredientDTO ingredient = new IngredientDTO(ing1, ing2, ing3, ing4, ing5);
 		try {
 			int ingredientId = service.addIngredient(ingredient); // 새로 등록한 ingredient의 id 반환
 			RecipeDTO recipe = new RecipeDTO(ingredientId, foodName, direction, recipeOwner);
 			result = service.addRecipe(recipe);
-			
-			if(result) {
+
+			if (result) {
 				request.setAttribute("recipe", recipe);
 				url = "recipeAddSuccess.jsp";
-			}else {
+			} else {
 				request.setAttribute("errorMsg", "레시피 등록 실패");
-			}			
-		}catch(Exception e){
+			}
+		} catch (Exception e) {
 			request.setAttribute("errorMsg", e.getMessage());
 			e.printStackTrace();
 		}
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 
-	
 	// 레시피 삭제
 //	private void deleteRecipe(HttpServletRequest request, HttpServletResponse response) {
 //		String url = "showError.jsp";
@@ -233,18 +246,18 @@ public class Controller extends HttpServlet {
 //		request.getRequestDispatcher(url).forward(request, response);
 //	}
 
-	
-	//선택한 재료 초기화 - 쿠키 초기화 
-	private void clearIngredient(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	// 선택한 재료 초기화 - 쿠키 초기화
+	private void clearIngredient(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String url = "ingredient/selectError.jsp";
-		
+
 		Cookie[] cookies = request.getCookies();
-		if(cookies.length <= 1) {
+		if (cookies.length <= 1) {
 			System.out.println("----지울 쿠키가 없습니다----");
 			request.setAttribute("selectError", "---이미 초기화 되었습니다---");
-		}else {
+		} else {
 			for (Cookie cookie : cookies) {
-				if((URLDecoder.decode(cookie.getValue(), "UTF-8")).length() < 10){
+				if ((URLDecoder.decode(cookie.getValue(), "UTF-8")).length() < 10) {
 					cookie.setMaxAge(0);
 					response.addCookie(cookie);
 				}
@@ -254,7 +267,7 @@ public class Controller extends HttpServlet {
 		}
 		request.getRequestDispatcher(url).forward(request, response);
 	}
-		
+
 	// 회원가입
 	private void addChef(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -283,21 +296,21 @@ public class Controller extends HttpServlet {
 		}
 		request.getRequestDispatcher(url).forward(request, response);
 	}
-	
+
 	// 로그인
 	private void logInChef(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String url = "showError.jsp";
-		
+
 		String nickname = request.getParameter("nickname");
 		String password = request.getParameter("password");
 		int result = service.logInChef(nickname, password);
-		
-		if(result == 0) {
+
+		if (result == 0) {
 			request.setAttribute("errorMsg", "비밀번호 불일치");
-		} else if(result == 1) {
+		} else if (result == 1) {
 			url = "logInSuccess.jsp";
-		} else if(result == -1) {
+		} else if (result == -1) {
 			request.setAttribute("errorMsg", "존재하지 않는 닉네임입니다.");
 		} else {
 			request.setAttribute("errorMsg", "로그인 실패");

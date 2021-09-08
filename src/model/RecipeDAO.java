@@ -62,7 +62,29 @@ public class RecipeDAO {
 		
 		return recipe;
 	}
-		
+	
+	// 음식 이름으로 레시피 1개 조회 - 유진
+	public ArrayList<RecipeDTO> getRecipeOne(String foodname) throws NotExistException {
+		EntityManager em = DBUtil.getEntityManager();
+		em.getTransaction().begin();
+		List<Recipe> list = null;
+		ArrayList<RecipeDTO> result = new ArrayList<>();
+		try {
+			list = (List<Recipe>)em.createNamedQuery("Recipe.findByFoodName").setParameter("foodName", foodname).getSingleResult();
+			list.forEach(v -> result.add(new RecipeDTO(v.getRecipeId(), v.getIngredientId().getIngredientId(), v.getFoodName(), v.getDirection(), v.getRecipeOwner().getChefId(), v.getLike())));
+		}catch(NoResultException e) {
+			e.printStackTrace();
+			throw new NotExistException();
+		}catch(Exception e) {
+			e.printStackTrace();
+			em.getTransaction().rollback();
+		}finally {
+			em.close();
+		}
+		return result;
+	}
+	
+	
 	// 레시피 좋아요 누르기
 	public boolean updateLike(int recipeId) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
