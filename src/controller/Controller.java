@@ -235,14 +235,17 @@ public class Controller extends HttpServlet {
 		String ing4 = request.getParameter("ingredient4");
 		String ing5 = request.getParameter("ingredient5");
 		String direction = request.getParameter("direction");
-		int recipeOwner = 1; // 이부분은 사용자가 로그인했으면 자동으로 가져올수 있도록 수정해야함
+		String nickname = (String)request.getSession().getAttribute("nickname");
 
 		// 사용자가 입력한 값으로 새로운 ingredient 등록
 		IngredientDTO ingredient = new IngredientDTO(ing1, ing2, ing3, ing4, ing5);
+		
 		try {
 			int ingredientId = service.addIngredient(ingredient); // 새로 등록한 ingredient의 id 반환
-			RecipeDTO recipe = new RecipeDTO(ingredientId, foodName, direction, recipeOwner);
-			result = service.addRecipe(recipe);
+			
+			// 새로 등록할 recipe DTO 생성해서 등록하기
+			RecipeDTO recipe = new RecipeDTO(ingredientId, foodName, direction);
+			result = service.addRecipe(recipe, nickname);
 
 			if (result) {
 				request.setAttribute("recipe", recipe);
@@ -337,7 +340,7 @@ public class Controller extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("nickname", nickname);
 			
-			alert(request, response, "recipe?command=recipeAll", "로그인 성공");
+			alert(request, response, "recipe?command=myRecipe", "로그인 성공");
 						
 		} else if(result == -1) {
 			alert(request, response, "login.jsp", "로그인 실패! 아이디를 확인하세요.");

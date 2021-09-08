@@ -52,11 +52,7 @@ public class RecipeDAO {
 		ArrayList<RecipeDTO> result = new ArrayList<>();
 		try {
 			Chef chef = (Chef)em.createNamedQuery("Chef.findChef").setParameter("chefName", nickname).getSingleResult();
-			
 			list = (List<Recipe>)em.createNamedQuery("Recipe.findByRecipeOwner").setParameter("recipeOwner", chef).getResultList();
-			
-			System.out.println(list + "size" + list.size());
-			
 			list.forEach(v -> result.add(new RecipeDTO(v.getRecipeId(), v.getIngredientId().getIngredientId(), v.getFoodName(), v.getDirection(), v.getRecipeOwner().getChefId(), v.getLike())));
 		}catch(NoResultException e) {
 			e.printStackTrace();
@@ -135,13 +131,13 @@ public class RecipeDAO {
 	}
 
 	// 레시피 등록
-	public boolean addRecipe(RecipeDTO recipe) { 
+	public boolean addRecipe(RecipeDTO recipe, String nickname) { 
 		EntityManager em = DBUtil.getEntityManager();
 		em.getTransaction().begin();
 		boolean result = false;
 		try {
 			Ingredient i = em.find(Ingredient.class, recipe.getIngredientId());
-			Chef c = em.find(Chef.class, recipe.getRecipeOwner());
+			Chef c = (Chef)em.createNamedQuery("Chef.findChef").setParameter("chefName", nickname).getSingleResult();
 			Recipe r = new Recipe(i, recipe.getFoodName(), recipe.getDirection(), c);
 			em.persist(r);
 			em.getTransaction().commit();

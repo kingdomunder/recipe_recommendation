@@ -59,8 +59,8 @@ public class Service {
 	}	
 	
 	// 레시피 등록
-	public boolean addRecipe(RecipeDTO recipe) {
-		return getRecipeDAO.addRecipe(recipe);
+	public boolean addRecipe(RecipeDTO recipe, String nickname) {
+		return getRecipeDAO.addRecipe(recipe, nickname);
 	}
 	
 	// 레시피 등록시 새로운 재료 추가
@@ -93,6 +93,8 @@ public class Service {
 	public int logInChef(String nickname, String password) {
 		return getChefDAO.logInChef(nickname, password);
 	}
+
+	
 
 	
 }

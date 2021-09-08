@@ -18,12 +18,11 @@ public class RecipeDTO {
 	private int like;
 	
 	// 새로운 레시피 등록할때 필요한 생성자
-	public RecipeDTO(int ingredientId, String foodName, String direction, int recipeOwner) {
+	public RecipeDTO(int ingredientId, String foodName, String direction) {
 		super();
 		this.ingredientId = ingredientId;
 		this.foodName = foodName;
 		this.direction = direction;
-		this.recipeOwner = recipeOwner;
 	}
 
 //	public Recipe toEntity() {

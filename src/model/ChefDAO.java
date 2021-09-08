@@ -61,4 +61,5 @@ public class ChefDAO {
 		}
 		return -2;					// 그 외의 경우
 	}
+
 }

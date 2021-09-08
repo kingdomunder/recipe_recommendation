@@ -1,10 +1,5 @@
-﻿-- 회원
 DROP TABLE chef cascade constraint;
-
--- 재료
 DROP TABLE ingredient cascade constraint;
-
--- 조리법
 DROP TABLE recipe cascade constraint;
 
 DROP SEQUENCE chef_id_seq;

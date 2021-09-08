@@ -38,23 +38,21 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <div class="w3-hide-large" style="margin-top:83px"></div>
   
   <!-- 각 페이지마다 내용 바꿀 부분 !! - 마이페이지 -->
-  <p>${nickname}님이 등록한 레시피</p>
-  <div class="w3-row">
-   	<c:forEach items="${myRecipe}" var="recipe">
-   		<div class="w3-third recipe-padding">
-   			<div class="recipe-image">
-   				나중에 이미지넣기
-   			</div>
-   			<div class="recipe-block">
-				<a href="recipe?command=recipeOne&foodName=${recipe.foodName}"><div class="recipe-name">${recipe.foodName}</div></a>
-				<div class="recipe-like">좋아요 ${recipe.like}개</div>
-			</div>
-		</div>
-	</c:forEach>
+  <div class="content-container">
+	  <div style="font-size:x-large; margin-bottom:20px">${nickname}님이 등록한 레시피</div>
+	  <div style="margin-bottom:10px; margin-left:10px">
+	   	<c:forEach items="${myRecipe}" var="recipe">
+			<li>
+				<a href="recipe?command=recipeOne&foodName=${recipe.foodName}" class="recipe-name">${recipe.foodName}</a>
+				<a class="recipe-like" style="padding-left:10px">좋아요 ${recipe.like}개</a>
+			</li>
+		</c:forEach>
+	  </div>
+	  <br>
+	  <div style="font-size:x-large">레시피 등록하기</div>
+	  <button onclick="location.href='addRecipe.html'">Go!</button>
+	 
   </div>
-  
-  <p>레시피 등록하기</p>
-  
 
   
   <!-- Modal for full size images on click-->
