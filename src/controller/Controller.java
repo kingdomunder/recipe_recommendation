@@ -64,13 +64,13 @@ public class Controller extends HttpServlet {
 	}
 
 
-	// 모든 레시피 검색
+	// 모든 레시피 출력
 	private void getAllRecipe(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
 			request.setAttribute("recipeAll", service.getAllRecipe());
-			url = "recipeAll.jsp";
+			url = "index.jsp";
 		} catch (NotExistException e) {
 			request.setAttribute("errorMsg", e.getMessage());
 			e.printStackTrace();
