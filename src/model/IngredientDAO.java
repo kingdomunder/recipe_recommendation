@@ -38,12 +38,6 @@ public class IngredientDAO {
 		return ingredient;
 	}
 
-	
-//	@Test
-//	void test() {
-//		System.out.println(selectIngredient("밥"));
-//	}
-	
 	//선택한 재료 레시피 추천 - 우송
 	public ArrayList<String> selectIngredient(ArrayList<String> selected) {
 		System.out.println("----선택한 재료들----"+selected);
@@ -63,7 +57,6 @@ public class IngredientDAO {
 		
 		//반환받은 요리 이름들을 저장하는 리스트
 		ArrayList<String> recommend = new ArrayList<>();
-		
 		
 		try {
 			//검색할 ingredient들을 DB에서 전부 가져와 객체리스트화
