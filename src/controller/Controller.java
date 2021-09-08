@@ -73,7 +73,7 @@ public class Controller extends HttpServlet {
 	private void getRecipeOne(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
 		String url = "showError.jsp";
-		String foodName = request.getParameter("foodNamd");
+		String foodName = request.getParameter("foodName");
 		try {
 			request.setAttribute("recipeOne", service.getRecipeOne(foodName));
 			url = "recipeOne.jsp";
