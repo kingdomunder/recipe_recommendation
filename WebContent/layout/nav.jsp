@@ -25,9 +25,5 @@
 </c:if>
 
 <c:if test="${not empty sessionScope.nickname}">
-<a href="/step12_miniproject/addRecipe.html" onclick="w3_close()" class="w3-bar-item w3-button">레시피 등록</a>
-</c:if>
-
-<c:if test="${not empty sessionScope.nickname}">
 <a href="/step12_miniproject/recipe?command=logout" onclick="w3_close()" class="w3-bar-item w3-button">로그아웃</a>
 </c:if>

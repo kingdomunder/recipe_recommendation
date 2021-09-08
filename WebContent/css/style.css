@@ -17,6 +17,10 @@ body {
 }
 
 /* 새로만든부분 */
+.content-container{
+	margin: 20px 20px 20px 20px;
+	height: 500px;
+}
 .recipe-header{
 	padding: 20px 20px 20px 20px;
 	color: orange;
@@ -1807,19 +1811,4 @@ to {
 
 .w3-border-pale-blue, .w3-hover-border-pale-blue:hover {
 	border-color: #e7ffff !important
-}
-
-footer {
-
-    position:absolute;
-
-    bottom:0;
-
-    width:100%;
-
-    height:200px;   
-
-    background:#ccc;
-
-	}
 }
