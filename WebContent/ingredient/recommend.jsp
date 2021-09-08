@@ -5,24 +5,23 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <title>선택한 재료에 따라 레시피 출력</title>
+		<c:forEach items="${requestScope.recommend}" var="recommend">
+				${recommend}
+		</c:forEach>
+	<jsp:include page="select.jsp" /> 
+
 </head>
 <body>
 </body>
 <bottom>
 
-		<c:forEach items="${requestScope.recommend}" var="recommend">
-				
-				${recommend}
-				
-		</c:forEach>
 	
-	</div>
 
 
 	
-	<jsp:include page="select.jsp" /> 
 </bottom>
 
 <footer> 
