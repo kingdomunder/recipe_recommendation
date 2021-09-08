@@ -1,9 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <title>W3.CSS Template</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <style>
 body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
@@ -13,15 +17,9 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
 
-<!-- 네비게이션 -->
+<!-- 네비게이션 -->
 <nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center" style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
-  <a href="index.html"><h3 class="w3-padding-64 w3-center"><b>방구석<br>셰프</b></h3></a>
-  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hide-large">CLOSE</a>
-  <a href="recipe?command=recipeAll" onclick="w3_close()" class="w3-bar-item w3-button">모든 레시피 보기</a>
-  <a href="ingredient/select.jsp" onclick="w3_close()" class="w3-bar-item w3-button">재료 선택하기</a>
-  <a href="chefJoin.jsp" onclick="w3_close()" class="w3-bar-item w3-button">회원가입</a>
-  <a href="login.jsp" onclick="w3_close()" class="w3-bar-item w3-button">로그인</a>
-  <a href="addRecipe.html" onclick="w3_close()" class="w3-bar-item w3-button">레시피 등록</a>
+	<jsp:include page="layout/nav.jsp" />
 </nav>
 
 <!-- Top menu on small screens -->
@@ -39,19 +37,22 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <!-- Push down content on small screens --> 
   <div class="w3-hide-large" style="margin-top:83px"></div>
   
-  메인화면에 머쓰지???????
-
-  <!-- Pagination -->
-  <div class="w3-center w3-padding-32">
-    <div class="w3-bar">
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">&laquo;</a>
-      <a href="#" class="w3-bar-item w3-black w3-button">1</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">&raquo;</a>
-    </div>
+  <!-- 모든 레시피 출력 부분 -->
+  <p>모든 레시피 보기</p>
+  <div class="w3-row">
+   	<c:forEach items="${recipeAll}" var="recipe">
+   		<div class="w3-third recipe-padding">
+   			<div class="recipe-image">
+   				나중에 이미지넣기
+   			</div>
+   			<div class="recipe-block">
+				<div class="recipe-name">${recipe.foodName}</div>
+				<div class="recipe-like">좋아요 ${recipe.like}개</div>
+			</div>
+		</div>
+	</c:forEach>
   </div>
+
   
   <!-- Modal for full size images on click-->
   <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">

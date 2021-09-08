@@ -39,6 +39,10 @@
 
 		
 </body>
+<footer>
 
+선택한 재료들 : ${Cookies}
+
+</footer>
 
 </html>
