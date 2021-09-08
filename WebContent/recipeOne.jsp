@@ -14,6 +14,12 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 .w3-third img{margin-bottom: -6px; opacity: 0.8; cursor: pointer}
 .w3-third img:hover{opacity: 1}
 </style>
+ <style>
+img{float: left; margin: 10px;}
+.p2{clear: both;}
+img{margin: 10px;}
+</style>
+
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
 
@@ -37,33 +43,34 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 		<!-- Push down content on small screens -->
 		<div class="w3-hide-large" style="margin-top: 83px"></div>
 
-		<!-- 각 페이지마다 내용 바꿀 부분 !! - 모든 레시피 출력 -->
-
-		<div class="w3-row">
-			<c:forEach items="${recipeAll}" var="recipe">
-				<div class="w3-third recipe-padding">
-					<div class="recipe-image">나중에 이미지넣기</div>
-					<div class="recipe-block">
-						<a href="recipe?command=recipeOne&foodName=${recipe.foodName}">
-						<div class="recipe-name">${recipe.foodName}</div></a>
-						<div class="recipe-like">좋아요 ${recipe.like}개</div>
+		<!-- 모든 레시피에서 클릭한 레시피 1개 출력 -->
+		<div class="form-container">
+			<form action="recipe" method="post">
+				<div class="recipe-image">이미지</div>
+				<div class="rec_exp">
+					<h2 class="prod_title">${requestScope.recipeOne.foodName}</h2>
+					<p class="s_title">셰프 : ${requestScope.recipeOne.recipeOwner}</p>
+					<div class="text_box">
+						조리법
+						<pre>
+						<c:out value="${requestScope.recipeOne.direction}" />
+						</pre>
 					</div>
 				</div>
-			</c:forEach>
+
+				<%-- <div>
+					<h2>${requestScope.recipeOne.foodName}</h2>
+					<br> 조리법
+					<pre>
+					<c:out value="${requestScope.recipeOne.direction}" />
+					</pre>
+					셰프 : ${requestScope.recipeOne.recipeOwner}<br> 좋아요 :
+					${requestScope.recipeOne.like}개<br>
+				</div> --%>
+			</form>
 		</div>
 
-
-		출력 : ${requestScope.recipeOne}
-		
-		<form action="recipe" method="post">
-			<div class="recipe-image">이미지</div>
-			음식 이름 : ${requestScope.recipeOne.foodName}
-			조리법 : ${requestScope.recipeOne.direction}
-			셰프 : ${requestScope.recipeOne.recipeOwner}
-			좋아요 : ${requestScope.recipeOne.like}
-		</form>
-
-	<!-- Modal for full size images on click-->
+		<!-- Modal for full size images on click-->
   <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
     <span class="w3-button w3-black w3-xlarge w3-display-topright">&times;</span>
     <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
@@ -72,17 +79,11 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     </div>
   </div>
 
-  <!-- About section -->
-  <div class="w3-container w3-dark-grey w3-center w3-text-light-grey w3-padding-32" id="about">
-    <h4><b>About Me</b></h4>
-  </div>
-
   <!-- Footer -->
   <footer class="w3-container w3-padding-32 w3-grey">  
     <jsp:include page="layout/footer.jsp" />
   </footer>
   
-  <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></div>
 
 <!-- End page content -->
 </div>
