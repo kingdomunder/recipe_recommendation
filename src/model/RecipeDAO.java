@@ -64,14 +64,14 @@ public class RecipeDAO {
 	}
 	
 	// 음식 이름으로 레시피 1개 조회 - 유진
-	public ArrayList<RecipeDTO> getRecipeOne(String foodname) throws NotExistException {
+	public RecipeDTO getRecipeOne(String foodname) throws NotExistException {
 		EntityManager em = DBUtil.getEntityManager();
 		em.getTransaction().begin();
-		List<Recipe> list = null;
-		ArrayList<RecipeDTO> result = new ArrayList<>();
+		Recipe r = null;
+		RecipeDTO result = new RecipeDTO();
 		try {
-			list = (List<Recipe>)em.createNamedQuery("Recipe.findByFoodName").setParameter("foodName", foodname).getSingleResult();
-			list.forEach(v -> result.add(new RecipeDTO(v.getRecipeId(), v.getIngredientId().getIngredientId(), v.getFoodName(), v.getDirection(), v.getRecipeOwner().getChefId(), v.getLike())));
+			r = (Recipe)em.createNamedQuery("Recipe.findByFoodName").setParameter("foodName", foodname).getSingleResult();
+			result = new RecipeDTO(r.getRecipeId(), r.getIngredientId().getIngredientId(), r.getFoodName(), r.getDirection(), r.getRecipeOwner().getChefId(), r.getLike());
 		}catch(NoResultException e) {
 			e.printStackTrace();
 			throw new NotExistException();
@@ -81,6 +81,7 @@ public class RecipeDAO {
 		}finally {
 			em.close();
 		}
+		System.out.println(result);
 		return result;
 	}
 	

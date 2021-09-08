@@ -33,7 +33,7 @@ public class Service {
 	}
 	
 	// 음식 이름으로 레시피 1개 조회
-	public ArrayList<RecipeDTO> getRecipeOne(String foodname) throws SQLException {
+	public RecipeDTO getRecipeOne(String foodname) throws SQLException, NotExistException {
 		return getRecipeDAO.getRecipeOne(foodname);
 	}
 

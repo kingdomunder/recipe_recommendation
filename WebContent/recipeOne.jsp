@@ -53,27 +53,27 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 		</div>
 
 
-
+		${requestScope.recipeOne}
 		<form action="recipe" method="post">
 			<div class="recipe-image">이미지</div>
-			<c:forEach items="${recipeOne}" var="recipe">
+			<c:forEach items="${requestScope.recipeOne}" var="recipeOne">
 		   		<div class="w3-third recipe-padding">
 		   			<div class="recipe-image">
 		   				나중에 이미지넣기
 		   			</div>
 		   			<div class="recipe-block">
-						음식 이름 : <a href="recipe?command=recipeOne&foodName=${recipe.foodName}"><div class="recipe-name">${recipe.foodName}</div></a>
-						<div class="recipe-like">좋아요 ${recipe.like}개</div>
+						음식 이름 : <a href="recipe?command=recipeOne&foodName=${recipeOne.foodName}"><div class="recipe-name">${recipeOne.foodName}</div></a>
+						<div class="recipe-like">좋아요 ${recipeOne.like}개</div>
 					</div>
 				</div>
 			</c:forEach>
 		</form>
 		
 		<form action="recipe" method="post">
-			음식 이름 : ${requestScope.recipe.foodName}
-			조리법 : ${requestScope.recipe.direction}
-			셰프 : ${requestScope.recipe.recipeOwner}
-			좋아요 : ${requestScope.recipe.like}
+			음식 이름 : ${requestScope.recipeOne.foodName}
+			조리법 : ${requestScope.recipeOne.direction}
+			셰프 : ${requestScope.recipeOne.recipeOwner}
+			좋아요 : ${requestScope.recipeOne.like}
 		</form>
 
 	<!-- Modal for full size images on click-->

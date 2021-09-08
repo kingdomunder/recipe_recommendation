@@ -1,7 +1,7 @@
 package controller;
 
 import java.io.IOException;
-
+import java.io.PrintWriter;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.sql.SQLException;
@@ -14,12 +14,12 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import exception.NotExistException;
 import model.dto.ChefDTO;
 import model.dto.IngredientDTO;
 import model.dto.RecipeDTO;
-import model.entity.Ingredient;
 import model.entity.Recipe;
 import service.Service;
 
@@ -59,6 +59,8 @@ public class Controller extends HttpServlet {
 				addChef(request, response);
 			} else if (command.equals("login")) {
 				logInChef(request, response);
+			}else if (command.equals("logout")) {
+				logOutChef(request, response);
 			}
 		} catch (Exception s) {
 			request.setAttribute("errorMsg", s.getMessage());
@@ -72,7 +74,6 @@ public class Controller extends HttpServlet {
 			throws ServletException, IOException, SQLException {
 		String url = "showError.jsp";
 		String foodName = request.getParameter("foodNamd");
-		List<Recipe> list = null;
 		try {
 			request.setAttribute("recipeOne", service.getRecipeOne(foodName));
 			url = "recipeOne.jsp";
@@ -269,8 +270,7 @@ public class Controller extends HttpServlet {
 	}
 
 	// 회원가입
-	private void addChef(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	private void addChef(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "showError.jsp";
 		boolean result = false;
 
@@ -298,8 +298,7 @@ public class Controller extends HttpServlet {
 	}
 
 	// 로그인
-	private void logInChef(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	private void logInChef(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "showError.jsp";
 
 		String nickname = request.getParameter("nickname");
@@ -308,14 +307,35 @@ public class Controller extends HttpServlet {
 
 		if (result == 0) {
 			request.setAttribute("errorMsg", "비밀번호 불일치");
-		} else if (result == 1) {
-			url = "logInSuccess.jsp";
-		} else if (result == -1) {
+		} else if(result == 1) {
+			// 로그인 성공하면 session에 사용자이름 저장
+			HttpSession session = request.getSession();
+			session.setAttribute("nickname", nickname);
+			
+			// alert 메시지 띄우고 모든 레시피 보기 화면으로 넘어가기
+			url = "recipe?command=recipeAll";
+			response.setContentType("text/html; charset=UTF-8"); 
+			PrintWriter writer = response.getWriter(); 
+			writer.println("<script>alert('로그인 성공'); location.href='"+url+"';</script>");
+			writer.close();
+			
+		} else if(result == -1) {
 			request.setAttribute("errorMsg", "존재하지 않는 닉네임입니다.");
 		} else {
 			request.setAttribute("errorMsg", "로그인 실패");
 		}
 		request.getRequestDispatcher(url).forward(request, response);
 	}
-
+	
+	
+	private void logOutChef(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url = "recipe?command=recipeAll";
+		HttpSession session = request.getSession();
+		session.invalidate();
+		
+		response.setContentType("text/html; charset=UTF-8"); 
+		PrintWriter writer = response.getWriter(); 
+		writer.println("<script>alert('로그아웃 되었습니다'); location.href='"+url+"';</script>");
+		writer.close();
+	}
 }

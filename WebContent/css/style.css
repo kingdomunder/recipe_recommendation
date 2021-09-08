@@ -38,6 +38,13 @@ body {
 	height: 200px;
 	background-color: grey;
 }
+.form-container{
+	height: 500px;
+	vertical-align: center;
+	background-color: white;
+	margin: 30px 30px 30px 30px;
+	padding: 30px 30px 30px 30px;
+}
 
 
 article, aside, details, figcaption, figure, footer, header, main, menu,
