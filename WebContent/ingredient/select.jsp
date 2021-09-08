@@ -13,7 +13,7 @@
 <style>
 body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 .w3-third img{margin-bottom: -6px; opacity: 0.8; cursor: pointer}
-.w3-third img:hover{opacity: 1}
+.w3-third img:hover{opacity: 1}"WebContent/recipeAll.jsp"
 </style>
 
 <body class="w3-light-grey w3-content" style="max-width:1600px">
@@ -49,7 +49,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 					
 		<c:forEach items="${requestScope.recommend}" var="recommend">
-			 ${recommend}
+			<a href="/step12_miniproject/recipe?command=recipeOne&foodName=${recommend}">${recommend}</a>
 		</c:forEach>	
 		${requestScope.selectError}
   
@@ -105,7 +105,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 
   
-		선택한 재료들 : ${Cookies}
+		선택한 재료 : ${Cookies}
 
   
   

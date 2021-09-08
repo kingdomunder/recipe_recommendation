@@ -84,7 +84,7 @@ public class Controller extends HttpServlet {
 		String foodName = request.getParameter("foodName");
 		try {
 			request.setAttribute("recipeOne", service.getRecipeOne(foodName));
-			url = "recipeOne.jsp";
+			url = "../recipeOne.jsp";
 		} catch (Exception e) {
 			request.setAttribute("errorMsg", e.getMessage());
 			e.printStackTrace();
