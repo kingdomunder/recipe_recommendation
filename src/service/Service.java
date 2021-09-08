@@ -8,10 +8,9 @@ import exception.NotExistException;
 import model.ChefDAO;
 import model.IngredientDAO;
 import model.RecipeDAO;
-import model.DTO.IngredientDTO;
-import model.DTO.RecipeDTO;
-import model.DTO.ChefDTO;
-import model.DTO.RecipeDTO;
+import model.dto.ChefDTO;
+import model.dto.IngredientDTO;
+import model.dto.RecipeDTO;
 import model.entity.Ingredient;
 
 public class Service {

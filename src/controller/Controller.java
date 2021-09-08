@@ -14,9 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import exception.NotExistException;
-import model.DTO.ChefDTO;
-import model.DTO.IngredientDTO;
-import model.DTO.RecipeDTO;
+import model.dto.ChefDTO;
+import model.dto.IngredientDTO;
+import model.dto.RecipeDTO;
 import model.entity.Ingredient;
 import service.Service;
 
