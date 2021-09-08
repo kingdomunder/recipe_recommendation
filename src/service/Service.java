@@ -65,9 +65,9 @@ public class Service {
 	}
 	
 	//선택한 재료 레시피 추천 - 우송
-	public ArrayList<String> selectIngredient(String IngredientOne) throws NotExistException, SQLException {
+	public ArrayList<String> selectIngredient(ArrayList<String> selected) throws NotExistException, SQLException {
 		ArrayList<String> recommend = new ArrayList<>();
-		recommend = getIngredientDAO.selectIngredient(IngredientOne);
+		recommend = getIngredientDAO.selectIngredient(selected);
 		return recommend;
 	}
 	

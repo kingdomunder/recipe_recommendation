@@ -2,6 +2,7 @@ package model;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -38,51 +39,57 @@ public class IngredientDAO {
 	}
 
 	//선택한 재료 레시피 추천 - 우송
-	public ArrayList<String> selectIngredient(String ingredientOne) {
+	public ArrayList<String> selectIngredient(ArrayList<String> selected) {
+		System.out.println("----선택한 재료들----"+selected);
 		EntityManager em = DBUtil.getEntityManager();
-		
 		//입력받은 재료로 ingredient 검색
-		List<Ingredient> ingredient = null;
-		ArrayList<IngredientDTO> ingredientDTO = new ArrayList<>();
+		List<Ingredient> ingEntity = null;
+		ArrayList<IngredientDTO> ingDTOList = new ArrayList<>();
+		ArrayList<List> ingList = new ArrayList<>();
 
+		ArrayList<Object> list = new ArrayList();
 		//검색한 ingredient의 id들을 저장하는 리스트
 		ArrayList<Integer> selectList = new ArrayList<>();
 
 		//해당 ingredient의 id로 recipe 검색 (recipe에서 요리이름 반환하기 위해)
 		List<Recipe> recipe = null;
-		ArrayList<RecipeDTO> recipeDTO = new ArrayList<>();
+		ArrayList<RecipeDTO> recipeDTOList = new ArrayList<>();
 		
 		//반환받은 요리 이름들을 저장하는 리스트
 		ArrayList<String> recommend = new ArrayList<>();
 		
 		try {
-			//검색할 ingredient들을 DB에서 전부 가져와 리스트화
-			ingredient = (List<Ingredient>)em.createNativeQuery("select * from Ingredient", Ingredient.class).getResultList();
-			ingredient.forEach(v -> ingredientDTO.add(new IngredientDTO(v.getIngredientId(), v.getIngredient1(), v.getIngredient2(), v.getIngredient3(), v.getIngredient4(), v.getIngredient5())));
-			//가져온 ingredient리스트에 입력받은 재료가 들어있는지 검색 한 후, id를 저장 
-			for(int i = 0 ; i < ingredientDTO.size() ; i++) {
-				if(ingredientDTO.get(i).getIngredient1().equals(ingredientOne)) {
-					selectList.add(ingredientDTO.get(i).getIngredientId());
-				}else if(ingredientDTO.get(i).getIngredient2().equals(ingredientOne)) {
-					selectList.add(ingredientDTO.get(i).getIngredientId());
-				}else if(ingredientDTO.get(i).getIngredient3().equals(ingredientOne)) {
-					selectList.add(ingredientDTO.get(i).getIngredientId());
-				}else if(ingredientDTO.get(i).getIngredient4().equals(ingredientOne)) {
-					selectList.add(ingredientDTO.get(i).getIngredientId());
-				}else if(ingredientDTO.get(i).getIngredient5().equals(ingredientOne)) {
-					selectList.add(ingredientDTO.get(i).getIngredientId());
+			//검색할 ingredient들을 DB에서 전부 가져와 객체리스트화
+			ingEntity = (List<Ingredient>)em.createNativeQuery("select * from Ingredient", Ingredient.class).getResultList();
+			//객체리스트를 데이터리스트화
+			for(Ingredient ing : ingEntity) {
+				list.add(ing.getIngredientId());
+				list.add(ing.getIngredient1());
+				list.add(ing.getIngredient2());
+				list.add(ing.getIngredient3());
+				list.add(ing.getIngredient4());
+				list.add(ing.getIngredient5());
+				ingList.add(list);
+				list = new ArrayList();
+			}
+			System.out.println("---DB에서 가져온 비교할 리스트----"+ingList);
+
+			//입력받은 재료가 들어있는지 데이터값들을 확인한 후, id를 저장 
+			for(List list1 : ingList) {
+				if(list1.containsAll(selected)){
+					selectList.add((Integer)list1.get(0));
 				}
 			}
+			System.out.println("---선택한 재료가 들어있는 리스트----"+selectList);
+			
 			//검색할 recipe들을 DB에서 전부 가져와 리스트화
 			recipe = (List<Recipe>)em.createNativeQuery("select * from Recipe", Recipe.class).getResultList();
-			recipe.forEach(v -> recipeDTO.add(new RecipeDTO(v.getRecipeId(), v.getIngredientId().getIngredientId(), v.getFoodName(), v.getDirection(), v.getRecipeOwner().getChefId(), v.getLike())));
+			recipe.forEach(v -> recipeDTOList.add(new RecipeDTO(v.getRecipeId(), v.getIngredientId().getIngredientId(), v.getFoodName(), v.getDirection(), v.getRecipeOwner().getChefId(), v.getLike())));
 			//가져온 recipe리스트와 ingredient id리스트를 비교하면서, id가 포함되어 있으면 해당 recipe의 foodName을 리스트에 저장 
-			for(int i = 0 ; i < recipeDTO.size() ; i++) {
-				for(int j = 0 ; j < selectList.size() ; j++) {
-					if(recipeDTO.get(i).getIngredientId() == selectList.get(j)){
-						recommend.add(recipeDTO.get(i).getFoodName());
-						break;
-					}
+		
+			for(RecipeDTO r : recipeDTOList) {
+				if(selectList.contains(r.getRecipeId())){
+					recommend.add(r.getFoodName());
 				}
 			}
 			
@@ -90,7 +97,6 @@ public class IngredientDAO {
 			em.close();
 			em = null;
 		}
-		System.out.println(recommend);
 		return recommend;
 	}
 
