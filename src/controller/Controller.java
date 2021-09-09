@@ -41,29 +41,29 @@ public class Controller extends HttpServlet {
 
 		try {
 			if (command.equals("recipeAll")) {
-				getAllRecipe(request, response);
+				instance.getAllRecipe(request, response);
 			} else if (command.equals("recipeOne")) {
-				getRecipeOne(request, response);
+				instance.getRecipeOne(request, response);
 			} else if (command.equals("recipeOne")) {
-				getRecipeIngredient(request, response);
+				instance.getRecipeIngredient(request, response);
 			} else if (command.equals("likeRecipe")) {
-				likeRecipe(request, response);
+				instance.likeRecipe(request, response);
 			} else if (command.equals("addRecipe")) {
-				addRecipe(request, response);
+				instance.addRecipe(request, response);
 			} else if(command.equals("deleteRecipe")) {
-				deleteRecipe(request, response);
+				instance.deleteRecipe(request, response);
 			} else if(command.equals("selectIngredient")) {
 				instance.selectIngredient(request, response);
 			} else if (command.equals("clearIngredient")) {
 				instance.clearIngredient(request, response);
 			} else if (command.equals("addChef")) {
-				addChef(request, response);
+				instance.addChef(request, response);
 			} else if (command.equals("login")) {
-				logInChef(request, response);
+				instance.logInChef(request, response);
 			}else if (command.equals("logout")) {
-				logOutChef(request, response);
+				instance.logOutChef(request, response);
 			}else if (command.equals("myRecipe")) {
-				getMyRecipe(request, response);
+				instance.getMyRecipe(request, response);
 			}
 		} catch (Exception s) {
 			request.setAttribute("errorMsg", s.getMessage());
@@ -255,6 +255,10 @@ public class Controller extends HttpServlet {
 		IngredientDTO ingredient = new IngredientDTO(ing1, ing2, ing3, ing4, ing5);
 		
 		try {
+			result = service.expectFoodName(foodName);
+			if(result == false) {
+				alert(request, response, "recipe?command=myRecipe", "이미 존재하는 요리입니다.");
+			}
 			int ingredientId = service.addIngredient(ingredient); // 새로 등록한 ingredient의 id 반환
 			
 			// 새로 등록할 recipe DTO 생성해서 등록하기
