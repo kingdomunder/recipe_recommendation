@@ -41,23 +41,6 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", 'Nanum Gothic'}
   
   <!-- Photo grid -->
   <div class="w3-row">
-    <!-- <div class="w3-third">
-      <img src="images/index1.jpg" style="width:100%" onclick="onClick(this)" alt="A boy surrounded by beautiful nature">
-      <div style="height:100px; width:100%; background-color:black; color:white; text-align:center; padding-top:40px;">Everyone</div>
-      <img src="images/index2.jpg" style="width:100%" onclick="onClick(this)" alt="The Beach. Me. Alone. Beautiful">
-    </div>
-    
-    <div class="w3-third">
-      <img src="images/index3.jpg" style="width:100%" onclick="onClick(this)" alt="A boy surrounded by beautiful nature">
-      <div style="height:100px; width:100%; background-color:black; color:white; text-align:center; padding-top:40px;">Can Be</div>
-      <img src="images/index4.jpg" style="width:100%" onclick="onClick(this)" alt="The Beach. Me. Alone. Beautiful">
-    </div>
-   
-    <div class="w3-third">
-      <img src="images/index5.jpg" style="width:100%" onclick="onClick(this)" alt="Quiet day at the beach. Cold, but beautiful">
-     <div style="height:100px; width:100%; background-color:black; color:white; text-align:center; padding-top:40px;">a Chef</div>
-      <img src="images/index6.jpg" style="width:100%" onclick="onClick(this)" alt="Nature again.. At its finest!">
-    </div> -->
     <div class="w3-third">
       <img src="images/index/001.jpg" style="width:100%" onclick="onClick(this)" alt="방구석 셰프">
       <div style="height:100px; width:100%; background-color:black; color:white; font-weight:500; text-align:center; padding-top:30px;"><h4>EVERYONE</h4></div>

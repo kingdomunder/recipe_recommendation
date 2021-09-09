@@ -53,7 +53,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", "고딕"}
    			</c:if>	
    			<c:if test="${empty recipe.imgPath}">
    				<div class="recipe-image">
-   				<img src="images/food/noimage.png" alt="image" style="position: relative; center: 100%; ">
+   				<img src="images/food/noimage.png" alt="image" style="position: relative; width: 100%; height: 100%">
    				</div>
    			</c:if>
    			<div class="recipe-block">
