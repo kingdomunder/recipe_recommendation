@@ -41,31 +41,31 @@ public class Controller extends HttpServlet {
 
 		try {
 			if (command.equals("recipeAll")) {
-				getAllRecipe(request, response);
+				instance.getAllRecipe(request, response);
 			} else if (command.equals("recipeOne")) {
-				getRecipeOne(request, response);
+				instance.getRecipeOne(request, response);
 			} else if (command.equals("recipeOne")) {
-				getRecipeIngredient(request, response);
+				instance.getRecipeIngredient(request, response);
 			} else if (command.equals("likeRecipe")) {
-				likeRecipe(request, response);
+				instance.likeRecipe(request, response);
 			} else if (command.equals("addRecipe")) {
-				addRecipe(request, response);
+				instance.addRecipe(request, response);
 			} else if(command.equals("deleteRecipe")) {
-				deleteRecipe(request, response);
+				instance.deleteRecipe(request, response);
 			} else if(command.equals("updateRecipe")) {
-				updateRecipe(request, response);
+				instance.updateRecipe(request, response);
 			} else if(command.equals("selectIngredient")) {
 				instance.selectIngredient(request, response);
 			} else if (command.equals("clearIngredient")) {
 				instance.clearIngredient(request, response);
 			} else if (command.equals("addChef")) {
-				addChef(request, response);
+				instance.addChef(request, response);
 			} else if (command.equals("login")) {
-				logInChef(request, response);
+				instance.logInChef(request, response);
 			}else if (command.equals("logout")) {
-				logOutChef(request, response);
+				instance.logOutChef(request, response);
 			}else if (command.equals("myRecipe")) {
-				getMyRecipe(request, response);
+				instance.getMyRecipe(request, response);
 			}
 		} catch (Exception s) {
 			request.setAttribute("errorMsg", s.getMessage());
@@ -74,7 +74,6 @@ public class Controller extends HttpServlet {
 		}
 	}
 
-	
 	
 	// 레시피 하나로 재료 출력 - 유진
 	private void getRecipeIngredient(HttpServletRequest request, HttpServletResponse response) {
@@ -85,6 +84,7 @@ public class Controller extends HttpServlet {
 		url = "recipeOne.jsp";
 	}
 
+	
 	// 요청처리 성공시 alert 메시지 띄우는 함수
 	private void alert(HttpServletRequest request, HttpServletResponse response, String url, String message) throws IOException {
 		response.setContentType("text/html; charset=UTF-8"); 
@@ -137,6 +137,7 @@ public class Controller extends HttpServlet {
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 
+	
 	// 내가 등록한 레시피만 출력
 	private void getMyRecipe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "showError.jsp";
@@ -151,6 +152,7 @@ public class Controller extends HttpServlet {
 		}
 		request.getRequestDispatcher(url).forward(request, response);
 	}
+	
 	
 	// 선택한 재료 레시피 추천 - 우송 ------------------------------------------------------------------
 	private void selectIngredient(HttpServletRequest request, HttpServletResponse response)
@@ -247,6 +249,7 @@ public class Controller extends HttpServlet {
 		}
 	}
 
+	
 	// 레시피 등록
 	private void addRecipe(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -265,6 +268,10 @@ public class Controller extends HttpServlet {
 		IngredientDTO ingredient = new IngredientDTO(ing1, ing2, ing3, ing4, ing5);
 		
 		try {
+			result = service.expectFoodName(foodName);
+			if(result == false) {
+				alert(request, response, "recipe?command=myRecipe", "이미 존재하는 요리입니다.");
+			}
 			int ingredientId = service.addIngredient(ingredient); // 새로 등록한 ingredient의 id 반환
 			
 			// 새로 등록할 recipe DTO 생성해서 등록하기
@@ -317,6 +324,7 @@ public class Controller extends HttpServlet {
 		recipeSession.removeAttribute("ingredientSession");
 	}
 
+	
 	// 레시피 삭제
 	private void deleteRecipe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int recipeId = Integer.parseInt(request.getParameter("recipeId"));
@@ -355,6 +363,7 @@ public class Controller extends HttpServlet {
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 
+	
 	// 회원가입
 	private void addChef(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		boolean result = false;
@@ -390,6 +399,7 @@ public class Controller extends HttpServlet {
 		
 	}
 
+	
 	// 로그인
 	private void logInChef(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nickname = request.getParameter("nickname");
@@ -412,10 +422,12 @@ public class Controller extends HttpServlet {
 	}
 	
 	
+	// 로그아웃
 	private void logOutChef(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		
 		alert(request, response, "recipe?command=recipeAll", "로그아웃 되었습니다.");
 	}
+	
 }

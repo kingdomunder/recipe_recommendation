@@ -42,17 +42,17 @@ public class RecipeDAO {
 			for(RecipeDTO r : result) {
 				Likes.add(r.getLike());
 			}
-
 			Likes.sort(Comparator.reverseOrder());
 			
 			for(int i : Likes) {
-				for(RecipeDTO r : result) {
-					if(r.getLike() == i) {
-						resultSorted.add(r);
+				for(int r = 0 ; r < result.size() ; r++) {
+					if(result.get(r).getLike() == i) {
+						resultSorted.add(result.get(r));
+						result.remove(result.get(r));
+						break;
 					}
 				}
 			}
-			
 		}catch(NoResultException e) {
 			e.printStackTrace();
 			throw new NotExistException();

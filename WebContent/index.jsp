@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -13,9 +12,9 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <style>
-body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
-.w3-third img{margin-bottom: -6px; opacity: 0.8; cursor: pointer}
-.w3-third img:hover{opacity: 1}
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", 'Nanum Gothic'}
+.w3-third img{margin-bottom: -6px; opacity: 0.9; cursor: pointer}
+.w3-third img:hover{opacity: 0.7}
 </style>
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
@@ -43,21 +42,21 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <!-- Photo grid -->
   <div class="w3-row">
     <div class="w3-third">
-      <img src="images/index1.jpg" style="width:100%" onclick="onClick(this)" alt="A boy surrounded by beautiful nature">
-      <div style="height:100px; width:100%; background-color:black; color:white; text-align:center; padding-top:40px;">Everyone</div>
-      <img src="images/index2.jpg" style="width:100%" onclick="onClick(this)" alt="The Beach. Me. Alone. Beautiful">
+      <img src="images/index/001.jpg" style="width:100%" onclick="onClick(this)" alt="'대한민국 법조계에 김앤장이 있다면, 플레이데이터에는 혜민장이 있다.' - W.S.Lim, - PD Porject 中 -">
+      <div style="height:100px; width:100%; background-color:black; color:white; font-weight:500; text-align:center; padding-top:30px;"><h4>EVERYONE</h4></div>
+      <img src="images/index/002.jpg" style="width:100%" onclick="onClick(this)" alt="- 10%의 확신과, 90%의 이게 왜 돌아가지? -">
     </div>
     
     <div class="w3-third">
-      <img src="images/index3.jpg" style="width:100%" onclick="onClick(this)" alt="A boy surrounded by beautiful nature">
-      <div style="height:100px; width:100%; background-color:black; color:white; text-align:center; padding-top:40px;">Can Be</div>
-      <img src="images/index4.jpg" style="width:100%" onclick="onClick(this)" alt="The Beach. Me. Alone. Beautiful">
+      <img src="images/index/003.jpg" style="width:100%" onclick="onClick(this)" alt="'벌써 자면 어떡해... 일어나, 코딩해야지'">
+      <div style="height:100px; width:100%; background-color:black; color:white; font-weight:500; text-align:center; padding-top:30px;"><h4>CAN BE</h4></div>
+      <img src="images/index/004.jpg" style="width:100%" onclick="onClick(this)" alt="'저쪽 집이 무너졌다고 해서 구경하러 갔죠. 그런데 보고 오니 우리집이 무너진거에요.'">
     </div>
    
     <div class="w3-third">
-      <img src="images/index5.jpg" style="width:100%" onclick="onClick(this)" alt="Quiet day at the beach. Cold, but beautiful">
-     <div style="height:100px; width:100%; background-color:black; color:white; text-align:center; padding-top:40px;">a Chef</div>
-      <img src="images/index6.jpg" style="width:100%" onclick="onClick(this)" alt="Nature again.. At its finest!">
+      <img src="images/index/005.jpg" style="width:100%" onclick="onClick(this)" alt="- 1번, 2번 메소드를 만들고 테스트하면 3번 메소드가 실행된다. -">
+     <div style="height:100px; width:100%; background-color:black; color:white; font-weight:500; text-align:center; padding-top:30px;"><h4>A CHEF</h4></div>
+      <img src="images/index/006.jpg" style="width:100%" onclick="onClick(this)" alt="- 모든 에러를 잡아도 사용자는 기상천외한 문제를 발생시킨다. -">
     </div>
   </div>
 
@@ -72,12 +71,10 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </div>
 
   <!-- Footer -->
-  <footer class="w3-container w3-padding-32 w3-grey">  
+  <footer class="w3-container w3-padding-10 w3-grey" style="font-family:'Nanum Gothic';"> 
     <jsp:include page="layout/footer.jsp" />
   </footer>
   
-  <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></div>
-
 <!-- End page content -->
 </div>
 

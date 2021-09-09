@@ -14,9 +14,9 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", "고딕"}
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", '고딕'}
 .w3-third img{margin-bottom: -6px; opacity: 0.8; cursor: pointer}
-.w3-third img:hover{opacity: 1}
+.w3-third img:hover{opacity: 0.5}
 </style>
  <style>
 img{float: left; margin: 10px;}
@@ -42,29 +42,28 @@ img{margin: 10px;}
 
 		<!-- 모든 레시피에서 클릭한 레시피 1개 출력 -->
 		<div class="w3-container w3-light-grey w3-padding-32 w3-padding-large">
-			<div class="form-container">
+			<div class="form-container" style="background-color: #FAFAAA">
 				<c:if test="${not empty requestScope.recipeOne.imgPath}">
-   					<img src="images/food/${requestScope.recipeOne.imgPath}" alt="image" width="300px" style="margin-right:50px; margin-bottom:200px;">
+   					<img src="images/food/${requestScope.recipeOne.imgPath}" alt="image" width="300px" style="margin-right:50px; margin-bottom:200px; border:3px solid #666666;">
    				</c:if>
    				<c:if test="${empty requestScope.recipeOne.imgPath}">
-   					<img src="images/food/noimage.png" alt="image" width="300px" style="margin-right:50px; margin-bottom:200px;">
+   					<img src="images/food/noimage.png" alt="image" width="300px" style="margin-right:30px; margin-bottom:200px;">
    				</c:if>
 			
-				<p style="margin-left: 10px;">
+				<p style="margin-left: 30px; background-color: #222222; font-family: '고딕';">
 					<h2>${requestScope.recipeOne.foodName}</h2>
 					셰프 : ${requestScope.chefName}<br> 
 					좋아요 ${requestScope.recipeOne.like}개<br>
 					<br><h4>재료</h4>
-					<c:forEach items="${ingredient}" var="i">		
+					<c:forEach items="${ingredient}" var="i">
 					<c:if test="${i ne 'null'}">${i}</c:if>				
 						</c:forEach>
 						<br>
 						<br>
 						<h4>조리법</h4>
-						<pre>
-<c:out value="${requestScope.recipeOne.direction}" />
-						</pre>
-				</p>				
+						<pre><c:out value="${requestScope.recipeOne.direction}" /></pre>
+				</p>
+				
 				<c:if test="${sessionScope.nickname eq requestScope.chefName}">			
 					<button onclick="location.href='/step12_miniproject/updateRecipe.jsp'" class="w3-button w3-block w3-black w3-margin-bottom">레시피 수정</button>
 					<button onclick="location.href='/step12_miniproject/recipe?command=deleteRecipe&recipeId=${requestScope.recipeOne.recipeId}'" class="w3-button w3-block w3-black w3-margin-bottom">레시피 삭제</button>

@@ -29,12 +29,12 @@ insert into recipe values(recipe_id_seq.nextval, 4, '에그샌드위치', '1. 삶은 계�
 insert into recipe values(recipe_id_seq.nextval, 5, '김치볶음밥', '1. 잘게 자른 김치를 기름 두른 팬에 볶는다.(쓴 김치는 설탕을 추가한다.)'||CHR(10)||'2. 밥을 한 공기 넣고 볶는다.'||CHR(10)||'3. 계란 후라이를 밥 위에 올린다.(김가루는 필수입니다.)', 2, '42', '005.jpg');
 insert into recipe values(recipe_id_seq.nextval, 6, '라면', '1. 봉지에 적힌 물의 양을 맞춰 끓인다.(스프를 먼저 넣어야 끓는점이...)'||CHR(10)||'2. 물이 끓으면 파송송 해서 파와 면을 넣고 바로 뒤집은 후 젓가락으로 잘 풀어준다.'||CHR(10)||'3. 2분이 지나면 면만 먼저 그릇에 건진다.'||CHR(10)||'4. 끓는 국물에 계란을 넣고 익으면 덜어놓은 면에 부어준다.', 1, '65', '006.jpg');
 insert into recipe values(recipe_id_seq.nextval, 7, '로제파스타', '1. 소금을 1t 넣은 물에 면을 삶는다.'||CHR(10)||'2. 기름을 두른 팬에 마늘을 넣고 볶는다.'||CHR(10)||'3. 마늘이 노릇해지면 토마토소스와 크림을 넣고 끓인다.'||CHR(10)||'4. 면을 넣고 에멀징한다.', 0, '27', '007.jpg');
-insert into recipe values(recipe_id_seq.nextval, 8, '떡볶이', '1. 물을 끓인다.'||chr(10)||'2. 적당히 불린 떡을 넣는다.'||chr(10)||'3. 파송송 썰어서 재료들과 함께 넣는다.', 1, '7', null);
-insert into recipe values(recipe_id_seq.nextval, 9, '계란말이', '1. 식용유를 두른 팬을 달군다.'||chr(10)||'2. 계란을 잘 섞는다.'||chr(10)||'3. 계란말이 완성.', 0, '20', null);
-insert into recipe values(recipe_id_seq.nextval, 10, '소불고기볶음밥', '1. 소불고기소불고기'||chr(10)||'2. 조리법 정확히 기입해주세요.'||chr(10)||'3. 소불고기볶음밥 완성.', 2, '14', null);
-insert into recipe values(recipe_id_seq.nextval, 11, '김치제육볶음', '1. 김치를 준비한다.'||chr(10)||'2. 제육볶음을 만든다.'||chr(10)||'3. 제육볶음에 김치를 싸서 드셔보세요.', 3, '5', null);
-insert into recipe values(recipe_id_seq.nextval, 12, '크림떡볶이', '1. 크림을 준비한다.'||chr(10)||'2. 떡볶이를 만든다.'||chr(10)||'3. 궁중떡볶이 완성.', 3, '3', null);
-insert into recipe values(recipe_id_seq.nextval, 13, '참깨오일파스타', '1. 집에 올리브오일이 있을까요?'||chr(10)||'2. 올리브오일 대신 참기름을 사용해보세요 .'||chr(10)||'3. 따라하지 마세요.', 0, '99', null);
+insert into recipe values(recipe_id_seq.nextval, 8, '떡볶이', '1. 물을 끓인다.'||chr(10)||'2. 적당히 불린 떡을 넣는다.'||chr(10)||'3. 파송송 썰어서 재료들과 함께 넣는다.', 1, '7', '008.jpg');
+insert into recipe values(recipe_id_seq.nextval, 9, '계란말이', '1. 식용유를 두른 팬을 달군다.'||chr(10)||'2. 계란을 잘 섞는다.'||chr(10)||'3. 계란말이 완성.', 0, '20', '009.jpg');
+insert into recipe values(recipe_id_seq.nextval, 10, '소불고기볶음밥', '1. 소불고기소불고기'||chr(10)||'2. 조리법 정확히 기입해주세요.'||chr(10)||'3. 소불고기볶음밥 완성.', 2, '14', '010.jpg');
+insert into recipe values(recipe_id_seq.nextval, 11, '김치제육볶음', '1. 김치를 준비한다.'||chr(10)||'2. 제육볶음을 만든다.'||chr(10)||'3. 제육볶음에 김치를 싸서 드셔보세요.', 3, '5', '011.jpg');
+insert into recipe values(recipe_id_seq.nextval, 12, '크림떡볶이', '1. 크림을 준비한다.'||chr(10)||'2. 떡볶이를 만든다.'||chr(10)||'3. 궁중떡볶이 완성.', 3, '3', '012.jpg');
+insert into recipe values(recipe_id_seq.nextval, 13, '참깨오일파스타', '1. 집에 올리브오일이 있을까요?'||chr(10)||'2. 올리브오일 대신 참기름을 사용해보세요 .'||chr(10)||'3. 따라하지 마세요.', 0, '99', '013.jpg');
 
 
 commit;
