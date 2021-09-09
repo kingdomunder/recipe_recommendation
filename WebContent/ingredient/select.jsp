@@ -43,23 +43,22 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   
   
   <!-- 각 페이지마다 내용 바꿀 부분 !! - 모든 레시피 출력 -->
-  
-    <div style="background-color: whtie grey;height: 100px;text-align: center;vertical-align: middle;">
+  <div style="overflow:auto;">
+    <div style="background-color: whtie grey;height: 50px;text-align: center;vertical-align: middle; margin-bottom:50px">
       	<h1> 추천 메뉴 </h1>
       	 
-      	 <h4> 
+      	 <div style="height: 50px; font-size:xx-large; font-weight:bold; margin-bottom:20px;">
   		  <c:forEach items="${requestScope.recommend}" var="recommend">
-		<a href="/step12_miniproject/recipe?command=recipeOne&foodName=${recommend}">${recommend}</a>
+		<a href="/step12_miniproject/recipe?command=recipeOne&foodName=${recommend}"> [${recommend}]&nbsp;</a>
 		  </c:forEach>	
-		  </h4>
-	    
+	    </div>
     </div>
     
-    <div style="background-color: white;height: 60px;text-align: center;vertical-align: middle;">	
+    <div style="height: 50px;text-align: center;vertical-align: middle;">	
 		<h5> ${requestScope.selectError}</h5>
     </div>
     
-    <jsp:include page="../ingredient/ingredient.jsp" />
+  <jsp:include page="../ingredient/ingredient.jsp" />
 
   
   
