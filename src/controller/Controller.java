@@ -43,9 +43,7 @@ public class Controller extends HttpServlet {
 			if (command.equals("recipeAll")) {
 				instance.getAllRecipe(request, response);
 			} else if (command.equals("recipeOne")) {
-				instance.getRecipeOne(request, response);
-			} else if (command.equals("recipeOne")) {
-				instance.getRecipeIngredient(request, response);
+				getRecipeOne(request, response);
 			} else if (command.equals("likeRecipe")) {
 				instance.likeRecipe(request, response);
 			} else if (command.equals("addRecipe")) {
@@ -72,16 +70,6 @@ public class Controller extends HttpServlet {
 			request.getRequestDispatcher("showError.jsp").forward(request, response);
 			s.printStackTrace();
 		}
-	}
-
-	
-	// 레시피 하나로 재료 출력 - 유진
-	private void getRecipeIngredient(HttpServletRequest request, HttpServletResponse response) {
-		String url = "showError.jsp";
-		String foodName = request.getParameter("foodName");
-		
-		request.setAttribute("recipeIngredient", service.getRecipeIngredient(foodName));
-		url = "recipeOne.jsp";
 	}
 
 	

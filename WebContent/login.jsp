@@ -59,7 +59,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         		        		
         		<button type="submit" class="w3-button w3-block w3-black w3-margin-bottom">로그인하기:)</button>
       		</form>
-      		<button onclick="location.href='index.html'" class="w3-button w3-block w3-black w3-margin-bottom">취소하기:(</button>
+      		<button onclick="location.href='index.jsp'" class="w3-button w3-block w3-black w3-margin-bottom">취소하기:(</button>
     	</div>
   </div>
   
@@ -75,7 +75,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 
   <!-- Footer -->
-  <footer class="w3-container w3-padding-32 w3-grey">  
+  <footer class="footer-container w3-padding-10 w3-grey" style="font-family:'Nanum Gothic';"> 
     <jsp:include page="layout/footer.jsp" />
   </footer>
   

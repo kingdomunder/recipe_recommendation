@@ -80,8 +80,8 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     </div>
   </div>
 
-  <!-- Footer 푸터 -->
-  <footer class="w3-container w3-padding-32 w3-dark-grey">  
+  <!-- Footer -->
+  <footer class="footer-container w3-padding-10 w3-grey" style="font-family:'Nanum Gothic';"> 
     <jsp:include page="layout/footer.jsp" />
   </footer>
   

@@ -122,7 +122,7 @@ public class IngredientDAO {
 		return ingredientId;
 	}
 
-	// 음식 이름으로 해당 음식의 조리법 가져오기
+	// 음식 이름으로 해당 음식의 재료 가져오기
 	public ArrayList<String> getIngredientByFoodName(String foodName) {
 		EntityManager em = DBUtil.getEntityManager();
 		em.getTransaction().begin();

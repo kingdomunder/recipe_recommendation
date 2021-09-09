@@ -12,5 +12,10 @@
 </head>
 <body>
 	${errorMsg}
+	
+	<!-- Footer -->
+  <footer class="footer-container w3-padding-10 w3-grey" style="font-family:'Nanum Gothic';"> 
+    <jsp:include page="layout/footer.jsp" />
+  </footer>
 </body>
 </html>

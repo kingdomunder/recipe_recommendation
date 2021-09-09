@@ -126,25 +126,6 @@ public class RecipeDAO {
 	}
 	
 	
-	// 음식 이름으로 모든 재료 가져오기 - 유진
-	public IngredientDTO getRecipeIngredient(String foodname) {
-		EntityManager em = DBUtil.getEntityManager();
-		em.getTransaction().begin();
-		Recipe r = null;
-		IngredientDTO result = new IngredientDTO();
-		try {
-			r = (Recipe)em.createNamedQuery("Recipe.findByFoodName").setParameter("foodName", foodname).getSingleResult();
-			result = new IngredientDTO(r.getIngredientId().getIngredient1(), r.getIngredientId().getIngredient2(), r.getIngredientId().getIngredient3(), r.getIngredientId().getIngredient4(), r.getIngredientId().getIngredient5());
-		}catch(Exception e) {
-			e.printStackTrace();
-			em.getTransaction().rollback();
-		}finally {
-			em.close();
-		}
-		return result;
-	}
-	
-	
 	// 레시피 좋아요 누르기
 	public boolean updateLike(int recipeId) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
