@@ -84,7 +84,7 @@ public class IngredientDAO {
 			
 			//검색할 recipe들을 DB에서 전부 가져와 리스트화
 			recipe = (List<Recipe>)em.createNativeQuery("select * from Recipe", Recipe.class).getResultList();
-			recipe.forEach(v -> recipeDTOList.add(new RecipeDTO(v.getRecipeId(), v.getIngredientId().getIngredientId(), v.getFoodName(), v.getDirection(), v.getRecipeOwner().getChefId(), v.getLike())));
+			recipe.forEach(v -> recipeDTOList.add(new RecipeDTO(v.getRecipeId(), v.getIngredientId().getIngredientId(), v.getFoodName(), v.getDirection(), v.getRecipeOwner().getChefId(), v.getLike(), v.getImgPath())));
 			//가져온 recipe리스트와 ingredient id리스트를 비교하면서, id가 포함되어 있으면 해당 recipe의 foodName을 리스트에 저장 
 		
 			for(RecipeDTO r : recipeDTOList) {

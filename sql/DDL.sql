@@ -1,5 +1,10 @@
+﻿-- 회원
 DROP TABLE chef cascade constraint;
+
+-- 재료
 DROP TABLE ingredient cascade constraint;
+
+-- 조리법
 DROP TABLE recipe cascade constraint;
 
 DROP SEQUENCE chef_id_seq;
@@ -31,7 +36,8 @@ CREATE TABLE recipe (
        food_name      		VARCHAR2(30) NOT NULL,
        direction  			VARCHAR2(500) NOT NULL,
        recipe_owner  		NUMBER(10) default 0,
-       recipe_like  		NUMBER(10) default 0
+       recipe_like  		NUMBER(10) default 0,
+       img_path				VARCHAR2(30) NOT NULL
 );
 
 

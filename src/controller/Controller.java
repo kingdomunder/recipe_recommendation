@@ -43,13 +43,15 @@ public class Controller extends HttpServlet {
 				getAllRecipe(request, response);
 			} else if (command.equals("recipeOne")) {
 				getRecipeOne(request, response);
+			} else if (command.equals("recipeOne")) {
+				getRecipeIngredient(request, response);
 			} else if (command.equals("likeRecipe")) {
 				likeRecipe(request, response);
 			} else if (command.equals("addRecipe")) {
 				addRecipe(request, response);
-			}else if(command.equals("deleteRecipe")) {
+			} else if(command.equals("deleteRecipe")) {
 				deleteRecipe(request, response);
-			}else if(command.equals("selectIngredient")) {
+			} else if(command.equals("selectIngredient")) {
 				instance.selectIngredient(request, response);
 			} else if (command.equals("clearIngredient")) {
 				instance.clearIngredient(request, response);
@@ -71,6 +73,14 @@ public class Controller extends HttpServlet {
 
 	
 	
+	// 레시피 하나로 재료 출력 - 유진
+	private void getRecipeIngredient(HttpServletRequest request, HttpServletResponse response) {
+		String url = "showError.jsp";
+		String foodName = request.getParameter("foodName");
+		
+		request.setAttribute("recipeIngredient", service.getRecipeIngredient(foodName));
+		url = "recipeOne.jsp";
+	}
 
 	// 요청처리 성공시 alert 메시지 띄우는 함수
 	private void alert(HttpServletRequest request, HttpServletResponse response, String url, String message) throws IOException {

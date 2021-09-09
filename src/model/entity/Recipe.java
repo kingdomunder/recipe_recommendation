@@ -48,6 +48,9 @@ public class Recipe {
 	@Column(name="recipe_like")
 	private int like;
 	
+	@Column(name="img_path")
+	private String imgPath;
+	
 	// 레시피 등록할때 필요한 생성자
 	public Recipe(Ingredient ingredientId, String foodName, String direction, Chef recipeOwner) {
 		super();
@@ -56,11 +59,12 @@ public class Recipe {
 		this.direction = direction;
 		this.recipeOwner = recipeOwner;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Recipe [recipeId=" + recipeId + ", ingredientId=" + ingredientId + ", foodName=" + foodName
-				+ ", direction=" + direction + ", recipeOwner=" + recipeOwner + ", like=" + like + "]";
+				+ ", direction=" + direction + ", recipeOwner=" + recipeOwner + ", like=" + like + ", imgPath="
+				+ imgPath + "]";
 	}
 	
 }
