@@ -25,6 +25,12 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", "고딕"}
 	<jsp:include page="layout/nav.jsp" />
 </nav>
 
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-white w3-xlarge w3-padding-16">
+  <span class="w3-left w3-padding">방구석 Chef</span>
+  <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">&#9776;</a>
+</header>
+
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
@@ -38,7 +44,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", "고딕"}
   <div class="w3-row">
    	<c:forEach items="${recipeAll}" var="recipe">
    		<div class="w3-third recipe-padding">
-   			<c:if test="${recipe.imgPath ne 'null'}">
+   			<c:if test="${not empty recipe.imgPath}">
    				<div class="recipe-image">
    				<a href="recipe?command=recipeOne&foodName=${recipe.foodName}">
    				<img src="images/food/${recipe.imgPath}" alt="image">
@@ -49,7 +55,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", "고딕"}
    				<div class="recipe-image">
    				<img src="images/food/noimage.png" alt="image" style="position: relative; center: 100%; ">
    				</div>
-   			</c:if>	
+   			</c:if>
    			<div class="recipe-block">
 				<a href="recipe?command=recipeOne&foodName=${recipe.foodName}"><div class="recipe-name">${recipe.foodName}</div></a>
 				<div class="recipe-like">좋아요 ${recipe.like}개&nbsp;&nbsp;<a href="recipe?command=likeRecipe&recipeId=${recipe.recipeId}">♥</a></div>
