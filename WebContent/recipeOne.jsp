@@ -47,7 +47,7 @@ img{margin: 10px;}
    					<img src="images/food/${requestScope.recipeOne.imgPath}" alt="image" width="300px" style="margin-right:50px; margin-bottom:200px;">
    				</c:if>
    				<c:if test="${empty requestScope.recipeOne.imgPath}">
-   					<img src="images/food/noimg.png" alt="image" width="300px" style="margin-right:50px; margin-bottom:200px;">
+   					<img src="images/food/noimage.png" alt="image" width="300px" style="margin-right:50px; margin-bottom:200px;">
    				</c:if>
 			
 				<p style="margin-left: 10px;">

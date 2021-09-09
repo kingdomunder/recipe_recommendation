@@ -5,6 +5,10 @@
 
 
 <!DOCTYPE html>
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="images/egg.ico">
+	<title>방구석 CHEF</title>
+</head>
 <html lang="en">
 <title>마이 페이지</title>
 <meta charset="UTF-8">

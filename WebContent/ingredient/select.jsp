@@ -4,6 +4,10 @@
 <% String url = application.getContextPath() + "/"; %>
 
 <!DOCTYPE html>
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="images/egg.ico">
+	<title>방구석 CHEF</title>
+</head>
 <html lang="en">
 <title>재료 선택하기</title>
 <meta charset="UTF-8">

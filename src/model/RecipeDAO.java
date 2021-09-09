@@ -2,6 +2,7 @@ package model;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -26,15 +27,33 @@ public class RecipeDAO {
 		return instance;
 	}
 
+	
 	// 모든 레시피 조회
 	public ArrayList<RecipeDTO> getAllRecipe() throws NotExistException{
 		EntityManager em = DBUtil.getEntityManager();
 		em.getTransaction().begin();
 		List<Recipe> list = null;
 		ArrayList<RecipeDTO> result = new ArrayList<>();
+		ArrayList<Integer> Likes = new ArrayList<>();
+		ArrayList<RecipeDTO> resultSorted = new ArrayList<>();
 		try {
 			list = (List<Recipe>)em.createNativeQuery("select * from Recipe", Recipe.class).getResultList();
 			list.forEach(v -> result.add(new RecipeDTO(v.getRecipeId(), v.getIngredientId().getIngredientId(), v.getFoodName(), v.getDirection(), v.getRecipeOwner().getChefId(), v.getLike(), v.getImgPath())));
+			
+			for(RecipeDTO r : result) {
+				Likes.add(r.getLike());
+			}
+
+			Likes.sort(Comparator.reverseOrder());
+			
+			for(int i : Likes) {
+				for(RecipeDTO r : result) {
+					if(r.getLike() == i) {
+						resultSorted.add(r);
+					}
+				}
+			}
+			
 		}catch(NoResultException e) {
 			e.printStackTrace();
 			throw new NotExistException();
@@ -42,16 +61,11 @@ public class RecipeDAO {
 			e.printStackTrace();
 			em.getTransaction().rollback();
 		}finally {
-			em.close();
+			em.close();  
 		}
-		return result;
+		return resultSorted;
 	}
 	
-//	@Test
-	void test() throws NotExistException {
-		String a = "woosong";
-		System.out.println(getMyRecipe(a));
-	}
 	
 	// 내가 등록한 레시피 모두 조회
 	public Object getMyRecipe(String nickname) throws NotExistException {

@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <head>
     <link rel="shortcut icon" type="image/x-icon" href="images/egg.ico">
-	<title>방구석 CHEF</title>
+	<title>방구석 CHEF</title>
 </head>
 <html lang="en">
 <meta charset="UTF-8">
