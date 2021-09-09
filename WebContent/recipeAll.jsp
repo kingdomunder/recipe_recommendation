@@ -38,19 +38,21 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <div class="w3-row">
    	<c:forEach items="${recipeAll}" var="recipe">
    		<div class="w3-third recipe-padding">
-   			<c:if test="${reipe.imgPath ne 'null'}">
+   			<c:if test="${recipe.imgPath ne 'null'}">
    				<div class="recipe-image">
+   				<a href="recipe?command=recipeOne&foodName=${recipe.foodName}">
    				<img src="images/food/${recipe.imgPath}" alt="image">
+   				</a>
    				</div>
-   			</c:if>
-   			<c:if test="${recipe.imgPath eq 'null'}">
-	   			<div class="recipe-image">
-   					no image
+   			</c:if>	
+   			<c:if test="${empty recipe.imgPath || recipe.imgPath eq 'null'}">
+   				<div class="recipe-image">
+   				<img src="images/food/noimage.png" alt="image" style="position: relative; center: 100%; ">
    				</div>
-   			</c:if>
+   			</c:if>	
    			<div class="recipe-block">
 				<a href="recipe?command=recipeOne&foodName=${recipe.foodName}"><div class="recipe-name">${recipe.foodName}</div></a>
-				<div class="recipe-like">좋아요 ${recipe.like}개</div>
+				<div class="recipe-like">좋아요 ${recipe.like}개&nbsp;&nbsp;<a href="recipe?command=likeRecipe&recipeId=${recipe.recipeId}">♥</a></div>
 			</div>
 		</div>
 	</c:forEach>

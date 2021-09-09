@@ -43,11 +43,11 @@ img{margin: 10px;}
 		<!-- 모든 레시피에서 클릭한 레시피 1개 출력 -->
 		<div class="w3-container w3-light-grey w3-padding-32 w3-padding-large">
 			<div class="form-container">
-				<c:if test="${not empty requestScope.recipeOne.imgPath}">
-   				<img src="images/food/${requestScope.recipeOne.imgPath}" alt="image" width="300px" style="margin-right:30px">
+				<c:if test="${requestScope.recipeOne.imgPath ne 'null'}">
+   					<img src="images/food/${requestScope.recipeOne.imgPath}" alt="image" width="300px" style="margin-right:50px; margin-bottom:200px;">
    				</c:if>
-   				<c:if test="${empty requestScope.recipeOne.imgPath}">
-   				<img src="images/food/noimg.png" alt="image">
+   				<c:if test="${requestScope.recipeOne.imgPath eq 'null'}">
+   					<img src="images/food/noimg.png" alt="image" width="300px" style="margin-right:50px; margin-bottom:200px;">
    				</c:if>
 			
 				<p style="margin-left: 10px;">
@@ -57,13 +57,13 @@ img{margin: 10px;}
 					<br><h4>재료</h4>
 					<c:forEach items="${ingredient}" var="i">		
 					<c:if test="${i ne 'null'}">${i}</c:if>				
-					</c:forEach>
-					<br>
-					<br>
-					<h4>조리법</h4>
-					<pre>
+						</c:forEach>
+						<br>
+						<br>
+						<h4>조리법</h4>
+						<pre>
 <c:out value="${requestScope.recipeOne.direction}" />
-					</pre>
+						</pre>
 				</p>
 				<c:if test="${empty sessionScope.nickname}">			
 				<button onclick="location.href='/step12_miniproject/recipe?command=deleteRecipe&recipeId=${requestScope.recipeOne.recipeId}'" class="w3-button w3-block w3-black w3-margin-bottom">레시피 삭제</button>

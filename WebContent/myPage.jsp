@@ -61,7 +61,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 	  		</div>
 	  		<br>
 	
-	  		<button onclick="location.href='addRecipe.html'" class="w3-button w3-block w3-black w3-margin-bottom">레시피 등록하기:)</button>
+	  		<button onclick="location.href='addRecipe.jsp'" class="w3-button w3-block w3-black w3-margin-bottom">레시피 등록하기:)</button>
 	  	</div>
 	  </div>
 	 

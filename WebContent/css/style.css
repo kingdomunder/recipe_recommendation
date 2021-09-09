@@ -45,12 +45,15 @@ a{
 .recipe-image{
 	height: 350px;
 	overflow: hidden;
+	center; top; 
+	width:100%;
 }
 .form-container{
 	vertical-align: center;
 	background-color: white;
 	margin: 30px 30px 30px 30px;
 	padding: 30px 30px 30px 30px;
+	overflow: auto;
 }
 
 
