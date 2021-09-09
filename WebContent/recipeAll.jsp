@@ -15,8 +15,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <style>
 body,h1,h2,h3,h4,h5 {font-family: "Raleway", "고딕"}
-.w3-third img{margin-bottom: -6px; opacity: 0.8; cursor: pointer}
-.w3-third img:hover{opacity: 1}
+.w3-third img{margin-bottom: -6px; opacity: 1; cursor: pointer}
+.w3-third img:hover{opacity: 0.7}
 </style>
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
@@ -79,8 +79,6 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", "고딕"}
     <jsp:include page="layout/footer.jsp" />
   </footer>
   
-  <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></div>
-
 <!-- End page content -->
 </div>
 

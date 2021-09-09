@@ -73,7 +73,6 @@ public class Controller extends HttpServlet {
 	}
 
 	
-	
 	// 레시피 하나로 재료 출력 - 유진
 	private void getRecipeIngredient(HttpServletRequest request, HttpServletResponse response) {
 		String url = "showError.jsp";
@@ -83,6 +82,7 @@ public class Controller extends HttpServlet {
 		url = "recipeOne.jsp";
 	}
 
+	
 	// 요청처리 성공시 alert 메시지 띄우는 함수
 	private void alert(HttpServletRequest request, HttpServletResponse response, String url, String message) throws IOException {
 		response.setContentType("text/html; charset=UTF-8"); 
@@ -124,6 +124,7 @@ public class Controller extends HttpServlet {
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 
+	
 	// 내가 등록한 레시피만 출력
 	private void getMyRecipe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "showError.jsp";
@@ -138,6 +139,7 @@ public class Controller extends HttpServlet {
 		}
 		request.getRequestDispatcher(url).forward(request, response);
 	}
+	
 	
 	// 선택한 재료 레시피 추천 - 우송 ------------------------------------------------------------------
 	private void selectIngredient(HttpServletRequest request, HttpServletResponse response)
@@ -234,6 +236,7 @@ public class Controller extends HttpServlet {
 		}
 	}
 
+	
 	// 레시피 등록
 	private void addRecipe(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -269,6 +272,7 @@ public class Controller extends HttpServlet {
 		}
 	}
 
+	
 	// 레시피 삭제
 	private void deleteRecipe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int recipeId = Integer.parseInt(request.getParameter("recipeId"));
@@ -310,6 +314,7 @@ public class Controller extends HttpServlet {
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 
+	
 	// 회원가입
 	private void addChef(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		boolean result = false;
@@ -345,6 +350,7 @@ public class Controller extends HttpServlet {
 		
 	}
 
+	
 	// 로그인
 	private void logInChef(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nickname = request.getParameter("nickname");
@@ -367,10 +373,12 @@ public class Controller extends HttpServlet {
 	}
 	
 	
+	// 로그아웃
 	private void logOutChef(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		
 		alert(request, response, "recipe?command=recipeAll", "로그아웃 되었습니다.");
 	}
+	
 }

@@ -11,9 +11,11 @@
  
    <div class="w3-third">
      <h3>GITHUB</h3>
-     <a href="https://github.com/hyemin-jang/recipe_recommendation">소스코드가 궁금하시다면 깃허브에 방문해주세용</a>    
-     <i class="fa fa-github"></i>
-     
+     <a href="https://github.com/hyemin-jang/recipe_recommendation">
+     	소스코드가 궁금하시다면 깃허브에 방문해주세용
+     	<i class="fa fa-github"></i>
+     </a>
+    
    </div>
 
    <div class="w3-third">

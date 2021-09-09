@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -13,9 +12,9 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <style>
-body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
-.w3-third img{margin-bottom: -6px; opacity: 0.8; cursor: pointer}
-.w3-third img:hover{opacity: 1}
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", 'Nanum Gothic'}
+.w3-third img{margin-bottom: -6px; opacity: 0.9; cursor: pointer}
+.w3-third img:hover{opacity: 0.7}
 </style>
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
@@ -42,7 +41,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   
   <!-- Photo grid -->
   <div class="w3-row">
-    <div class="w3-third">
+    <!-- <div class="w3-third">
       <img src="images/index1.jpg" style="width:100%" onclick="onClick(this)" alt="A boy surrounded by beautiful nature">
       <div style="height:100px; width:100%; background-color:black; color:white; text-align:center; padding-top:40px;">Everyone</div>
       <img src="images/index2.jpg" style="width:100%" onclick="onClick(this)" alt="The Beach. Me. Alone. Beautiful">
@@ -58,6 +57,23 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       <img src="images/index5.jpg" style="width:100%" onclick="onClick(this)" alt="Quiet day at the beach. Cold, but beautiful">
      <div style="height:100px; width:100%; background-color:black; color:white; text-align:center; padding-top:40px;">a Chef</div>
       <img src="images/index6.jpg" style="width:100%" onclick="onClick(this)" alt="Nature again.. At its finest!">
+    </div> -->
+    <div class="w3-third">
+      <img src="images/index/001.jpg" style="width:100%" onclick="onClick(this)" alt="방구석 셰프">
+      <div style="height:100px; width:100%; background-color:black; color:white; font-weight:500; text-align:center; padding-top:30px;"><h4>EVERYONE</h4></div>
+      <img src="images/index/002.jpg" style="width:100%" onclick="onClick(this)" alt="방구석 셰프">
+    </div>
+    
+    <div class="w3-third">
+      <img src="images/index/003.jpg" style="width:100%" onclick="onClick(this)" alt="방구석 셰프">
+      <div style="height:100px; width:100%; background-color:black; color:white; font-weight:500; text-align:center; padding-top:30px;"><h4>CAN BE</h4></div>
+      <img src="images/index/004.jpg" style="width:100%" onclick="onClick(this)" alt="방구석 셰프">
+    </div>
+   
+    <div class="w3-third">
+      <img src="images/index/005.jpg" style="width:100%" onclick="onClick(this)" alt="방구석 셰프">
+     <div style="height:100px; width:100%; background-color:black; color:white; font-weight:500; text-align:center; padding-top:30px;"><h4>A CHEF</h4></div>
+      <img src="images/index/006.jpg" style="width:100%" onclick="onClick(this)" alt="방구석 셰프">
     </div>
   </div>
 
@@ -72,12 +88,10 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </div>
 
   <!-- Footer -->
-  <footer class="w3-container w3-padding-32 w3-grey">  
+  <footer class="w3-container w3-padding-10 w3-grey" style="font-family:'Nanum Gothic';"> 
     <jsp:include page="layout/footer.jsp" />
   </footer>
   
-  <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></div>
-
 <!-- End page content -->
 </div>
 
