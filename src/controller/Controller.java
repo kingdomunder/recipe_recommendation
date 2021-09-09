@@ -41,27 +41,29 @@ public class Controller extends HttpServlet {
 
 		try {
 			if (command.equals("recipeAll")) {
-				getAllRecipe(request, response);
+				instance.getAllRecipe(request, response);
 			} else if (command.equals("recipeOne")) {
 				getRecipeOne(request, response);
 			} else if (command.equals("likeRecipe")) {
-				likeRecipe(request, response);
+				instance.likeRecipe(request, response);
 			} else if (command.equals("addRecipe")) {
-				addRecipe(request, response);
+				instance.addRecipe(request, response);
 			} else if(command.equals("deleteRecipe")) {
-				deleteRecipe(request, response);
+				instance.deleteRecipe(request, response);
+			} else if(command.equals("updateRecipe")) {
+				instance.updateRecipe(request, response);
 			} else if(command.equals("selectIngredient")) {
 				instance.selectIngredient(request, response);
 			} else if (command.equals("clearIngredient")) {
 				instance.clearIngredient(request, response);
 			} else if (command.equals("addChef")) {
-				addChef(request, response);
+				instance.addChef(request, response);
 			} else if (command.equals("login")) {
-				logInChef(request, response);
+				instance.logInChef(request, response);
 			}else if (command.equals("logout")) {
-				logOutChef(request, response);
+				instance.logOutChef(request, response);
 			}else if (command.equals("myRecipe")) {
-				getMyRecipe(request, response);
+				instance.getMyRecipe(request, response);
 			}
 		} catch (Exception s) {
 			request.setAttribute("errorMsg", s.getMessage());
@@ -86,9 +88,20 @@ public class Controller extends HttpServlet {
 		String url = "showError.jsp";
 		String foodName = request.getParameter("foodName");
 		try {
-			request.setAttribute("recipeOne", service.getRecipeOne(foodName));
-			request.setAttribute("chefName", service.getChefName(foodName));
-			request.setAttribute("ingredient", service.getIngredientByFoodName(foodName));
+			RecipeDTO recipe = service.getRecipeOne(foodName);
+			String chef = service.getChefName(foodName);
+			ArrayList<String> ingredient = service.getIngredientByFoodName(foodName);
+			request.setAttribute("recipeOne", recipe);
+			request.setAttribute("chefName", chef);
+			request.setAttribute("ingredient", ingredient);
+			
+			HttpSession recipeSession = request.getSession();
+			
+			recipeSession.setAttribute("recipeIdSession", recipe.getRecipeId());
+			recipeSession.setAttribute("recipeOneSession", recipe);
+			recipeSession.setAttribute("chefNameSession", chef);
+			recipeSession.setAttribute("ingredientSession", ingredient);
+			
 			url = "recipeOne.jsp";
 		} catch (Exception e) {
 			request.setAttribute("errorMsg", e.getMessage());
@@ -243,6 +256,11 @@ public class Controller extends HttpServlet {
 		IngredientDTO ingredient = new IngredientDTO(ing1, ing2, ing3, ing4, ing5);
 		
 		try {
+			result = service.expectFoodName(foodName);
+			if(result == false) {
+				alert(request, response, "recipe?command=myRecipe", "이미 존재하는 요리입니다.");
+				return;
+			}
 			int ingredientId = service.addIngredient(ingredient); // 새로 등록한 ingredient의 id 반환
 			
 			// 새로 등록할 recipe DTO 생성해서 등록하기
@@ -259,17 +277,50 @@ public class Controller extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+	
+	// 레시피 수정
+	private void updateRecipe(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		boolean result = false;
+
+		int recipeId = (int)request.getSession().getAttribute("recipeIdSession");
+
+		String foodName = request.getParameter("foodName");
+		String direction = request.getParameter("direction");
+		
+		IngredientDTO ingredient = new IngredientDTO();
+		ingredient.setIngredient1(request.getParameter("ingredient1"));
+		ingredient.setIngredient1(request.getParameter("ingredient2"));
+		ingredient.setIngredient1(request.getParameter("ingredient3"));
+		ingredient.setIngredient1(request.getParameter("ingredient4"));
+		ingredient.setIngredient1(request.getParameter("ingredient5"));
+		
+		try {
+			result = service.updateRecipe(recipeId, foodName, direction, ingredient);
+
+			if (result) {
+				alert(request, response, "recipe?command=recipeOne&foodName="+foodName, "레시피 수정에 성공했습니다.");
+			} else {
+				alert(request, response, "recipe?command=recipeOne&foodName="+foodName, "레시피 수정에 실패했습니다.");
+			}
+		} catch (Exception e) {
+			alert(request, response, "recipe?command=recipeOne&foodName="+foodName, "레시피 수정에 실패했습니다.");
+			e.printStackTrace();
+		}
+		HttpSession recipeSession = request.getSession();
+		recipeSession.removeAttribute("recipeIdSession");
+		recipeSession.removeAttribute("recipeOneSession");
+		recipeSession.removeAttribute("chefNameSession");
+		recipeSession.removeAttribute("ingredientSession");
+	}
 
 	
 	// 레시피 삭제
 	private void deleteRecipe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int recipeId = Integer.parseInt(request.getParameter("recipeId"));
-		String url = null;
 		try {
 			boolean result = service.deleteRecipe(recipeId);
 			if(result) {
 				alert(request, response, "recipe?command=myRecipe", "레시피 삭제에 성공했습니다.");
-				url = "recipeAll.jsp";
 			}else {
 				alert(request, response, "recipe?command=myRecipe", "레시피 삭제에 실패했습니다.");
 			}
@@ -277,7 +328,6 @@ public class Controller extends HttpServlet {
 			alert(request, response, "recipe?command=myRecipe", "레시피 삭제에 실패했습니다.");
 			e.printStackTrace();
 		}
-		request.getRequestDispatcher(url).forward(request, response);
 	}
 
 	

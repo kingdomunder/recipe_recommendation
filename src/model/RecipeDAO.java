@@ -8,7 +8,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
-import org.junit.jupiter.api.Test;
 
 import exception.NotExistException;
 import model.dto.IngredientDTO;
@@ -43,17 +42,17 @@ public class RecipeDAO {
 			for(RecipeDTO r : result) {
 				Likes.add(r.getLike());
 			}
-
 			Likes.sort(Comparator.reverseOrder());
 			
 			for(int i : Likes) {
-				for(RecipeDTO r : result) {
-					if(r.getLike() == i) {
-						resultSorted.add(r);
+				for(int r = 0 ; r < result.size() ; r++) {
+					if(result.get(r).getLike() == i) {
+						resultSorted.add(result.get(r));
+						result.remove(result.get(r));
+						break;
 					}
 				}
 			}
-			
 		}catch(NoResultException e) {
 			e.printStackTrace();
 			throw new NotExistException();
@@ -175,8 +174,35 @@ public class RecipeDAO {
 		boolean result = false;
 		try {
 			Recipe r = em.find(Recipe.class, recipeId);
-			System.out.println("dao 레시피아이디"+r.getRecipeId());
 			em.remove(r);
+			em.getTransaction().commit();
+			result = true;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			em.close();
+		}
+		return result;
+	}
+	
+	// 레시피 수정
+	public boolean updateRecipe(int recipeId, String foodName, String direction, IngredientDTO ingredient) {
+		EntityManager em = DBUtil.getEntityManager();
+		em.getTransaction().begin();
+		boolean result = false;
+		try {
+			Recipe r = em.find(Recipe.class, recipeId); // 수정할 레시피 가져오기
+			Ingredient i = r.getIngredientId();  // 수정할 레시피의 재료 가져오기
+			
+			i.setIngredient1(ingredient.getIngredient1());
+			i.setIngredient1(ingredient.getIngredient2());
+			i.setIngredient1(ingredient.getIngredient3());
+			i.setIngredient1(ingredient.getIngredient4());
+			i.setIngredient1(ingredient.getIngredient5());
+			r.setFoodName(foodName);
+			r.setIngredientId(i);
+			r.setDirection(direction);
+			
 			em.getTransaction().commit();
 			result = true;
 		}catch(Exception e) {

@@ -73,7 +73,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         		</div>
         		<div class="w3-section">
          			<label>조리법을 설명해주세요</label>
-          			<textarea class="w3-input w3-border" name="direction"></textarea>
+          			<textarea class="w3-input w3-border" name="direction" required></textarea>
         		</div>
         		
         		<button type="submit" class="w3-button w3-block w3-black w3-margin-bottom">등록 :)</button>
