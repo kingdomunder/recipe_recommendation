@@ -47,11 +47,12 @@ a{
 	background-color: grey;
 }
 .form-container{
-	height: 900px;
+	height: 100%;
 	vertical-align: center;
 	background-color: white;
 	margin: 30px 30px 30px 30px;
 	padding: 30px 30px 30px 30px;
+	overflow: auto;
 }
 
 
