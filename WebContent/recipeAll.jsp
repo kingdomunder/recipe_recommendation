@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <style>
-body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", "고딕"}
 .w3-third img{margin-bottom: -6px; opacity: 0.8; cursor: pointer}
 .w3-third img:hover{opacity: 1}
 </style>
@@ -45,7 +45,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
    				</a>
    				</div>
    			</c:if>	
-   			<c:if test="${empty recipe.imgPath || recipe.imgPath eq 'null'}">
+   			<c:if test="${empty recipe.imgPath}">
    				<div class="recipe-image">
    				<img src="images/food/noimage.png" alt="image" style="position: relative; center: 100%; ">
    				</div>

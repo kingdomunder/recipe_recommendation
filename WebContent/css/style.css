@@ -49,6 +49,7 @@ a{
 	width:100%;
 }
 .form-container{
+	height: 100%;
 	vertical-align: center;
 	background-color: white;
 	margin: 30px 30px 30px 30px;
@@ -80,6 +81,7 @@ a{
 	text-align: center;
 }
 
+/* -----끝-------*/
 
 article, aside, details, figcaption, figure, footer, header, main, menu,
 	nav, section {
@@ -439,11 +441,13 @@ a {
 .w3-ul li:last-child {
 	border-bottom: none
 }
-
+/*------------------------우송---------------------------------------*/
 .w3-tooltip, .w3-display-container {
-	position: relative
+	position: relative;
+	float: left;
+	width: 100px
 }
-
+/*------------------------우송---------------------------------------*/
 .w3-tooltip .w3-text {
 	display: none
 }

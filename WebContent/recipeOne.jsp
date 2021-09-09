@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <style>
-body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", "고딕"}
 .w3-third img{margin-bottom: -6px; opacity: 0.8; cursor: pointer}
 .w3-third img:hover{opacity: 1}
 </style>
@@ -43,10 +43,10 @@ img{margin: 10px;}
 		<!-- 모든 레시피에서 클릭한 레시피 1개 출력 -->
 		<div class="w3-container w3-light-grey w3-padding-32 w3-padding-large">
 			<div class="form-container">
-				<c:if test="${requestScope.recipeOne.imgPath ne 'null'}">
+				<c:if test="${not empty requestScope.recipeOne.imgPath}">
    					<img src="images/food/${requestScope.recipeOne.imgPath}" alt="image" width="300px" style="margin-right:50px; margin-bottom:200px;">
    				</c:if>
-   				<c:if test="${requestScope.recipeOne.imgPath eq 'null'}">
+   				<c:if test="${empty requestScope.recipeOne.imgPath}">
    					<img src="images/food/noimg.png" alt="image" width="300px" style="margin-right:50px; margin-bottom:200px;">
    				</c:if>
 			
@@ -65,8 +65,9 @@ img{margin: 10px;}
 <c:out value="${requestScope.recipeOne.direction}" />
 						</pre>
 				</p>
-				<c:if test="${empty sessionScope.nickname}">			
-				<button onclick="location.href='/step12_miniproject/recipe?command=deleteRecipe&recipeId=${requestScope.recipeOne.recipeId}'" class="w3-button w3-block w3-black w3-margin-bottom">레시피 삭제</button>
+				
+				<c:if test="${not empty sessionScope.nickname}">			
+					<button onclick="location.href='/step12_miniproject/recipe?command=deleteRecipe&recipeId=${requestScope.recipeOne.recipeId}'" class="w3-button w3-block w3-black w3-margin-bottom">레시피 삭제</button>
 				</c:if>
 			</div>
 		</div>
