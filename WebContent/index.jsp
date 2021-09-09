@@ -13,21 +13,21 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <style>
 body,h1,h2,h3,h4,h5 {font-family: "Raleway", 'Nanum Gothic'}
-.w3-third img{margin-bottom: -6px; opacity: 0.9; cursor: pointer}
+.w3-third img{margin-bottom: -6px; opacity: 0.8; cursor: pointer; background-color: grey}
 .w3-third img:hover{opacity: 0.7}
 </style>
-<body class="w3-light-grey w3-content" style="max-width:1600px">
+<body class="body-yellow w3-content">
 
 
 <!-- 네비게이션 -->
-<nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center" style="z-index:3; width:300px; font-weight:bold" id="mySidebar"><br>
+<nav class="w3-sidebar w3-bar-block w3-animate-left w3-text-white w3-collapse w3-top w3-center" style="z-index:3; width:300px; font-weight:bold" id="mySidebar"><br>
 	<jsp:include page="layout/nav.jsp" />
 </nav>
 
 <!-- Top menu on small screens -->
-<header class="w3-container w3-top w3-hide-large w3-white w3-xlarge w3-padding-16">
-  <span class="w3-left w3-padding"><h3>방구석 Chef</h3></span>
-  <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">&#9776;</a>
+<header class="w3-container w3-top w3-hide-large w3-xlarge w3-padding-20" style="background-color: #FF712C; color: white; font-weight: bolder;">
+  <span class="w3-left w3-padding-16">방구석 Chef</span>
+  <a href="javascript:void(0)" class="w3-right w3-button w3-white w3-padding-16" style="padding-top: 20px" onclick="w3_open()">&#9776;</a>
 </header>
 
 <!-- Overlay effect when opening sidebar on small screens -->
@@ -43,19 +43,19 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", 'Nanum Gothic'}
   <div class="w3-row">
     <div class="w3-third">
       <img src="images/index/001.jpg" style="width:100%" onclick="onClick(this)" alt="'대한민국 법조계에 김앤장이 있다면, 플레이데이터에는 혜민장이 있다.' - W.S.Lim, - PD Porject 中 -">
-      <div style="height:100px; width:100%; background-color:black; color:white; font-weight:500; text-align:center; padding-top:30px;"><h4>EVERYONE</h4></div>
+      <div style="height:100px; width:100%; background-color:#333333; color:white; font-weight:500; text-align:center; padding-top:30px;"><h4>EVERYONE</h4></div>
       <img src="images/index/002.jpg" style="width:100%" onclick="onClick(this)" alt="- 10%의 확신과, 90%의 이게 왜 돌아가지? -">
     </div>
     
     <div class="w3-third">
       <img src="images/index/003.jpg" style="width:100%" onclick="onClick(this)" alt="'벌써 자면 어떡해... 일어나, 코딩해야지'">
-      <div style="height:100px; width:100%; background-color:black; color:white; font-weight:500; text-align:center; padding-top:30px;"><h4>CAN BE</h4></div>
+      <div style="height:100px; width:100%; background-color:#333333; color:white; font-weight:500; text-align:center; padding-top:30px;"><h4>CAN BE</h4></div>
       <img src="images/index/004.jpg" style="width:100%" onclick="onClick(this)" alt="'저쪽 집이 무너졌다고 해서 구경하러 갔죠. 그런데 보고 오니 우리집이 무너진거에요.'">
     </div>
    
     <div class="w3-third">
       <img src="images/index/005.jpg" style="width:100%" onclick="onClick(this)" alt="- 1번, 2번 메소드를 만들고 테스트하면 3번 메소드가 실행된다. -">
-     <div style="height:100px; width:100%; background-color:black; color:white; font-weight:500; text-align:center; padding-top:30px;"><h4>A CHEF</h4></div>
+     <div style="height:100px; width:100%; background-color:#333333; color:white; font-weight:500; text-align:center; padding-top:30px;"><h4>A CHEF</h4></div>
       <img src="images/index/006.jpg" style="width:100%" onclick="onClick(this)" alt="- 모든 에러를 잡아도 사용자는 기상천외한 문제를 발생시킨다. -">
     </div>
   </div>
@@ -71,7 +71,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", 'Nanum Gothic'}
   </div>
 
   <!-- Footer -->
-  <footer class="footer-container w3-padding-10 w3-grey" style="font-family:'Nanum Gothic';"> 
+  <footer class="footer-container w3-padding-10" style="font-family:'Nanum Gothic';"> 
     <jsp:include page="layout/footer.jsp" />
   </footer>
   

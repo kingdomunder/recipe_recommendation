@@ -23,34 +23,34 @@ import lombok.Setter;
 @Builder
 
 @Entity
-@NamedQuery(query="select r from Recipe r where r.foodName=:foodName", name="Recipe.findByFoodName")
-@NamedQuery(query="select r from Recipe r where r.recipeOwner=:recipeOwner", name="Recipe.findByRecipeOwner")
-@SequenceGenerator(name="recipe_seq", sequenceName="recipe_id_seq", initialValue=1, allocationSize=1)
+@NamedQuery(query = "select r from Recipe r where r.foodName=:foodName", name = "Recipe.findByFoodName")
+@NamedQuery(query = "select r from Recipe r where r.recipeOwner=:recipeOwner", name = "Recipe.findByRecipeOwner")
+@SequenceGenerator(name = "recipe_seq", sequenceName = "recipe_id_seq", initialValue = 1, allocationSize = 1)
 public class Recipe {
 	@Id
-	@Column(name="recipe_id")
+	@Column(name = "recipe_id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "recipe_seq")
 	private int recipeId;
 
 	@OneToOne
-	@JoinColumn(name="ingredient_id")
+	@JoinColumn(name = "ingredient_id")
 	private Ingredient ingredientId;
-	
-	@Column(name="food_name")
+
+	@Column(name = "food_name")
 	private String foodName;
-	
+
 	private String direction;
-	
-	@JoinColumn(name="recipe_owner")
+
+	@JoinColumn(name = "recipe_owner")
 	@OneToOne
 	private Chef recipeOwner;
-	
-	@Column(name="recipe_like")
+
+	@Column(name = "recipe_like")
 	private int like;
-	
-	@Column(name="img_path")
+
+	@Column(name = "img_path")
 	private String imgPath;
-	
+
 	// 레시피 등록할때 필요한 생성자
 	public Recipe(Ingredient ingredientId, String foodName, String direction, Chef recipeOwner) {
 		super();
@@ -63,8 +63,7 @@ public class Recipe {
 	@Override
 	public String toString() {
 		return "Recipe [recipeId=" + recipeId + ", ingredientId=" + ingredientId + ", foodName=" + foodName
-				+ ", direction=" + direction + ", recipeOwner=" + recipeOwner + ", like=" + like + ", imgPath="
-				+ imgPath + "]";
+				+ ", direction=" + direction + ", recipeOwner=" + recipeOwner + ", like=" + like + ", imgPath=" + imgPath + "]";
 	}
-	
+
 }

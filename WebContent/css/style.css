@@ -20,13 +20,26 @@ body {
 a{
 	text-decoration: none;
 }
+.body-yellow{
+	background-color: #FFF6C5;
+	max-width:1600px;
+	padding-bottom: 120px;
+}
+.body-box{
+	left:300px;
+	height: 120%;
+	width: 100%;
+	background-color: #FFF6C5;
+	position: fixed !important;
+	z-index: 1;
+	overflow: auto
+}
 .footer-container{
-	/* position: sticky; */
-	left:0px;
+	left:300px;
 	bottom:0px;
 	height: 100px;
 	width: 100%;
-	background-color: grey;
+	background-color: #695D46;
 	position: fixed !important;
 	z-index: 1;
 	overflow: auto
@@ -67,7 +80,6 @@ a{
 .form-container{
 	height: 100%;
 	vertical-align: center;
-	background-color: white;
 	margin: 30px 30px 30px 30px;
 	padding: 30px 30px 30px 30px;
 	overflow: auto;
@@ -536,11 +548,10 @@ a {
 }
 
 .w3-sidebar {
-	position: sticky;
 	left:0px;
 	height: 100%;
 	width: 200px;
-	background-color: #fff;
+	background-color: #FF712C;
 	position: fixed !important;
 	z-index: 1;
 	overflow: auto
@@ -798,7 +809,7 @@ a {
 }
 
 .w3-content {
-	max-width: 980px
+	max-width: 1500px
 }
 
 .w3-auto {
@@ -1447,7 +1458,7 @@ to {
 
 .w3-button:hover {
 	color: #000 !important;
-	background-color: #ccc !important
+	background-color: #D8D8D8 !important
 }
 
 .w3-transparent, .w3-hover-none:hover {

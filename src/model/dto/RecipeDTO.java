@@ -17,7 +17,7 @@ public class RecipeDTO {
 	private int recipeOwner;
 	private int like;
 	private String imgPath;
-	
+
 	// 새로운 레시피 등록할때 필요한 생성자
 	public RecipeDTO(int ingredientId, String foodName, String direction) {
 		super();
@@ -29,12 +29,7 @@ public class RecipeDTO {
 	@Override
 	public String toString() {
 		return "RecipeDTO [recipeId=" + recipeId + ", ingredientId=" + ingredientId + ", foodName=" + foodName
-				+ ", direction=" + direction + ", recipeOwner=" + recipeOwner + ", like=" + like + ", imgPath="
-				+ imgPath + "]";
+				+ ", direction=" + direction + ", recipeOwner=" + recipeOwner + ", like=" + like + ", imgPath="+ imgPath + "]";
 	}
 
-//	public Recipe toEntity() {
-//		return Recipe.builder().ingredientId(ingredientId).foodName(foodName).direction(direction).like(like).build();
-//	}
-	
 }

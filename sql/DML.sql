@@ -1,40 +1,37 @@
--- chef insert[ì‚¬ìš©ì]
+-- chef insert[»ç¿ëÀÚ]
 insert into chef values(0, 'admin', '0000', '0000');
 insert into chef values(chef_id_seq.nextval, 'yoojinma', '1234', '1234');
 insert into chef values(chef_id_seq.nextval, 'woosong', '5678', '5678');
 insert into chef values(chef_id_seq.nextval, 'hyemin', '1111', '1111');
 
--- ingredient insert[ì¬ë£Œ]
-insert into ingredient values(ingredient_id_seq.nextval, 'ë°¥', 'ê¹€ì¹˜', 'ë¼ì§€ê³ ê¸°', 'ë§ˆëŠ˜', 'íŒŒ');
-insert into ingredient values(ingredient_id_seq.nextval, 'ë°¥', 'ê³„ë€', 'ê°„ì¥', 'ì°¸ê¸°ë¦„', 'ê¹¨');
--- ë ˆì‹œí”¼ ì¶”ê°€ 
-insert into ingredient values(ingredient_id_seq.nextval, 'ë°¥', 'ê³„ë€', 'ì°¸ì¹˜', 'ë§ˆìš”ë„¤ì¦ˆ', null);
-insert into ingredient values(ingredient_id_seq.nextval, 'ë¹µ', 'ê³„ë€', 'ë§ˆìš”ë„¤ì¦ˆ', null, null);
-insert into ingredient values(ingredient_id_seq.nextval, 'ë°¥', 'ê¹€ì¹˜', 'ê³„ë€', null, null);
-insert into ingredient values(ingredient_id_seq.nextval, 'ë¼ë©´', 'ê³„ë€', 'íŒŒ', null, null);
-insert into ingredient values(ingredient_id_seq.nextval, 'íŒŒìŠ¤íƒ€ë©´', 'í† ë§ˆí† ì†ŒìŠ¤', 'í¬ë¦¼', 'ë§ˆëŠ˜', null);
-insert into ingredient values(ingredient_id_seq.nextval, 'ë–¡', 'ì–‘íŒŒ', 'ê°„ì¥', 'ê³ ì¶”ì¥', 'íŒŒ');
-insert into ingredient values(ingredient_id_seq.nextval, 'ê³„ë€', 'íŒŒ', 'ì–‘íŒŒ', null, null);
-insert into ingredient values(ingredient_id_seq.nextval, 'ë°¥', 'ì†Œê³ ê¸°', 'ê°„ì¥', 'ì–‘íŒŒ', 'ê¹¨');
-insert into ingredient values(ingredient_id_seq.nextval, 'ë¼ì§€ê³ ê¸°', 'ê¹€ì¹˜', 'ê°„ì¥', 'ê³ ì¶”ì¥', 'ì–‘íŒŒ');
-insert into ingredient values(ingredient_id_seq.nextval, 'ë–¡', 'í¬ë¦¼', 'ë§ˆëŠ˜', 'ê¹¨', null);
-insert into ingredient values(ingredient_id_seq.nextval, 'íŒŒìŠ¤íƒ€ë©´', 'ì°¸ê¸°ë¦„', 'ê°„ì¥', 'ë§ˆëŠ˜', 'ê¹¨');
+-- ingredient insert[Àç·á]
+insert into ingredient values(ingredient_id_seq.nextval, '¹ä', '±èÄ¡', 'µÅÁö°í±â', '¸¶´Ã', 'ÆÄ');
+insert into ingredient values(ingredient_id_seq.nextval, '¹ä', '°è¶õ', '°£Àå', 'Âü±â¸§', '±ú');
+insert into ingredient values(ingredient_id_seq.nextval, '¹ä', '°è¶õ', 'ÂüÄ¡', '¸¶¿ä³×Áî', null);
+insert into ingredient values(ingredient_id_seq.nextval, '»§', '°è¶õ', '¸¶¿ä³×Áî', null, null);
+insert into ingredient values(ingredient_id_seq.nextval, '¹ä', '±èÄ¡', '°è¶õ', null, null);
+insert into ingredient values(ingredient_id_seq.nextval, '¶ó¸é', '°è¶õ', 'ÆÄ', null, null);
+insert into ingredient values(ingredient_id_seq.nextval, 'ÆÄ½ºÅ¸¸é', 'Åä¸¶Åä¼Ò½º', 'Å©¸²', '¸¶´Ã', null);
+insert into ingredient values(ingredient_id_seq.nextval, '¶±', '¾çÆÄ', '°£Àå', '°íÃßÀå', 'ÆÄ');
+insert into ingredient values(ingredient_id_seq.nextval, '°è¶õ', 'ÆÄ', '¾çÆÄ', null, null);
+insert into ingredient values(ingredient_id_seq.nextval, '¹ä', '¼Ò°í±â', '°£Àå', '¾çÆÄ', '±ú');
+insert into ingredient values(ingredient_id_seq.nextval, 'µÅÁö°í±â', '±èÄ¡', '°£Àå', '°íÃßÀå', '¾çÆÄ');
+insert into ingredient values(ingredient_id_seq.nextval, '¶±', 'Å©¸²', '¸¶´Ã', '±ú', null);
+insert into ingredient values(ingredient_id_seq.nextval, 'ÆÄ½ºÅ¸¸é', 'Âü±â¸§', '°£Àå', '¸¶´Ã', '±ú');
 
--- recipe insert[ë ˆì‹œí”¼]
-insert into recipe values(recipe_id_seq.nextval, 1, 'ê¹€ì¹˜ì°Œê°œ', '1. ê¹€ì¹˜ ë°˜í¬ê¸°ë¥¼ 2cm ê°„ê²©ìœ¼ë¡œ ì°ì–´ì„œ ê¸°ë¦„ì— ë³¶ëŠ”ë‹¤.(ì“´ ê¹€ì¹˜ëŠ” ì„¤íƒ•ì„ ì¶”ê°€í•œë‹¤.)'||CHR(10)||'2. ê³ ê¸°ë‚˜ ì°¸ì¹˜ë¥¼ ë„£ê³  ê³„ì† ë³¶ëŠ”ë‹¤.'||CHR(10)||'3. ì–´ëŠ ì •ë„ ìµìœ¼ë©´ ë¬¼ì„ ë¶“ê³  ë“ì¸ë‹¤.'||CHR(10)||'4. ë‚˜ë¨¸ì§€ ë¶€ì¬ë£Œë¥¼ ë„£ëŠ”ë‹¤.', 3, '36', '001.jpg');
-insert into recipe values(recipe_id_seq.nextval, 2, 'ê°„ì¥ê³„ë€ë°¥', '1. ê¸°ë¦„ì„ ë‘ë¥¸ íŒ¬ì— ê³„ë€ì„ 2ê°œ ê¹¬ë‹¤.(ë…¸ë¥¸ì í„°ëœ¨ë¦¬ì§€ ì•Šê²Œ ì£¼ì˜!!)'||CHR(10)||'2. ë”°ëœ»í•œ ë°¥ì— ê³„ë€ì„ ì˜¬ë¦°ë‹¤.'||CHR(10)||'3. ì°¸ê¸°ë¦„ê³¼ ê°„ì¥ê³¼ ê¹¨ë¥¼ ë¿Œë¦°ë‹¤.(ê¹€ì´ ìˆë‹¤ë©´ ì˜¬ë ¤ì£¼ì„¸ìš”.)', 2, '45', '002.jpg');
--- ë ˆì‹œí”¼ ì¶”ê°€ 
-insert into recipe values(recipe_id_seq.nextval, 3, 'ì°¸ì¹˜ë§ˆìš”', '1. ë”°ëœ»í•œ ë°¥ì„ ë™ê·¸ë—ê²Œ ë§Œë“ ë‹¤.'||CHR(10)||'2. ê³„ë€ì„ ë°¥ ìœ„ì— ì˜¬ë¦°ë‹¤.(í›„ë¼ì´/ìŠ¤í¬ë¨ë¸” ê°œì¸ ìµœí–¥ ì¡´ì¤‘í•©ë‹ˆë‹¤.)'||CHR(10)||'3. ì°¸ì¹˜ë¥¼ ì˜¬ë¦°ë‹¤.'||CHR(10)||'4. ë§ˆìš”ë„¤ì¦ˆë¥¼ ë¿Œë¦°ë‹¤.(ê¹€/ê¹»ì ë“± ì¶”ê°€ ì¬ë£ŒëŠ” ë§ˆìŒëŒ€ë¡œ ì˜¬ë¦¬ì„¸ìš”.)', 1, '31', '003.jpg');
-insert into recipe values(recipe_id_seq.nextval, 4, 'ì—ê·¸ìƒŒë“œìœ„ì¹˜', '1. ì‚¶ì€ ê³„ë€ì„ ìœ¼ê¹¬ë‹¤.(ì˜¤ì´/ê°ì/ë‹¹ê·¼ ë“± ì¶”ê°€ ì¬ë£Œë¥¼ ë‹¤ì ¸ì„œ ë„£ì–´ë„ ë©ë‹ˆë‹¤.)'||CHR(10)||'2. ìœ¼ê¹¬ ë‚´ìš©ë¬¼ì— ë§ˆìš”ë„¤ì¦ˆì™€ ì†Œê¸ˆìœ¼ë¡œ ê°„ì„ í•´ì¤€ë‹¤.'||CHR(10)||'3. ë¹µ ì‚¬ì´ì— ë‚´ìš©ë¬¼ì„ ë¼ìš´ë‹¤.', 3, '16', '004.jpg');
-insert into recipe values(recipe_id_seq.nextval, 5, 'ê¹€ì¹˜ë³¶ìŒë°¥', '1. ì˜ê²Œ ìë¥¸ ê¹€ì¹˜ë¥¼ ê¸°ë¦„ ë‘ë¥¸ íŒ¬ì— ë³¶ëŠ”ë‹¤.(ì“´ ê¹€ì¹˜ëŠ” ì„¤íƒ•ì„ ì¶”ê°€í•œë‹¤.)'||CHR(10)||'2. ë°¥ì„ í•œ ê³µê¸° ë„£ê³  ë³¶ëŠ”ë‹¤.'||CHR(10)||'3. ê³„ë€ í›„ë¼ì´ë¥¼ ë°¥ ìœ„ì— ì˜¬ë¦°ë‹¤.(ê¹€ê°€ë£¨ëŠ” í•„ìˆ˜ì…ë‹ˆë‹¤.)', 2, '42', '005.jpg');
-insert into recipe values(recipe_id_seq.nextval, 6, 'ë¼ë©´', '1. ë´‰ì§€ì— ì íŒ ë¬¼ì˜ ì–‘ì„ ë§ì¶° ë“ì¸ë‹¤.(ìŠ¤í”„ë¥¼ ë¨¼ì € ë„£ì–´ì•¼ ë“ëŠ”ì ì´...)'||CHR(10)||'2. ë¬¼ì´ ë“ìœ¼ë©´ íŒŒì†¡ì†¡ í•´ì„œ íŒŒì™€ ë©´ì„ ë„£ê³  ë°”ë¡œ ë’¤ì§‘ì€ í›„ ì “ê°€ë½ìœ¼ë¡œ ì˜ í’€ì–´ì¤€ë‹¤.'||CHR(10)||'3. 2ë¶„ì´ ì§€ë‚˜ë©´ ë©´ë§Œ ë¨¼ì € ê·¸ë¦‡ì— ê±´ì§„ë‹¤.'||CHR(10)||'4. ë“ëŠ” êµ­ë¬¼ì— ê³„ë€ì„ ë„£ê³  ìµìœ¼ë©´ ëœì–´ë†“ì€ ë©´ì— ë¶€ì–´ì¤€ë‹¤.', 1, '65', '006.jpg');
-insert into recipe values(recipe_id_seq.nextval, 7, 'ë¡œì œíŒŒìŠ¤íƒ€', '1. ì†Œê¸ˆì„ 1t ë„£ì€ ë¬¼ì— ë©´ì„ ì‚¶ëŠ”ë‹¤.'||CHR(10)||'2. ê¸°ë¦„ì„ ë‘ë¥¸ íŒ¬ì— ë§ˆëŠ˜ì„ ë„£ê³  ë³¶ëŠ”ë‹¤.'||CHR(10)||'3. ë§ˆëŠ˜ì´ ë…¸ë¦‡í•´ì§€ë©´ í† ë§ˆí† ì†ŒìŠ¤ì™€ í¬ë¦¼ì„ ë„£ê³  ë“ì¸ë‹¤.'||CHR(10)||'4. ë©´ì„ ë„£ê³  ì—ë©€ì§•í•œë‹¤.', 0, '27', '007.jpg');
-insert into recipe values(recipe_id_seq.nextval, 8, 'ë–¡ë³¶ì´', '1. ë¬¼ì„ ë“ì¸ë‹¤.'||chr(10)||'2. ì ë‹¹íˆ ë¶ˆë¦° ë–¡ì„ ë„£ëŠ”ë‹¤.'||chr(10)||'3. íŒŒì†¡ì†¡ ì°ì–´ì„œ ì¬ë£Œë“¤ê³¼ í•¨ê»˜ ë„£ëŠ”ë‹¤.', 1, '7', '008.jpg');
-insert into recipe values(recipe_id_seq.nextval, 9, 'ê³„ë€ë§ì´', '1. ì‹ìš©ìœ ë¥¼ ë‘ë¥¸ íŒ¬ì„ ë‹¬êµ°ë‹¤.'||chr(10)||'2. ê³„ë€ì„ ì˜ ì„ëŠ”ë‹¤.'||chr(10)||'3. ê³„ë€ë§ì´ ì™„ì„±.', 0, '20', '009.jpg');
-insert into recipe values(recipe_id_seq.nextval, 10, 'ì†Œë¶ˆê³ ê¸°ë³¶ìŒë°¥', '1. ì†Œë¶ˆê³ ê¸°ì†Œë¶ˆê³ ê¸°'||chr(10)||'2. ì¡°ë¦¬ë²• ì •í™•íˆ ê¸°ì…í•´ì£¼ì„¸ìš”.'||chr(10)||'3. ì†Œë¶ˆê³ ê¸°ë³¶ìŒë°¥ ì™„ì„±.', 2, '14', '010.jpg');
-insert into recipe values(recipe_id_seq.nextval, 11, 'ê¹€ì¹˜ì œìœ¡ë³¶ìŒ', '1. ê¹€ì¹˜ë¥¼ ì¤€ë¹„í•œë‹¤.'||chr(10)||'2. ì œìœ¡ë³¶ìŒì„ ë§Œë“ ë‹¤.'||chr(10)||'3. ì œìœ¡ë³¶ìŒì— ê¹€ì¹˜ë¥¼ ì‹¸ì„œ ë“œì…”ë³´ì„¸ìš”.', 3, '5', '011.jpg');
-insert into recipe values(recipe_id_seq.nextval, 12, 'í¬ë¦¼ë–¡ë³¶ì´', '1. í¬ë¦¼ì„ ì¤€ë¹„í•œë‹¤.'||chr(10)||'2. ë–¡ë³¶ì´ë¥¼ ë§Œë“ ë‹¤.'||chr(10)||'3. ê¶ì¤‘ë–¡ë³¶ì´ ì™„ì„±.', 3, '3', '012.jpg');
-insert into recipe values(recipe_id_seq.nextval, 13, 'ì°¸ê¹¨ì˜¤ì¼íŒŒìŠ¤íƒ€', '1. ì§‘ì— ì˜¬ë¦¬ë¸Œì˜¤ì¼ì´ ìˆì„ê¹Œìš”?'||chr(10)||'2. ì˜¬ë¦¬ë¸Œì˜¤ì¼ ëŒ€ì‹  ì°¸ê¸°ë¦„ì„ ì‚¬ìš©í•´ë³´ì„¸ìš” .'||chr(10)||'3. ë”°ë¼í•˜ì§€ ë§ˆì„¸ìš”.', 0, '99', '013.jpg');
-
+-- recipe insert[·¹½ÃÇÇ]
+insert into recipe values(recipe_id_seq.nextval, 1, '±èÄ¡Âî°³', '1. ±èÄ¡ ¹İÆ÷±â¸¦ 2cm °£°İÀ¸·Î ½ä¾î¼­ ±â¸§¿¡ ºº´Â´Ù.(¾´ ±èÄ¡´Â ¼³ÅÁÀ» Ãß°¡ÇÑ´Ù.)'||CHR(10)||'2. °í±â³ª ÂüÄ¡¸¦ ³Ö°í °è¼Ó ºº´Â´Ù.'||CHR(10)||'3. ¾î´À Á¤µµ ÀÍÀ¸¸é ¹°À» º×°í ²úÀÎ´Ù.'||CHR(10)||'4. ³ª¸ÓÁö ºÎÀç·á¸¦ ³Ö´Â´Ù.', 3, '36', '001.jpg');
+insert into recipe values(recipe_id_seq.nextval, 2, '°£Àå°è¶õ¹ä', '1. ±â¸§À» µÎ¸¥ ÆÒ¿¡ °è¶õÀ» 2°³ ±ü´Ù.(³ë¸¥ÀÚ ÅÍ¶ß¸®Áö ¾Ê°Ô ÁÖÀÇ!!)'||CHR(10)||'2. µû¶æÇÑ ¹ä¿¡ °è¶õÀ» ¿Ã¸°´Ù.'||CHR(10)||'3. Âü±â¸§°ú °£Àå°ú ±ú¸¦ »Ñ¸°´Ù.(±èÀÌ ÀÖ´Ù¸é ¿Ã·ÁÁÖ¼¼¿ä.)', 2, '45', '002.jpg');
+insert into recipe values(recipe_id_seq.nextval, 3, 'ÂüÄ¡¸¶¿ä', '1. µû¶æÇÑ ¹äÀ» µ¿±×¶ş°Ô ¸¸µç´Ù.'||CHR(10)||'2. °è¶õÀ» ¹ä À§¿¡ ¿Ã¸°´Ù.(ÈÄ¶óÀÌ/½ºÅ©·¥ºí °³ÀÎ ÃÖÇâ Á¸ÁßÇÕ´Ï´Ù.)'||CHR(10)||'3. ÂüÄ¡¸¦ ¿Ã¸°´Ù.'||CHR(10)||'4. ¸¶¿ä³×Áî¸¦ »Ñ¸°´Ù.(±è/²¢ÀÙ µî Ãß°¡ Àç·á´Â ¸¶À½´ë·Î ¿Ã¸®¼¼¿ä.)', 1, '31', '003.jpg');
+insert into recipe values(recipe_id_seq.nextval, 4, '¿¡±×»÷µåÀ§Ä¡', '1. »îÀº °è¶õÀ» À¸±ü´Ù.(¿ÀÀÌ/°¨ÀÚ/´ç±Ù µî Ãß°¡ Àç·á¸¦ ´ÙÁ®¼­ ³Ö¾îµµ µË´Ï´Ù.)'||CHR(10)||'2. À¸±ü ³»¿ë¹°¿¡ ¸¶¿ä³×Áî¿Í ¼Ò±İÀ¸·Î °£À» ÇØÁØ´Ù.'||CHR(10)||'3. »§ »çÀÌ¿¡ ³»¿ë¹°À» ³¢¿î´Ù.', 3, '16', '004.jpg');
+insert into recipe values(recipe_id_seq.nextval, 5, '±èÄ¡ººÀ½¹ä', '1. Àß°Ô ÀÚ¸¥ ±èÄ¡¸¦ ±â¸§ µÎ¸¥ ÆÒ¿¡ ºº´Â´Ù.(¾´ ±èÄ¡´Â ¼³ÅÁÀ» Ãß°¡ÇÑ´Ù.)'||CHR(10)||'2. ¹äÀ» ÇÑ °ø±â ³Ö°í ºº´Â´Ù.'||CHR(10)||'3. °è¶õ ÈÄ¶óÀÌ¸¦ ¹ä À§¿¡ ¿Ã¸°´Ù.(±è°¡·ç´Â ÇÊ¼öÀÔ´Ï´Ù.)', 2, '42', '005.jpg');
+insert into recipe values(recipe_id_seq.nextval, 6, '¶ó¸é', '1. ºÀÁö¿¡ ÀûÈù ¹°ÀÇ ¾çÀ» ¸ÂÃç ²úÀÎ´Ù.(½ºÇÁ¸¦ ¸ÕÀú ³Ö¾î¾ß ²ú´ÂÁ¡ÀÌ...)'||CHR(10)||'2. ¹°ÀÌ ²úÀ¸¸é ÆÄ¼Û¼Û ÇØ¼­ ÆÄ¿Í ¸éÀ» ³Ö°í ¹Ù·Î µÚÁıÀº ÈÄ Á£°¡¶ôÀ¸·Î Àß Ç®¾îÁØ´Ù.'||CHR(10)||'3. 2ºĞÀÌ Áö³ª¸é ¸é¸¸ ¸ÕÀú ±×¸©¿¡ °ÇÁø´Ù.'||CHR(10)||'4. ²ú´Â ±¹¹°¿¡ °è¶õÀ» ³Ö°í ÀÍÀ¸¸é ´ú¾î³õÀº ¸é¿¡ ºÎ¾îÁØ´Ù.', 1, '65', '006.jpg');
+insert into recipe values(recipe_id_seq.nextval, 7, '·ÎÁ¦ÆÄ½ºÅ¸', '1. ¼Ò±İÀ» 1t ³ÖÀº ¹°¿¡ ¸éÀ» »î´Â´Ù.'||CHR(10)||'2. ±â¸§À» µÎ¸¥ ÆÒ¿¡ ¸¶´ÃÀ» ³Ö°í ºº´Â´Ù.'||CHR(10)||'3. ¸¶´ÃÀÌ ³ë¸©ÇØÁö¸é Åä¸¶Åä¼Ò½º¿Í Å©¸²À» ³Ö°í ²úÀÎ´Ù.'||CHR(10)||'4. ¸éÀ» ³Ö°í ¿¡¸ÖÂ¡ÇÑ´Ù.', 0, '27', '007.jpg');
+insert into recipe values(recipe_id_seq.nextval, 8, '¶±ººÀÌ', '1. ¹°À» ²úÀÎ´Ù.'||chr(10)||'2. Àû´çÈ÷ ºÒ¸° ¶±À» ³Ö´Â´Ù.'||chr(10)||'3. ÆÄ¼Û¼Û ½ä¾î¼­ Àç·áµé°ú ÇÔ²² ³Ö´Â´Ù.', 1, '7', '008.jpg');
+insert into recipe values(recipe_id_seq.nextval, 9, '°è¶õ¸»ÀÌ', '1. ½Ä¿ëÀ¯¸¦ µÎ¸¥ ÆÒÀ» ´Ş±º´Ù.'||chr(10)||'2. °è¶õÀ» Àß ¼¯´Â´Ù.'||chr(10)||'3. °è¶õ¸»ÀÌ ¿Ï¼º.', 0, '20', '009.jpg');
+insert into recipe values(recipe_id_seq.nextval, 10, '¼ÒºÒ°í±âººÀ½¹ä', '1. ¼ÒºÒ°í±â¼ÒºÒ°í±â'||chr(10)||'2. Á¶¸®¹ı Á¤È®È÷ ±âÀÔÇØÁÖ¼¼¿ä.'||chr(10)||'3. ¼ÒºÒ°í±âººÀ½¹ä ¿Ï¼º.', 2, '14', '010.jpg');
+insert into recipe values(recipe_id_seq.nextval, 11, '±èÄ¡Á¦À°ººÀ½', '1. ±èÄ¡¸¦ ÁØºñÇÑ´Ù.'||chr(10)||'2. Á¦À°ººÀ½À» ¸¸µç´Ù.'||chr(10)||'3. Á¦À°ººÀ½¿¡ ±èÄ¡¸¦ ½Î¼­ µå¼Åº¸¼¼¿ä.', 3, '5', '011.jpg');
+insert into recipe values(recipe_id_seq.nextval, 12, 'Å©¸²¶±ººÀÌ', '1. Å©¸²À» ÁØºñÇÑ´Ù.'||chr(10)||'2. ¶±ººÀÌ¸¦ ¸¸µç´Ù.'||chr(10)||'3. ±ÃÁß¶±ººÀÌ ¿Ï¼º.', 3, '3', '012.jpg');
+insert into recipe values(recipe_id_seq.nextval, 13, 'Âü±ú¿ÀÀÏÆÄ½ºÅ¸', '1. Áı¿¡ ¿Ã¸®ºê¿ÀÀÏÀÌ ÀÖÀ»±î¿ä?'||chr(10)||'2. ¿Ã¸®ºê¿ÀÀÏ ´ë½Å Âü±â¸§À» »ç¿ëÇØº¸¼¼¿ä .'||chr(10)||'3. µû¶óÇÏÁö ¸¶¼¼¿ä.', 0, '99', '013.jpg');
 
 commit;

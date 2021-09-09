@@ -18,18 +18,18 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 .w3-third img{margin-bottom: -6px; opacity: 0.8; cursor: pointer}
 .w3-third img:hover{opacity: 1}
 </style>
-<body class="w3-light-grey w3-content" style="max-width:1600px">
+<body class="body-yellow w3-content">
 
 
 <!-- 네비게이션 -->
-<nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center" style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
+<nav class="w3-sidebar w3-bar-block w3-animate-left w3-text-white w3-collapse w3-top w3-center" style="z-index:3; width:300px; font-weight:bold" id="mySidebar"><br>
 	<jsp:include page="layout/nav.jsp" />
 </nav>
 
 <!-- Top menu on small screens -->
-<header class="w3-container w3-top w3-hide-large w3-white w3-xlarge w3-padding-16">
+<header class="w3-container w3-top w3-hide-large w3-xlarge w3-padding-16" style="background-color: #FF712C; color: white; font-weight: bolder;">
   <span class="w3-left w3-padding">방구석 Chef</span>
-  <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">&#9776;</a>
+  <a href="javascript:void(0)" class="w3-right w3-button w3-white" style="padding-top: 20px" onclick="w3_open()">&#9776;</a>
 </header>
 
 <!-- Overlay effect when opening sidebar on small screens -->
@@ -42,7 +42,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <div class="w3-hide-large" style="margin-top:83px"></div>
   
   <!-- 각 페이지마다 내용 바꿀 부분 !! - 로그인 폼 -->
-  <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="contact">
+  <div class="form-container" style="background-color: #EBEBED; width: 75%;" id="contact">
     	<div class="w3-content" style="max-width:600px">
      		<h4 class="w3-center"><b>로그인</b></h4>
      		
@@ -56,10 +56,10 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
           			<label>비밀번호</label>
           			<input class="w3-input w3-border" type="password" name="password" placeholder="비밀번호를 입력하세요:)" required>
         		</div>
-        		        		
-        		<button type="submit" class="w3-button w3-block w3-black w3-margin-bottom">로그인하기:)</button>
+        		<br><br>
+        		<button type="submit" class="w3-button w3-block w3-black w3-margin-bottom">로그인 :)</button>
       		</form>
-      		<button onclick="location.href='index.jsp'" class="w3-button w3-block w3-black w3-margin-bottom">취소하기:(</button>
+      		<button onclick="location.href='index.jsp'" class="w3-button w3-block w3-black w3-margin-bottom">취소 :(</button>
     	</div>
   </div>
   

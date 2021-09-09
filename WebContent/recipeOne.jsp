@@ -24,17 +24,17 @@ img{float: left; margin: 10px;}
 img{margin: 10px;}
 </style>
 
-<body class="w3-content" style="background-color:#FFFF8F; width: 2500px;">
+<body class="body-yellow w3-content">
 
 <!-- 네비게이션 -->
-<nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center" style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
+<nav class="w3-sidebar w3-bar-block w3-animate-left w3-text-white w3-collapse w3-top w3-center" style="z-index:3; width:300px; font-weight:bold" id="mySidebar"><br>
 	<jsp:include page="layout/nav.jsp" />
 </nav>
 
 <!-- Top menu on small screens -->
-<header class="w3-container w3-top w3-hide-large w3-white w3-xlarge w3-padding-16">
-  <span class="w3-left w3-padding">방구석 Chef</span>
-  <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">&#9776;</a>
+<header class="w3-container w3-top w3-hide-large w3-xlarge w3-padding-20" style="background-color: #FF712C; color: white; font-weight: bolder;">
+  <span class="w3-left w3-padding-16">방구석 Chef</span>
+  <a href="javascript:void(0)" class="w3-right w3-button w3-white w3-padding-16" style="padding: 20px" onclick="w3_open()">&#9776;</a>
 </header>
 
 <!-- Overlay effect when opening sidebar on small screens -->
@@ -47,8 +47,8 @@ img{margin: 10px;}
 		<div class="w3-hide-large" style="margin-top: 83px"></div>
 
 		<!-- 모든 레시피에서 클릭한 레시피 1개 출력 -->
-		<div class="w3-container" style="background-color: white; width: 2500px;">
-			<div class="form-container" style="background-color: #FFFF8F; width: 1000px;">
+		<div class="body-box">
+			<div class="form-container" style="background-color: #EBEBED; width: 75%;">
 				<c:if test="${not empty requestScope.recipeOne.imgPath}">
    					<img src="images/food/${requestScope.recipeOne.imgPath}" alt="image" width="300px" style="margin-right:50px; margin-bottom:200px; border:5px solid #e9ecef;">
    				</c:if>
