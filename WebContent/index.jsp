@@ -42,21 +42,21 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", 'Nanum Gothic'}
   <!-- Photo grid -->
   <div class="w3-row">
     <div class="w3-third">
-      <img src="images/index/001.jpg" style="width:100%" onclick="onClick(this)" alt="방구석 셰프">
+      <img src="images/index/001.jpg" style="width:100%" onclick="onClick(this)" alt="'대한민국 법조계에 김앤장이 있다면, 플레이데이터에는 혜민장이 있다.' - W.S.Lim, - PD Porject 中 -">
       <div style="height:100px; width:100%; background-color:black; color:white; font-weight:500; text-align:center; padding-top:30px;"><h4>EVERYONE</h4></div>
-      <img src="images/index/002.jpg" style="width:100%" onclick="onClick(this)" alt="방구석 셰프">
+      <img src="images/index/002.jpg" style="width:100%" onclick="onClick(this)" alt="- 10%의 확신과, 90%의 이게 왜 돌아가지? -">
     </div>
     
     <div class="w3-third">
-      <img src="images/index/003.jpg" style="width:100%" onclick="onClick(this)" alt="방구석 셰프">
+      <img src="images/index/003.jpg" style="width:100%" onclick="onClick(this)" alt="'벌써 자면 어떡해... 일어나, 코딩해야지'">
       <div style="height:100px; width:100%; background-color:black; color:white; font-weight:500; text-align:center; padding-top:30px;"><h4>CAN BE</h4></div>
-      <img src="images/index/004.jpg" style="width:100%" onclick="onClick(this)" alt="방구석 셰프">
+      <img src="images/index/004.jpg" style="width:100%" onclick="onClick(this)" alt="'저쪽 집이 무너졌다고 해서 구경하러 갔죠. 그런데 보고 오니 우리집이 무너진거에요.'">
     </div>
    
     <div class="w3-third">
-      <img src="images/index/005.jpg" style="width:100%" onclick="onClick(this)" alt="방구석 셰프">
+      <img src="images/index/005.jpg" style="width:100%" onclick="onClick(this)" alt="- 1번, 2번 메소드를 만들고 테스트하면 3번 메소드가 실행된다. -">
      <div style="height:100px; width:100%; background-color:black; color:white; font-weight:500; text-align:center; padding-top:30px;"><h4>A CHEF</h4></div>
-      <img src="images/index/006.jpg" style="width:100%" onclick="onClick(this)" alt="방구석 셰프">
+      <img src="images/index/006.jpg" style="width:100%" onclick="onClick(this)" alt="- 모든 에러를 잡아도 사용자는 기상천외한 문제를 발생시킨다. -">
     </div>
   </div>
 
