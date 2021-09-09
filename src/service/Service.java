@@ -36,11 +36,6 @@ public class Service {
 		return getRecipeDAO.getRecipeOne(foodName);
 	}
 
-	//모든 조리법 검색
-	public ArrayList<IngredientDTO> getAllIngredients() throws SQLException{
-		return getIngredientDAO.getAllIngredient();
-	}
-
 	// 모든 레시피 조회
 	public ArrayList<RecipeDTO> getAllRecipe() throws NotExistException {
 		return getRecipeDAO.getAllRecipe();
@@ -96,6 +91,16 @@ public class Service {
 	// 음식 이름으로 레시피 조회 후 재료 출력
 	public IngredientDTO getRecipeIngredient(String foodName) {
 		return getRecipeDAO.getRecipeIngredient(foodName);
+	}
+
+	// 음식 이름으로 레시피 조회 후 사용자이름 출력
+	public Object getChefName(String foodName) {
+		return getChefDAO.getChefName(foodName);
+	}
+	
+	// 음식 이름으로 해당음식의 재료 가져오기
+	public ArrayList<String> getIngredientByFoodName(String foodName) {
+		return getIngredientDAO.getIngredientByFoodName(foodName);
 	}
 	
 }

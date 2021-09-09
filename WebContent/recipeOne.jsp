@@ -41,33 +41,36 @@ img{margin: 10px;}
 		<div class="w3-hide-large" style="margin-top: 83px"></div>
 
 		<!-- 모든 레시피에서 클릭한 레시피 1개 출력 -->
-		<div class="form-container">
-			<form action="recipe" method="post">
-
-				<img src="images/food/${requestScope.recipeOne.imgPath}" alt="image" width="300px">
+		<div class="w3-container w3-light-grey w3-padding-32 w3-padding-large">
+			<div class="form-container">
+				<c:if test="${not empty requestScope.recipeOne.imgPath}">
+   				<img src="images/food/${requestScope.recipeOne.imgPath}" alt="image" width="300px" style="margin-right:30px">
+   				</c:if>
+   				<c:if test="${empty requestScope.recipeOne.imgPath}">
+   				<img src="images/food/noimg.png" alt="image">
+   				</c:if>
+			
 				<p style="margin-left: 10px;">
-				</p>
 					<h2>${requestScope.recipeOne.foodName}</h2>
-					<br>재료 : ${requestScope.recipeIngredient.ingredient1}
-					<br><h5>조리법</h5>
+					셰프 : ${requestScope.chefName}<br> 
+					좋아요 ${requestScope.recipeOne.like}개<br>
+					<br><h4>재료</h4>
+					<c:forEach items="${ingredient}" var="i">		
+					<c:if test="${i ne 'null'}">${i}</c:if>				
+					</c:forEach>
+					<br>
+					<br>
+					<h4>조리법</h4>
 					<pre>
 <c:out value="${requestScope.recipeOne.direction}" />
 					</pre>
-					셰프 : ${requestScope.recipeOne.recipeOwner}<br> 좋아요 :
-					${requestScope.recipeOne.like}개<br>
-			</form>
-			
-			<button onclick="location.href='/step12_miniproject/recipe?command=deleteRecipe&recipeId=${requestScope.recipeOne.recipeId}'">레시피 삭제하기</button>
+				</p>
+				<c:if test="${empty sessionScope.nickname}">			
+				<button onclick="location.href='/step12_miniproject/recipe?command=deleteRecipe&recipeId=${requestScope.recipeOne.recipeId}'" class="w3-button w3-block w3-black w3-margin-bottom">레시피 삭제</button>
+				</c:if>
+			</div>
 		</div>
 
-		<!-- Modal for full size images on click-->
-  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
-    <span class="w3-button w3-black w3-xlarge w3-display-topright">&times;</span>
-    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-      <img id="img01" class="w3-image">
-      <p id="caption"></p>
-    </div>
-  </div>
 
   <!-- Footer -->
   <footer class="w3-container w3-padding-32 w3-grey">  

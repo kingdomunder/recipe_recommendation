@@ -44,10 +44,9 @@ a{
 }
 .recipe-image{
 	height: 350px;
-	background-color: grey;
+	overflow: hidden;
 }
 .form-container{
-	height: 900px;
 	vertical-align: center;
 	background-color: white;
 	margin: 30px 30px 30px 30px;

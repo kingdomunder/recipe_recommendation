@@ -6,7 +6,9 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import javax.persistence.EntityManager;
 
 import model.dto.ChefDTO;
+import model.dto.IngredientDTO;
 import model.entity.Chef;
+import model.entity.Recipe;
 import model.util.DBUtil;
 
 public class ChefDAO {
@@ -63,6 +65,24 @@ public class ChefDAO {
 			em.close();
 		}
 		return -2;					// 그 외의 경우
+	}
+
+	// 음식 이름으로 셰프 이름 조회
+	public Object getChefName(String foodName) {
+		EntityManager em = DBUtil.getEntityManager();
+		em.getTransaction().begin();
+		Recipe r = null;
+		String chefName = null;
+		try {
+			r = (Recipe)em.createNamedQuery("Recipe.findByFoodName").setParameter("foodName", foodName).getSingleResult();
+			chefName = (String)r.getRecipeOwner().getChefName();
+		}catch(Exception e) {
+			e.printStackTrace();
+			em.getTransaction().rollback();
+		}finally {
+			em.close();
+		}
+		return chefName;
 	}
 
 }

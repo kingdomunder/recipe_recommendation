@@ -121,4 +121,26 @@ public class IngredientDAO {
 		return ingredientId;
 	}
 
+	// 음식 이름으로 해당 음식의 조리법 가져오기
+	public ArrayList<String> getIngredientByFoodName(String foodName) {
+		EntityManager em = DBUtil.getEntityManager();
+		em.getTransaction().begin();
+		Recipe r = null;
+		ArrayList<String> ingredients = new ArrayList<>();
+		try {
+			r = (Recipe)em.createNamedQuery("Recipe.findByFoodName").setParameter("foodName", foodName).getSingleResult();
+			ingredients.add(r.getIngredientId().getIngredient1());
+			ingredients.add(r.getIngredientId().getIngredient2());
+			ingredients.add(r.getIngredientId().getIngredient3());
+			ingredients.add(r.getIngredientId().getIngredient4());
+			ingredients.add(r.getIngredientId().getIngredient5());
+		}catch(Exception e) {
+			e.printStackTrace();
+			em.getTransaction().rollback();
+		}finally {
+			em.close();
+		}
+		return ingredients;
+	}
+
 }

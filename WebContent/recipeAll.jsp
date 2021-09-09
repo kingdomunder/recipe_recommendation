@@ -36,15 +36,18 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   
   <!-- 각 페이지마다 내용 바꿀 부분 !! - 모든 레시피 출력 -->
   <div class="w3-row">
-  	<div class="recipe-header">모든 레시피 보기</div>
-  </div>
-  <div class="w3-row">
    	<c:forEach items="${recipeAll}" var="recipe">
    		<div class="w3-third recipe-padding">
-   			<div class="recipe-image">
-   				나중에 이미지넣기
-   				<img src="images/food/${requestScope.recipeOne.imgPath}" alt="image">
-   			</div>
+   			<c:if test="${reipe.imgPath ne 'null'}">
+   				<div class="recipe-image">
+   				<img src="images/food/${recipe.imgPath}" alt="image">
+   				</div>
+   			</c:if>
+   			<c:if test="${recipe.imgPath eq 'null'}">
+	   			<div class="recipe-image">
+   					no image
+   				</div>
+   			</c:if>
    			<div class="recipe-block">
 				<a href="recipe?command=recipeOne&foodName=${recipe.foodName}"><div class="recipe-name">${recipe.foodName}</div></a>
 				<div class="recipe-like">좋아요 ${recipe.like}개</div>

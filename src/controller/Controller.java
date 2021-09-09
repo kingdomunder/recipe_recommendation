@@ -99,6 +99,8 @@ public class Controller extends HttpServlet {
 		String foodName = request.getParameter("foodName");
 		try {
 			request.setAttribute("recipeOne", service.getRecipeOne(foodName));
+			request.setAttribute("chefName", service.getChefName(foodName));
+			request.setAttribute("ingredient", service.getIngredientByFoodName(foodName));
 			url = "recipeOne.jsp";
 		} catch (Exception e) {
 			request.setAttribute("errorMsg", e.getMessage());
