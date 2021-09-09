@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -207,27 +208,23 @@ public class Controller extends HttpServlet {
 	// 레시피에 좋아요 누르기
 	private void likeRecipe(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String url = "showError.jsp";
 		int recipeId = Integer.parseInt(request.getParameter("recipeId"));
 		try {
 			boolean result = service.likeRecipe(recipeId);
 			if (result) {
-				request.setAttribute("recipe", service.getOneRecipe(recipeId));
-				url = "recipeLikeSuccess.jsp";
+				alert(request, response, "recipe?command=recipeAll", "좋아요 등록! :)");
 			} else {
-				request.setAttribute("errorMsg", "레시피 좋아요 누르기 실패했습니다.");
+				alert(request, response, "recipe?command=recipeAll", "좋아요 등록에 실패했습니다.");
 			}
 		} catch (Exception e) {
-			request.setAttribute("errorMsg", e.getMessage());
+			alert(request, response, "recipe?command=recipeAll", "좋아요 등록에 실패했습니다.");
 			e.printStackTrace();
 		}
-		request.getRequestDispatcher(url).forward(request, response);
 	}
 
 	// 레시피 등록
 	private void addRecipe(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String url = "showError.jsp";
 		boolean result = false;
 
 		String foodName = request.getParameter("foodName");
@@ -250,28 +247,23 @@ public class Controller extends HttpServlet {
 			result = service.addRecipe(recipe, nickname);
 
 			if (result) {
-				request.setAttribute("recipe", recipe);
-				url = "recipeAddSuccess.jsp";
+				alert(request, response, "recipe?command=myRecipe", "레시피 등록에 성공했습니다.");
 			} else {
-				request.setAttribute("errorMsg", "레시피 등록 실패");
+				alert(request, response, "recipe?command=myRecipe", "레시피 등록에 실패했습니다.");
 			}
 		} catch (Exception e) {
-			request.setAttribute("errorMsg", e.getMessage());
+			alert(request, response, "recipe?command=myRecipe", "레시피 등록에 실패했습니다.");
 			e.printStackTrace();
 		}
-		request.getRequestDispatcher(url).forward(request, response);
 	}
 
 	// 레시피 삭제
 	private void deleteRecipe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int recipeId = Integer.parseInt(request.getParameter("recipeId"));
-		System.out.println("컨트롤러 recipeId"+recipeId);
 		String url = null;
 		try {
 			boolean result = service.deleteRecipe(recipeId);
-			System.out.println(result);
-			if(result==true) {
-				System.out.println(result);
+			if(result) {
 				alert(request, response, "recipe?command=myRecipe", "레시피 삭제에 성공했습니다.");
 				url = "recipeAll.jsp";
 			}else {
@@ -308,30 +300,37 @@ public class Controller extends HttpServlet {
 
 	// 회원가입
 	private void addChef(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "showError.jsp";
 		boolean result = false;
 
-		ChefDTO chef = new ChefDTO();
-		chef.setChefName(request.getParameter("nickname"));
-		chef.setPassword(request.getParameter("password"));
-		chef.setPassword2(request.getParameter("password2"));
-		System.out.println(chef.getChefName());
-		System.out.println(chef.getPassword());
-
-		try {
-			result = service.addChef(chef);
-
-			if (result) {
-				request.setAttribute("chef", chef);
-				url = "chefAddSuccess.jsp";
-			} else {
-				request.setAttribute("errorMsg", "회원가입 실패");
+		String nickname = request.getParameter("nickname");
+		String password = request.getParameter("password");
+		String password2 = request.getParameter("password2");
+		
+		if(nickname.length() < 4) {
+			alert(request, response, "chefJoin.jsp", "아이디는 4글자 이상으로 입력해주세요.");
+		}else if(nickname.equals("admin")) {
+			alert(request, response, "chefJoin.jsp", "사용할 수 없는 이름입니다.");
+		}else if(!password.equals(password2)) {
+			alert(request, response, "chefJoin.jsp", "비밀번호가 일치하지 않습니다. 다시 확인해주세요.");
+		}else {
+			ChefDTO chef = new ChefDTO();
+			chef.setChefName(nickname);
+			chef.setPassword(password);
+			chef.setPassword2(password2);
+			try {
+				result = service.addChef(chef);
+				
+				if (result) {
+					alert(request, response, "login.jsp", chef.getChefName()+"님 환영합니다.");
+				} else {
+					alert(request, response, "chefJoin.jsp", "이미 사용중인 이름입니다.");
+				}
+			} catch (Exception e) {
+				alert(request, response, "chefJoin.jsp", "회원가입 실패. 입력정보를 확인해주세요.");
+				e.printStackTrace();
 			}
-		} catch (Exception e) {
-			request.setAttribute("errorMsg", e.getMessage());
-			e.printStackTrace();
 		}
-		request.getRequestDispatcher(url).forward(request, response);
+		
 	}
 
 	// 로그인
@@ -346,12 +345,12 @@ public class Controller extends HttpServlet {
 			// 로그인 성공하면 session에 사용자이름 및 id값저장
 			HttpSession session = request.getSession();
 			session.setAttribute("nickname", nickname);
-			alert(request, response, "recipe?command=myRecipe", "로그인 성공");
+			alert(request, response, "recipe?command=recipeAll", "로그인 성공");
 						
 		} else if(result == -1) {
 			alert(request, response, "login.jsp", "로그인 실패! 아이디를 확인하세요.");
 		} else {
-			request.setAttribute("errorMsg", "로그인 실패");
+			alert(request, response, "login.jsp", "로그인에 실패했습니다.");
 		}
 	}
 	

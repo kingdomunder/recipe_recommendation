@@ -1,5 +1,8 @@
 package model;
 
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+
 import javax.persistence.EntityManager;
 
 import model.dto.ChefDTO;
@@ -18,7 +21,7 @@ public class ChefDAO {
 	}
 
 	// 회원가입시 회원 정보를 DB에 저장하는 메소드
-	public boolean addChef(ChefDTO chef) {
+	public boolean addChef(ChefDTO chef) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		em.getTransaction().begin();
 		boolean result = false;

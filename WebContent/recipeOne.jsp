@@ -77,7 +77,7 @@ img{margin: 10px;}
 					${requestScope.recipeOne.like}개<br>
 				</p>
 				
-				<button onclick="location.href='/step12_miniproject/recipe?command=deleteRecipe&recipeId=${requestScope.recipeOne.recipeId}'">레시피 삭제하기</button>
+				
 
 				<!-- float에 의해 요소가 아래에 깔리는 것을 확인해보기 -->
 				<!-- <p style="background-color: cadetblue; border: 2px solid red;">
@@ -90,6 +90,8 @@ img{margin: 10px;}
 
 				
 			</form>
+			
+			<button onclick="location.href='/step12_miniproject/recipe?command=deleteRecipe&recipeId=${requestScope.recipeOne.recipeId}'">레시피 삭제하기</button>
 		</div>
 
 		<!-- Modal for full size images on click-->

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>W3.CSS Template</title>
+<title>방구석 Chef</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/style.css">
@@ -15,18 +15,17 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 <!-- 네비게이션 -->
 <nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center" style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
-	<a href="/step12_miniproject/index.html"><h3 class="w3-padding-64 w3-center"><b>방구석<br>셰프</b></h3></a>
+	<a href="/step12_miniproject/index.html"><h3 class="w3-padding-64 w3-center"><b>방구석<br>Chef</b></h3></a>
 	<a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hide-large">CLOSE</a>
 	<a href="recipe?command=recipeAll" onclick="w3_close()" class="w3-bar-item w3-button">모든 레시피 보기</a>
 	<a href="ingredient/select.jsp" onclick="w3_close()" class="w3-bar-item w3-button">재료 선택하기</a>
 	<a href="chefJoin.jsp" onclick="w3_close()" class="w3-bar-item w3-button">회원가입</a>
 	<a href="login.jsp" onclick="w3_close()" class="w3-bar-item w3-button">로그인</a>
-	<a href="recipe?command=deleteRecipe" onclick="w3_close()" class="w3-bar-item w3-button">레시피 삭제 테스트</a>
 </nav>
 
 <!-- Top menu on small screens -->
 <header class="w3-container w3-top w3-hide-large w3-white w3-xlarge w3-padding-16">
-  <span class="w3-left w3-padding">SOME NAME</span>
+  <span class="w3-left w3-padding">방구석 Chef</span>
   <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">&#9776;</a>
 </header>
 
@@ -40,21 +39,27 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <div class="w3-hide-large" style="margin-top:83px"></div>
   
   <!-- 각 페이지마다 내용 바꿀 부분 !! jsp파일에 index.html 내용 싹다 복붙하신다음, 필요한 jps 태그 상단에 넣으시고, 이부분에 내용을 구현하시면 됩니다 -->
-  <div>
-	  이건 index.html에 출력될 내용
-  </div>
-
-  <!-- Pagination -->
-  <div class="w3-center w3-padding-32">
-    <div class="w3-bar">
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">&laquo;</a>
-      <a href="#" class="w3-bar-item w3-black w3-button">1</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">&raquo;</a>
+  <!-- Photo grid -->
+  <div class="w3-row">
+    <div class="w3-third">
+      <img src="images/index1.jpg" style="width:100%" onclick="onClick(this)" alt="A boy surrounded by beautiful nature">
+      <div style="height:100px; width:100%; background-color:black; color:white; text-align:center; padding-top:40px;">Everyone</div>
+      <img src="images/index2.jpg" style="width:100%" onclick="onClick(this)" alt="The Beach. Me. Alone. Beautiful">
+    </div>
+    
+    <div class="w3-third">
+      <img src="images/index3.jpg" style="width:100%" onclick="onClick(this)" alt="A boy surrounded by beautiful nature">
+      <div style="height:100px; width:100%; background-color:black; color:white; text-align:center; padding-top:40px;">Can Be</div>
+      <img src="images/index4.jpg" style="width:100%" onclick="onClick(this)" alt="The Beach. Me. Alone. Beautiful">
+    </div>
+   
+    <div class="w3-third">
+      <img src="images/index5.jpg" style="width:100%" onclick="onClick(this)" alt="Quiet day at the beach. Cold, but beautiful">
+     <div style="height:100px; width:100%; background-color:black; color:white; text-align:center; padding-top:40px;">Chef</div>
+      <img src="images/index6.jpg" style="width:100%" onclick="onClick(this)" alt="Nature again.. At its finest!">
     </div>
   </div>
+
   
   <!-- Modal for full size images on click-->
   <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">

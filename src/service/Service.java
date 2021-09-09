@@ -1,6 +1,7 @@
 package service;
 
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 
 import exception.NotExistException;
@@ -84,7 +85,7 @@ public class Service {
 	}
 	
 	// 셰프 추가
-	public boolean addChef(ChefDTO chef) {
+	public boolean addChef(ChefDTO chef) throws SQLException {
 		return getChefDAO.addChef(chef);
 	}
 	// 로그인

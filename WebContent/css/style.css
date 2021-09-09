@@ -17,6 +17,9 @@ body {
 }
 
 /* 새로만든부분 */
+a{
+	text-decoration: none;
+}
 .content-container{
 	margin: 20px 20px 20px 20px;
 	height: 500px;
@@ -664,7 +667,7 @@ a {
 		width: 24.99999%
 	}
 	.w3-col.m4, .w3-third {
-		width: 33.33333%
+		width: 33.3333%
 	}
 	.w3-col.m5 {
 		width: 41.66666%

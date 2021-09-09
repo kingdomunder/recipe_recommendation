@@ -9,7 +9,7 @@ DROP SEQUENCE recipe_id_seq;
 CREATE SEQUENCE chef_id_seq;
 CREATE TABLE chef (
        chef_id          	NUMBER(10)  PRIMARY KEY,
-       chef_name            VARCHAR2(40) NOT NULL,
+       chef_name            VARCHAR2(40) NOT NULL unique,
        password         	VARCHAR2(40) NOT NULL,
        password2         	VARCHAR2(40) NOT NULL
 );
