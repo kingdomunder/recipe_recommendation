@@ -258,6 +258,7 @@ public class Controller extends HttpServlet {
 			result = service.expectFoodName(foodName);
 			if(result == false) {
 				alert(request, response, "recipe?command=myRecipe", "이미 존재하는 요리입니다.");
+				return;
 			}
 			int ingredientId = service.addIngredient(ingredient); // 새로 등록한 ingredient의 id 반환
 			
