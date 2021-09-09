@@ -62,6 +62,11 @@ public class Service {
 		return getIngredientDAO.addIngredient(ingredient);
 	}
 	
+	// 레시피 수정
+	public boolean updateRecipe(int recipeId, String foodName, String direction, IngredientDTO ingredient) {
+		return getRecipeDAO.updateRecipe(recipeId, foodName, direction, ingredient);
+	}
+	
 	// 레시피 삭제
 	public boolean deleteRecipe(int recipeId) {
 		return getRecipeDAO.deleteRecipe(recipeId);
@@ -94,7 +99,7 @@ public class Service {
 	}
 
 	// 음식 이름으로 레시피 조회 후 사용자이름 출력
-	public Object getChefName(String foodName) {
+	public String getChefName(String foodName) {
 		return getChefDAO.getChefName(foodName);
 	}
 	
@@ -102,5 +107,5 @@ public class Service {
 	public ArrayList<String> getIngredientByFoodName(String foodName) {
 		return getIngredientDAO.getIngredientByFoodName(foodName);
 	}
-	
+
 }
