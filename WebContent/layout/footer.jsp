@@ -4,14 +4,14 @@
  <div class="w3-row-padding">
    <div class="w3-third">
      <h3>ABOUT US</h3>
-     <p>Yoojin Ma</p>      
-     <p>Woosong Lim</p>      
-     <p>Hyemin Jang</p>      
+     <a href="https://github.com/YoojinMa">Yoojin Ma</a> <br>     
+     <a href="https://github.com/kingdomunder">Woosong Lim</a> <br>      
+     <a href="https://github.com/hyemin-jang">Hyemin Jang</a> <br>      
    </div>
  
    <div class="w3-third">
      <h3>GITHUB</h3>
-     <p>소스코드가 궁금하시다면 깃허브에 방문해주세용</p>    
+     <a href="https://github.com/hyemin-jang/recipe_recommendation">소스코드가 궁금하시다면 깃허브에 방문해주세용</a>    
      <i class="fa fa-github"></i>
      
    </div>

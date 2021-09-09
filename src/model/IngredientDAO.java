@@ -42,11 +42,12 @@ public class IngredientDAO {
 	public ArrayList<String> selectIngredient(ArrayList<String> selected) {
 		EntityManager em = DBUtil.getEntityManager();
 		
-		//입력받은 재료로 ingredient 검색
+		//DB검색해서 엔티티를 담을 리스트
 		List<Ingredient> ingEntity = null;
-		ArrayList<IngredientDTO> ingDTOList = new ArrayList<>();
-		ArrayList<List> ingList = new ArrayList<>();
+		//엔티티 리스트의 원소들인 엔티티들을 돌면서 데이터를 담을 리스트
 		ArrayList<Object> list = new ArrayList();
+		//데이터 담은 리스트를 담을 리스트(2차원)
+		ArrayList<List> ingList = new ArrayList<>();
 		
 		//검색한 ingredient의 id들을 저장하는 리스트
 		ArrayList<Integer> selectList = new ArrayList<>();
