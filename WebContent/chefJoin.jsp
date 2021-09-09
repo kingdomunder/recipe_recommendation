@@ -79,7 +79,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 
   <!-- Footer -->
-  <footer class="w3-container w3-padding-32 w3-grey">  
+  <footer class="footer-container w3-padding-10 w3-grey" style="font-family:'Nanum Gothic';"> 
     <jsp:include page="layout/footer.jsp" />
   </footer>
   

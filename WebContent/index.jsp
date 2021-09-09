@@ -20,13 +20,13 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", 'Nanum Gothic'}
 
 
 <!-- 네비게이션 -->
-<nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center" style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
+<nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center" style="z-index:3; width:300px; font-weight:bold" id="mySidebar"><br>
 	<jsp:include page="layout/nav.jsp" />
 </nav>
 
 <!-- Top menu on small screens -->
 <header class="w3-container w3-top w3-hide-large w3-white w3-xlarge w3-padding-16">
-  <span class="w3-left w3-padding">방구석 Chef</span>
+  <span class="w3-left w3-padding"><h3>방구석 Chef</h3></span>
   <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">&#9776;</a>
 </header>
 
@@ -71,7 +71,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", 'Nanum Gothic'}
   </div>
 
   <!-- Footer -->
-  <footer class="w3-container w3-padding-10 w3-grey" style="font-family:'Nanum Gothic';"> 
+  <footer class="footer-container w3-padding-10 w3-grey" style="font-family:'Nanum Gothic';"> 
     <jsp:include page="layout/footer.jsp" />
   </footer>
   

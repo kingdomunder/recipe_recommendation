@@ -88,11 +88,6 @@ public class Service {
 		return getChefDAO.logInChef(nickname, password);
 	}
 
-	// 음식 이름으로 레시피 조회 후 재료 출력
-	public IngredientDTO getRecipeIngredient(String foodName) {
-		return getRecipeDAO.getRecipeIngredient(foodName);
-	}
-
 	// 음식 이름으로 레시피 조회 후 사용자이름 출력
 	public Object getChefName(String foodName) {
 		return getChefDAO.getChefName(foodName);
