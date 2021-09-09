@@ -10,6 +10,7 @@ import javax.persistence.NoResultException;
 import org.junit.jupiter.api.Test;
 
 import exception.NotExistException;
+import model.dto.IngredientDTO;
 import model.dto.RecipeDTO;
 import model.entity.Chef;
 import model.entity.Ingredient;
@@ -33,7 +34,7 @@ public class RecipeDAO {
 		ArrayList<RecipeDTO> result = new ArrayList<>();
 		try {
 			list = (List<Recipe>)em.createNativeQuery("select * from Recipe", Recipe.class).getResultList();
-			list.forEach(v -> result.add(new RecipeDTO(v.getRecipeId(), v.getIngredientId().getIngredientId(), v.getFoodName(), v.getDirection(), v.getRecipeOwner().getChefId(), v.getLike())));
+			list.forEach(v -> result.add(new RecipeDTO(v.getRecipeId(), v.getIngredientId().getIngredientId(), v.getFoodName(), v.getDirection(), v.getRecipeOwner().getChefId(), v.getLike(), v.getImgPath())));
 		}catch(NoResultException e) {
 			e.printStackTrace();
 			throw new NotExistException();
@@ -61,7 +62,7 @@ public class RecipeDAO {
 		try {
 			Chef chef = (Chef)em.createNamedQuery("Chef.findChef").setParameter("chefName", nickname).getSingleResult();
 			list = (List<Recipe>)em.createNamedQuery("Recipe.findByRecipeOwner").setParameter("recipeOwner", chef).getResultList();
-			list.forEach(v -> result.add(new RecipeDTO(v.getRecipeId(), v.getIngredientId().getIngredientId(), v.getFoodName(), v.getDirection(), v.getRecipeOwner().getChefId(), v.getLike())));
+			list.forEach(v -> result.add(new RecipeDTO(v.getRecipeId(),v.getIngredientId().getIngredientId(), v.getFoodName(), v.getDirection(), v.getRecipeOwner().getChefId(), v.getLike(), v.getImgPath())));
 		}catch(NoResultException e) {
 			e.printStackTrace();
 			throw new NotExistException();
@@ -80,10 +81,9 @@ public class RecipeDAO {
 		EntityManager em = DBUtil.getEntityManager();
 		em.getTransaction().begin();
 		RecipeDTO recipe = null;
-		
 		try {
 			Recipe r = em.find(Recipe.class, recipeId);
-			recipe = new RecipeDTO(r.getRecipeId(), r.getIngredientId().getIngredientId(), r.getFoodName(), r.getDirection(), r.getRecipeOwner().getChefId(), r.getLike());
+			recipe = new RecipeDTO(r.getRecipeId(), r.getIngredientId().getIngredientId(), r.getFoodName(), r.getDirection(), r.getRecipeOwner().getChefId(), r.getLike(), r.getImgPath());
 		}catch(Exception e) {
 			e.printStackTrace();
 			em.getTransaction().rollback();
@@ -102,7 +102,26 @@ public class RecipeDAO {
 		RecipeDTO result = new RecipeDTO();
 		try {
 			r = (Recipe)em.createNamedQuery("Recipe.findByFoodName").setParameter("foodName", foodname).getSingleResult();
-			result = new RecipeDTO(r.getRecipeId(), r.getIngredientId().getIngredientId(), r.getFoodName(), r.getDirection(), r.getRecipeOwner().getChefId(), r.getLike());
+			result = new RecipeDTO(r.getRecipeId(), r.getIngredientId().getIngredientId(), r.getFoodName(), r.getDirection(), r.getRecipeOwner().getChefId(), r.getLike(), r.getImgPath());
+		}catch(Exception e) {
+			e.printStackTrace();
+			em.getTransaction().rollback();
+		}finally {
+			em.close();
+		}
+		return result;
+	}
+	
+	
+	// 음식 이름으로 모든 재료 가져오기 - 유진
+	public IngredientDTO getRecipeIngredient(String foodname) {
+		EntityManager em = DBUtil.getEntityManager();
+		em.getTransaction().begin();
+		Recipe r = null;
+		IngredientDTO result = new IngredientDTO();
+		try {
+			r = (Recipe)em.createNamedQuery("Recipe.findByFoodName").setParameter("foodName", foodname).getSingleResult();
+			result = new IngredientDTO(r.getIngredientId().getIngredient1(), r.getIngredientId().getIngredient2(), r.getIngredientId().getIngredient3(), r.getIngredientId().getIngredient4(), r.getIngredientId().getIngredient5());
 		}catch(Exception e) {
 			e.printStackTrace();
 			em.getTransaction().rollback();

@@ -3,6 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="images/egg.ico">
+	<title>방구석 CHEF</title>
+</head>
 <html lang="en">
 <title>W3.CSS Template</title>
 <meta charset="UTF-8">
@@ -16,17 +20,10 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </style>
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
-
 <!-- 네비게이션 -->
 <nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center" style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
 	<jsp:include page="layout/nav.jsp" />
 </nav>
-
-<!-- Top menu on small screens -->
-<header class="w3-container w3-top w3-hide-large w3-white w3-xlarge w3-padding-16">
-  <span class="w3-left w3-padding">SOME NAME</span>
-  <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">&#9776;</a>
-</header>
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
@@ -46,6 +43,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
    		<div class="w3-third recipe-padding">
    			<div class="recipe-image">
    				나중에 이미지넣기
+   				<img src="images/food/${requestScope.recipeOne.imgPath}" alt="image">
    			</div>
    			<div class="recipe-block">
 				<a href="recipe?command=recipeOne&foodName=${recipe.foodName}"><div class="recipe-name">${recipe.foodName}</div></a>

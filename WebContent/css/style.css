@@ -22,7 +22,8 @@ a{
 }
 .content-container{
 	margin: 20px 20px 20px 20px;
-	height: 500px;
+	/* height: 500px; */
+	width: 500px;
 }
 .recipe-header{
 	padding: 20px 20px 20px 20px;
@@ -42,7 +43,6 @@ a{
 	font-weight:bold
 }
 .recipe-image{
-	width: 350px;
 	height: 350px;
 	background-color: grey;
 }

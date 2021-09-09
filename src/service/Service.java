@@ -32,8 +32,8 @@ public class Service {
 	}
 	
 	// 음식 이름으로 레시피 1개 조회
-	public RecipeDTO getRecipeOne(String foodname) throws SQLException, NotExistException {
-		return getRecipeDAO.getRecipeOne(foodname);
+	public RecipeDTO getRecipeOne(String foodName) throws SQLException, NotExistException {
+		return getRecipeDAO.getRecipeOne(foodName);
 	}
 
 	//모든 조리법 검색
@@ -92,8 +92,10 @@ public class Service {
 	public int logInChef(String nickname, String password) {
 		return getChefDAO.logInChef(nickname, password);
 	}
-	
-	
 
+	// 음식 이름으로 레시피 조회 후 재료 출력
+	public IngredientDTO getRecipeIngredient(String foodName) {
+		return getRecipeDAO.getRecipeIngredient(foodName);
+	}
 	
 }

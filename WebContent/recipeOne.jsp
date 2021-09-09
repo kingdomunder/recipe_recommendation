@@ -3,6 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="images/egg.ico">
+	<title>방구석 CHEF</title>
+</head>
 <html lang="en">
 <title>W3.CSS Template</title>
 <meta charset="UTF-8">
@@ -22,17 +26,10 @@ img{margin: 10px;}
 
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
-
 <!-- 네비게이션 -->
 <nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center" style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
 	<jsp:include page="layout/nav.jsp" />
 </nav>
-
-<!-- Top menu on small screens -->
-<header class="w3-container w3-top w3-hide-large w3-white w3-xlarge w3-padding-16">
-  <span class="w3-left w3-padding">SOME NAME</span>
-  <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">&#9776;</a>
-</header>
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
@@ -46,49 +43,18 @@ img{margin: 10px;}
 		<!-- 모든 레시피에서 클릭한 레시피 1개 출력 -->
 		<div class="form-container">
 			<form action="recipe" method="post">
-				<%--
-				<div class="recipe-image">이미지</div>
-				<div class="rec_exp">
-					<h2 class="prod_title">${requestScope.recipeOne.foodName}</h2>
-					<p class="s_title">셰프 : ${requestScope.recipeOne.recipeOwner}</p>
-				</div>
-				
-				<hr>
-				
-				 <div>
-					<h2>${requestScope.recipeOne.foodName}</h2>
-					<br> <p>조리법</p>
-					<pre>
-					<c:out value="${requestScope.recipeOne.direction}" />
-					</pre>
-					셰프 : ${requestScope.recipeOne.recipeOwner}<br> 좋아요 :
-					${requestScope.recipeOne.like}개<br>
-				</div> --%>
 
-				<img src="images/001.png" alt="image" width="300" height="300">
-				<!-- 왼쪽 마진 적용해보기 : 잘 안됨 -->
+				<img src="images/food/${requestScope.recipeOne.imgPath}" alt="image" width="300px">
 				<p style="margin-left: 10px;">
+				</p>
 					<h2>${requestScope.recipeOne.foodName}</h2>
-					<br> <p>조리법</p>
+					<br>재료 : ${requestScope.recipeIngredient.ingredient1}
+					<br><h5>조리법</h5>
 					<pre>
-						<c:out value="${requestScope.recipeOne.direction}" />
+<c:out value="${requestScope.recipeOne.direction}" />
 					</pre>
 					셰프 : ${requestScope.recipeOne.recipeOwner}<br> 좋아요 :
 					${requestScope.recipeOne.like}개<br>
-				</p>
-				
-				
-
-				<!-- float에 의해 요소가 아래에 깔리는 것을 확인해보기 -->
-				<!-- <p style="background-color: cadetblue; border: 2px solid red;">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
-					repellendus molestias tempora voluptate beatae enim doloremque a,
-					veritatis repudiandae tenetur exercitationem est quam esse repellat
-					labore autem nesciunt corporis facilis.</p>
-
-				<p class="p2">여기는 위 이미지와 상관없는 새로운 블럭입니다.</p> -->
-
-				
 			</form>
 			
 			<button onclick="location.href='/step12_miniproject/recipe?command=deleteRecipe&recipeId=${requestScope.recipeOne.recipeId}'">레시피 삭제하기</button>
