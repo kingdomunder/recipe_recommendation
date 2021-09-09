@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-09-09T10:39:45.014Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36 Edg/93.0.961.38" etag="G1hoFmjpD6Vemaq5XWDF" version="14.9.9" type="github">
+<mxfile host="app.diagrams.net" modified="2021-09-09T10:41:37.364Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36 Edg/93.0.961.38" etag="uke4qic_JeorTfXOPzJ0" version="14.9.9" type="github">
   <diagram name="Page-1" id="74e2e168-ea6b-b213-b513-2b3c1d86103e">
-    <mxGraphModel dx="2770" dy="1687" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
+    <mxGraphModel dx="2073" dy="1308" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -127,7 +127,7 @@
         <mxCell id="45GvjtzoJxCoQlkExrK9-142" value="1.접속" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;pointerEvents=0;fontSize=24;" vertex="1" parent="45GvjtzoJxCoQlkExrK9-184">
           <mxGeometry x="496" y="240" width="100" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="45GvjtzoJxCoQlkExrK9-144" value="3. 기존 쿠키정보를 기준으로 (빵)을 검증&lt;br&gt;&lt;br&gt;--------검증 실패 시, 서비스로 넘어가지 않고 바로 결과 반환--------&lt;br&gt;&lt;br&gt;4. Request정보의 (빵)을 새로운 쿠키로 저장&lt;br&gt;&lt;br&gt;5. 기존 쿠키정보 + (빵)을 Service로 전송" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;glass=0;sketch=0;fontSize=25;fontColor=#333333;strokeColor=#666666;strokeWidth=3;fillColor=#f5f5f5;" vertex="1" parent="45GvjtzoJxCoQlkExrK9-184">
+        <mxCell id="45GvjtzoJxCoQlkExrK9-144" value="3. 기존 쿠키정보를 기준으로 (빵)을 검증&lt;br&gt;&lt;br&gt;--------검증 실패 시, 서비스로 넘어가지 않고 바로 결과 반환--------&lt;br&gt;&lt;br&gt;4. Request정보의 (빵)을 새로운 쿠키로 저장하고 로컬에 전송&lt;br&gt;&lt;br&gt;5. 기존 쿠키정보 + (빵)을 Service로 전송" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;glass=0;sketch=0;fontSize=25;fontColor=#333333;strokeColor=#666666;strokeWidth=3;fillColor=#f5f5f5;" vertex="1" parent="45GvjtzoJxCoQlkExrK9-184">
           <mxGeometry x="133" y="732" width="846.5" height="261" as="geometry" />
         </mxCell>
         <mxCell id="45GvjtzoJxCoQlkExrK9-148" value="Servlet" style="rounded=1;whiteSpace=wrap;html=1;fontSize=25;fontColor=#000000;strokeColor=#050000;strokeWidth=1;gradientColor=none;" vertex="1" parent="45GvjtzoJxCoQlkExrK9-184">
