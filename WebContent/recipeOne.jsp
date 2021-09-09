@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <style>
-body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", "고딕"}
 .w3-third img{margin-bottom: -6px; opacity: 0.8; cursor: pointer}
 .w3-third img:hover{opacity: 1}
 </style>
@@ -48,13 +48,13 @@ img{margin: 10px;}
 				<p style="margin-left: 10px;">
 				</p>
 					<h2>${requestScope.recipeOne.foodName}</h2>
-					<br>재료 : ${requestScope.recipeIngredient.ingredient1}
-					<br><h5>조리법</h5>
+					<br><h6>재료 : ${requestScope.recipeIngredient.ingredient1}</h6>
+					<br><hr><h6>조리법</h6>
 					<pre>
-<c:out value="${requestScope.recipeOne.direction}" />
+					<h6><c:out value="${requestScope.recipeOne.direction}" /></h6>
 					</pre>
-					셰프 : ${requestScope.recipeOne.recipeOwner}<br> 좋아요 :
-					${requestScope.recipeOne.like}개<br>
+					<h6>셰프 : ${requestScope.recipeOne.recipeOwner}</h6><br> 
+					<h6>좋아요 : ${requestScope.recipeOne.like}개</h6><br>
 			</form>
 			
 			<button onclick="location.href='/step12_miniproject/recipe?command=deleteRecipe&recipeId=${requestScope.recipeOne.recipeId}'">레시피 삭제하기</button>
