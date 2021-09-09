@@ -32,7 +32,7 @@ CREATE TABLE recipe (
        direction  			VARCHAR2(500) NOT NULL,
        recipe_owner  		NUMBER(10) default 0,
        recipe_like  		NUMBER(10) default 0,
-       img_path				VARCHAR2(30)
+       img_path				VARCHAR2(30) default null
 );
 
 

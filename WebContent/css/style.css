@@ -53,6 +53,31 @@ a{
 	padding: 30px 30px 30px 30px;
 }
 
+
+/* select.jsp에서 사용  - 우송 */
+
+.select-error{
+	background-color: white;
+	height: 60px;
+	text-align: center;
+}
+.main-ingredient{
+	background-color: white grey;
+	height: 300px;
+	margin-top: 300px;
+	vertical-align: center;
+	text-align: center;
+}
+
+.sub-ingredient{
+	background-color: white grey;
+	height: 300px;
+	margin-top: 700px;
+	vertical-align: center;
+	text-align: center;
+}
+
+
 article, aside, details, figcaption, figure, footer, header, main, menu,
 	nav, section {
 	display: block
