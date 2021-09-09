@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
+
 
 <!DOCTYPE html>
 <html lang="en">
-<title>W3.CSS Template</title>
+<title>마이 페이지</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/style.css">
@@ -38,21 +40,31 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <div class="w3-hide-large" style="margin-top:83px"></div>
   
   <!-- 각 페이지마다 내용 바꿀 부분 !! - 마이페이지 -->
-  <div class="content-container">
-	  <div style="font-size:x-large; margin-bottom:20px">${nickname}님이 등록한 레시피</div>
-	  <div style="margin-bottom:10px; margin-left:10px">
-	   	<c:forEach items="${myRecipe}" var="recipe">
+  <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large">
+    	<div class="w3-content" style="max-width:600px">
+     		<h4 class="w3-center"><b>${nickname}님이 등록한 레시피</b></h4>
+	  		<div style="height: 300px; margin-top: 30px;">
+	  		<c:if test="${empty myRecipe}">
+	  		 등록한 레시피가 없습니다.
+	  		</c:if>
+	  		<c:if test="${not empty myRecipe}">
+	  		총 ${fn:length(myRecipe)}개의 레시피를 등록하셨습니다.
+	  		</c:if>
+	  		<br>
+	  		<br>
+	   		<c:forEach items="${myRecipe}" var="recipe">
 			<li>
-				<a href="recipe?command=recipeOne&foodName=${recipe.foodName}" class="recipe-name">${recipe.foodName}</a>
+				<a href="recipe?command=recipeOne&foodName=${recipe.foodName}" class="recipe-name" style="font-size:x-large">${recipe.foodName}</a>
 				<a class="recipe-like" style="padding-left:10px">좋아요 ${recipe.like}개</a>
 			</li>
-		</c:forEach>
+			</c:forEach>
+	  		</div>
+	  		<br>
+	
+	  		<button onclick="location.href='addRecipe.html'" class="w3-button w3-block w3-black w3-margin-bottom">레시피 등록하기:)</button>
+	  	</div>
 	  </div>
-	  <br>
-	  <div style="font-size:x-large">레시피 등록하기</div>
-	  <button onclick="location.href='addRecipe.html'">Go!</button>
 	 
-  </div>
 
   
   <!-- Modal for full size images on click-->

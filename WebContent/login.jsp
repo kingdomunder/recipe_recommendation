@@ -4,7 +4,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<title>W3.CSS Template</title>
+<title>로그인</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/style.css">
@@ -24,7 +24,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 <!-- Top menu on small screens -->
 <header class="w3-container w3-top w3-hide-large w3-white w3-xlarge w3-padding-16">
-  <span class="w3-left w3-padding">SOME NAME</span>
+  <span class="w3-left w3-padding">방구석 Chef</span>
   <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">&#9776;</a>
 </header>
 
@@ -37,30 +37,28 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <!-- Push down content on small screens --> 
   <div class="w3-hide-large" style="margin-top:83px"></div>
   
-  <!-- 각 페이지마다 내용 바꿀 부분 !! - 모든 레시피 출력 -->
-  <div class="form-container">
-	  <h2>로그인 페이지</h2>
-		<form action="recipe" method="post">
-		<input type="hidden" name="command" value="login">
-			<table>
-				<tr>
-					<td>닉네임</td>
-					<td><input type="text" name="nickname" placeholder="닉네임을 입력하세요:)"></td>
-				</tr>
-				<tr>
-					<td>비밀번호</td>
-					<td><input type="password" name="password" placeholder="비밀번호를 입력하세요:)"></td>
-				</tr>
-				<tr>
-					<td>
-						<button type="submit">로그인하기:)</button> &nbsp;&nbsp;
-						<button type="button" onclick="location.href='chefJoin.jsp'">회원가입하기:)</button>
-					</td>
-				</tr>
-			</table>
-		</form>
-	</div>
+  <!-- 각 페이지마다 내용 바꿀 부분 !! - 로그인 폼 -->
+  <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="contact">
+    	<div class="w3-content" style="max-width:600px">
+     		<h4 class="w3-center"><b>로그인</b></h4>
+     		
+     		<form action="recipe" method="post">
+			<input type="hidden" name="command" value="login">
+        		<div class="w3-section">
+          			<label>닉네임</label>
+          			<input class="w3-input w3-border" type="text" name="nickname" placeholder="닉네임을 입력하세요:)" required>
+        		</div>   		
+        		<div class="w3-section">
+          			<label>비밀번호</label>
+          			<input class="w3-input w3-border" type="password" name="password" placeholder="비밀번호를 입력하세요:)" required>
+        		</div>
+        		        		
+        		<button type="submit" class="w3-button w3-block w3-black w3-margin-bottom">로그인하기:)</button>
+      		</form>
+      		<button onclick="location.href='index.html'" class="w3-button w3-block w3-black w3-margin-bottom">취소하기:(</button>
+    	</div>
   </div>
+  
 
   <!-- Modal for full size images on click-->
   <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
@@ -71,10 +69,6 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     </div>
   </div>
 
-  <!-- About section -->
-  <div class="w3-container w3-dark-grey w3-center w3-text-light-grey w3-padding-32" id="about">
-    <h4><b>About Me</b></h4>
-  </div>
 
   <!-- Footer -->
   <footer class="w3-container w3-padding-32 w3-grey">  
