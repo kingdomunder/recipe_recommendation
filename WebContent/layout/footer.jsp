@@ -10,15 +10,15 @@
    </div>
  
    <div class="w3-third">
-     <h3>GITHUB</h3>
+     <a href="https://github.com/hyemin-jang/recipe_recommendation"><h3>GITHUB</h3></a>   
      <a href="https://github.com/hyemin-jang/recipe_recommendation">소스코드가 궁금하시다면 깃허브에 방문해주세용</a>    
      <i class="fa fa-github"></i>
      
    </div>
 
    <div class="w3-third">
-     <h3>NOTION</h3>
-     <p>발표는 노션으로 하겠습니당</p>    
+     <a href="https://www.notion.so/98099331765449208ddfa87af66a33b9"><h3>NOTION</h3></a>
+     <a href="https://www.notion.so/98099331765449208ddfa87af66a33b9">발표는 노션으로 하겠습니당</a>     
      <i class="fa fa-commenting" aria-hidden="true"></i>
    </div>
  </div>
