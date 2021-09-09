@@ -65,6 +65,7 @@ img{margin: 10px;}
 				</p>
 				
 				<c:if test="${sessionScope.nickname eq requestScope.chefName}">			
+					<button onclick="location.href='/step12_miniproject/updateRecipe.jsp'" class="w3-button w3-block w3-black w3-margin-bottom">레시피 수정</button>
 					<button onclick="location.href='/step12_miniproject/recipe?command=deleteRecipe&recipeId=${requestScope.recipeOne.recipeId}'" class="w3-button w3-block w3-black w3-margin-bottom">레시피 삭제</button>
 				</c:if>
 			</div>

@@ -68,7 +68,7 @@ public class ChefDAO {
 	}
 
 	// 음식 이름으로 셰프 이름 조회
-	public Object getChefName(String foodName) {
+	public String getChefName(String foodName) {
 		EntityManager em = DBUtil.getEntityManager();
 		em.getTransaction().begin();
 		Recipe r = null;

@@ -62,6 +62,11 @@ public class Service {
 		return getIngredientDAO.addIngredient(ingredient);
 	}
 	
+	// 레시피 수정
+	public boolean updateRecipe(int recipeId, String foodName, String direction, IngredientDTO ingredient) {
+		return getRecipeDAO.updateRecipe(recipeId, foodName, direction, ingredient);
+	}
+
 	// 이미 존재하는 레시피이름일 때, 등록 거부
 	public boolean expectFoodName(String foodName) throws NotExistException {
 		boolean result = true;
@@ -110,7 +115,7 @@ public class Service {
 	}
 
 	// 음식 이름으로 레시피 조회 후 사용자이름 출력
-	public Object getChefName(String foodName) {
+	public String getChefName(String foodName) {
 		return getChefDAO.getChefName(foodName);
 	}
 	
@@ -119,6 +124,4 @@ public class Service {
 		return getIngredientDAO.getIngredientByFoodName(foodName);
 	}
 
-
-	
 }
