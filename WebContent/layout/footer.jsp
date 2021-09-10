@@ -19,8 +19,8 @@
    </div>
 
    <div class="w3-third" style="color: #E6E6E6">
-     <a href="https://www.notion.so/98099331765449208ddfa87af66a33b9"><h4>NOTION</h4></a>
-     <a href="https://www.notion.so/98099331765449208ddfa87af66a33b9">발표는 노션으로 하겠습니당</a>     
+     <a href="https://obtainable-catboat-47f.notion.site/98099331765449208ddfa87af66a33b9"><h4>NOTION</h4></a>
+     <a href="https://obtainable-catboat-47f.notion.site/98099331765449208ddfa87af66a33b9">발표는 노션으로 하겠습니당</a>     
      <i class="fa fa-commenting" aria-hidden="true"></i>
    </div>
  </div>

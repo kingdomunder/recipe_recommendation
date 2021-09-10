@@ -135,69 +135,53 @@ public class Controller extends HttpServlet {
 
 	// 선택한 재료 레시피 추천 - 우송
 	private void selectIngredient(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "showError.jsp";
+		String url = "ingredient/select.jsp";
 		String selected = request.getParameter("ingredient");
 		String encoding = null;
 
-		// 클라이언트 로컬에 저장된 쿠키 불러오기
 		Cookie[] cookies = request.getCookies();
 
-		// 불러온 쿠키를 디코딩해서 리스트로 저장
 		ArrayList<String> decodedCookies = new ArrayList<>();
 		
 		for (Cookie cookie : cookies) {
 			String decode = URLDecoder.decode(cookie.getValue(), "UTF-8");
-			
-			// 톰캣 접속할 때 자동으로 생성되는 JSESSIONID는 디코딩해도 10자리 이상의 무작위 값으로 출력되므로 검증해서 제외
 			if (decode.length() < 10) {
 				decodedCookies.add(decode);
 			}
 		}
-		// 선택한 재료들 : 에 출력할 쿠키들
+		
 		request.setAttribute("Cookies", decodedCookies);
 
-		// 쿠키가 없으면 null값. 버튼 마구누르면 가끔 JESSIONID가 늦게 만들어져서 null인 채로 접속되는 경우가 있음.
 		if (cookies == null) {
 			request.setAttribute("selectError", "---로딩중입니다. 잠시만 기다려주세요---");
-			request.getRequestDispatcher("ingredient/select.jsp").forward(request, response);
+			request.getRequestDispatcher(url).forward(request, response);
 			return;
-			// 불러온 쿠키가 6개면 메소드 종료, 에러 페이지로 이동
 		} else if (cookies.length == 6) {
 			request.setAttribute("selectError", "---최대 5개까지만 선택할 수 있습니다. 초기화해주세요---");
-			request.getRequestDispatcher("ingredient/select.jsp").forward(request, response);
+			request.getRequestDispatcher(url).forward(request, response);
 			return;
-			// 선택한 재료가 기존 쿠키정보에 이미 들어있으면 메소드 종료, 에러 페이지로 이동
 		} else if (decodedCookies.contains(selected)) {
 			request.setAttribute("selectError", "---이미 선택한 재료입니다---");
-			request.getRequestDispatcher("ingredient/select.jsp").forward(request, response);
+			request.getRequestDispatcher(url).forward(request, response);
 			return;
-			// 앞쪽의 조건들을 통과하면 메소드 진행.
 		} else {
 			decodedCookies.add(selected);
-			// 선택한 재료이름을 인코딩해서 새 쿠키로 생성
 			encoding = URLEncoder.encode(selected, "UTF-8");
 			Cookie cookie = new Cookie(encoding, encoding);
 			cookie.setMaxAge(60);
-			// 생성한 쿠키를 response에 add
 			response.addCookie(cookie);
 		}
-		// 쿠키 출력테스트
-		System.out.println("저장된 쿠키길이 : " + decodedCookies.size());
-		for (String a : decodedCookies) {
-			System.out.println(a);
-		}
-		// 추천 레시피를 담을 리스트 생성
+		
 		ArrayList<String> recommend = new ArrayList<>();
+		
 		try {
 			recommend.addAll(service.selectIngredient(decodedCookies));
-			System.out.println("추천메뉴 출력" + recommend);
 			
 			if (recommend != null && recommend.size() != 0) {
 				request.setAttribute("recommend", recommend);
-				url = "ingredient/select.jsp";
 			} else {
 				request.setAttribute("selectError", "추천할 레시피가 없습니다");
-				request.getRequestDispatcher("ingredient/select.jsp").forward(request, response);
+				request.getRequestDispatcher(url).forward(request, response);
 				return;
 			}
 		} catch (NotExistException e) {
@@ -207,7 +191,8 @@ public class Controller extends HttpServlet {
 			request.setAttribute("errorMsg", e.getMessage());
 			e.printStackTrace();
 		}
-		request.getRequestDispatcher("ingredient/select.jsp").forward(request, response);
+		
+		request.getRequestDispatcher(url).forward(request, response);
 	}
 
 	// 레시피에 좋아요 누르기
