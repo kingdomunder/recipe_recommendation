@@ -22,14 +22,14 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 
 <!-- 네비게이션 -->
-<nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center" style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
+<nav class="w3-sidebar w3-bar-block w3-animate-left w3-text-white w3-collapse w3-top w3-center" style="z-index:3; width:300px; font-weight:bold" id="mySidebar"><br>
 	<jsp:include page="layout/nav.jsp" />
 </nav>
 
 <!-- Top menu on small screens -->
-<header class="w3-container w3-top w3-hide-large w3-white w3-xlarge w3-padding-16">
-  <span class="w3-left w3-padding">방구석 Chef</span>
-  <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">&#9776;</a>
+<header class="w3-container w3-top w3-hide-large w3-xlarge w3-padding-20" style="background-color: #FF712C; color: white; font-weight: bolder;">
+  <span class="w3-left w3-padding-16">방구석 Chef</span>
+  <a href="javascript:void(0)" class="w3-right w3-button w3-white w3-padding-16" style="padding-top: 20px" onclick="w3_open()">&#9776;</a>
 </header>
 
 <!-- Overlay effect when opening sidebar on small screens -->
@@ -92,7 +92,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </div>
 
   <!-- Footer -->
-  <footer class="w3-container w3-padding-32 w3-grey">  
+  <footer class="footer-container w3-padding-10" style="font-family:'Nanum Gothic';"> 
     <jsp:include page="layout/footer.jsp" />
   </footer>
   
